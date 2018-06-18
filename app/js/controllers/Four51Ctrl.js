@@ -51,14 +51,6 @@ function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, C
 			});
 		}
 		
-		$("#owl-demo").owlCarousel({
-			autoPlay : 5000,
-			navigation : false,
-			slideSpeed : 300,
-			paginationSpeed : 400,
-			singleItem : true
-		});
-
 	}
 
 	try {
