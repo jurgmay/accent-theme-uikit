@@ -1,0 +1,104 @@
+<section class="order-search-view">
+    <!-- breadcrumb start -->
+    <!-- ================ -->
+    <div class="breadcrumb-container">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li><i class="fa fa-home pr-10"></i><a ng-href="index.html">Home</a></li>
+				<li><a ng-href="reports">{{'Reports' | r | xlat}}</a></li>
+				<li class="active">{{(report.ReportTypeName | r | xlat)}}</li>
+			</ol>
+		</div>
+	</div>
+    <!-- breadcrumb end -->   
+
+	<!-- main-container start -->
+	<!-- ==================== -->
+	<div class="main-container"> <!-- main container start -->
+		<div class="container"> <!-- container start -->
+			<div class="row"> <!-- row start -->
+				<div class="main col-md-12">
+				
+					<!-- page-title start -->
+					<!-- ================ -->
+					<h1 class="page-title">Reports</h1>
+					<div class="separator-2"></div>
+					<!-- page-title end -->
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-left">
+                                <div class="elements-list clearfix">
+                                    <a ng-href="reports" type="button" ng-href="reports" class="btn btn-animated btn-primary ng-binding">{{('View' | r) + ' ' + ('Reports' | r) | xlat}}<i class="fa fa-eye"></i></a>
+                                </div>
+        					</div>
+    					</div>
+					</div>
+					
+					<section>
+						<form name="reportForm" ng-submit="saveReport()">
+							<div class="panel panel-default">
+								<loadingindicator ng-show="displayLoadingIndicator" />
+								<div class="panel-heading" ng-if="!report.ID">
+									<h3 class="panel-title panel-primary">{{report.ID ? report.Name : (report.ReportTypeName | r | xlat)}}</h3>
+								</div>
+								<tabset ng-show="report">
+									<tab>
+										<tab-heading>{{'Conditions' | r | xlat}}</tab-heading>
+										<div class="panel-body">
+											<lineitemreport ng-if="report.ReportType == 'LineItem'" />
+											<orderreport ng-if="report.ReportType == 'Order'" />
+											<inventoryreport ng-if="report.ReportType == 'Inventory'" />
+											<pendingapprovalreport ng-if="report.ReportType == 'PendingApproval'" />
+											<accountStatusReport ng-if="report.ReportType == 'SpendingAccountStatus'" />
+											<accounttransactionreport ng-if="report.ReportType == 'SpendingAccountTransaction'" />
+											<shipmentreport ng-if="report.ReportType == 'Shipment'" />
+										</div>
+									</tab>
+									<tab disabled="!report.ID">
+										<tab-heading ng-click="downloadReport(report)">
+											{{('Report' | r) + ' ' + ('Data' | r) | xlat}}
+										</tab-heading>
+										<div class="panel-body">
+											<div class="table-responsive hidden-xs">
+												<table class="table table-striped table-condensed">
+													<thead>
+														<tr class="info">
+															<td ng-repeat="(key, value) in report.DataColumns">{{report.DisplayColumns[value] | r | xlat}}</td>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="row in report.Data | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
+															<td ng-repeat="header in report.DataColumns">
+																<span ng-if="header.indexOf('Date') == -1">{{row[header]}}</span>
+																<span ng-if="header.indexOf('Date') > -1">{{row[header] | date:user.Culture.DateFormat.long}}</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="panel-footer">
+											<div ng-show="settings.listCount > settings.pageSize">
+												<pagination page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="settings.listCount"
+															items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}"
+															first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
+											</div>
+											<button ng-hide="errorMessage" type="button" class="btn btn-primary pull-right" ng-click="getDownload()">{{'Download' | r | xlat}}</button>
+										</div>
+									</tab>
+								</tabset>
+								<div class="view-response-message text-center" ng-show="actionMessage">
+									<p>{{actionMessage | r | xlat}}</p>
+								</div>
+								<div class="view-error-message alert-danger text-center" ng-show="errorMessage">
+									<p>{{errorMessage | r | xlat}}</p>
+								</div>
+							</div>
+						</form>
+					</section>
+				</div> <!-- col -->
+			</div> <!-- row -->
+		</div> <!-- container -->
+	</div> <!-- main containers -->
+</div> <!-- section -->

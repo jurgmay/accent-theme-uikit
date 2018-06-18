@@ -1,0 +1,47 @@
+<div id="page-start"></div>	
+
+<!-- breadcrumb start -->
+<!-- ================ -->
+<div ng-hide="isActive('catalog')">
+	<div class="breadcrumb-container">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li><i class="fa fa-home pr-10"></i><a href="index.html">Home</a></li>
+				<li>{{currentCategory.Name}}</li>
+			</ol>
+		</div>
+	</div>
+</div>
+<!-- breadcrumb end -->
+
+<!-- main-container start -->
+<!-- ==================== -->
+<section class="main-container"> <!-- main container start -->
+	<div class="container"> <!-- container start -->
+		<div class="row"> <!-- row start -->
+
+			<!-- main start -->
+			<!-- ========== -->
+			<div class="main col-md-12">
+			
+				<!-- page-title start -->
+				<!-- ================ -->
+				<div ng-hide="isActive('catalog')">
+					<h1 class="page-title">{{currentCategory.Name}}</h1>
+					<div class="separator-2"></div>
+				</div>
+				<!-- page-title end -->
+			
+                <div ng-class="{ 'col-md-12': navStatus.visible, 'col-md-12': !navStatus.visible }" >
+                    <categorylistview></categorylistview>
+                    <loadingindicator ng-show="productLoadingIndicator" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
+                    <productlistview></productlistview>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

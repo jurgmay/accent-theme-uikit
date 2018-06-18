@@ -1,0 +1,105 @@
+<!-- breadcrumb start -->
+<!-- ================ -->
+<div class="breadcrumb-container">
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><i class="fa fa-home pr-10"></i><a href="index.html">Home</a></li>
+			<li class="active">{{'Checkout' | r | xlat}}</li>
+		</ol>
+	</div>
+</div>
+<!-- breadcrumb end -->        
+
+<!-- main-container start -->
+<!-- ==================== -->
+<section class="main-container">
+	<div class="container">
+		<div class="row">
+
+			<!-- main start -->
+			<!-- ========== -->
+			<div class="main col-md-12">
+	
+				<!-- page-title start -->
+				<!-- ================ -->
+				<h1 class="page-title">{{'Checkout' | r | xlat}}</h1>
+				<div class="separator-2"></div>
+				<!-- page-title end -->
+				
+				<section>
+					<div class="panel">
+
+						<loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we update your order' | r | xlat}}" />
+
+						<div class="col col-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
+
+							<div class="row">
+								<div class="col-md-6">
+									<orderdetails ng-show="hasOrderConfig" />
+								</div>
+								<div class="col-md-6">
+									<ordershipping />
+									<orderapprovals ng-show="currentOrder.Approvals" />
+									<!-- <orderbilling ng-show="currentOrder.BillingEnabled" /> -->
+								</div>
+							</div>
+
+							<div class="alert-warning alert-order-total">
+								<strong>Order Total: {{currentOrder.Total | culturecurrency}}</strong>
+							</div>
+							
+							<div class="">
+								<div class="view-response-message alert-success text-center" alert-show="actionMessage">
+									<p>{{actionMessage | r | xlat}}</p>
+								</div>
+								<div class="view-response-message alert-danger text-center" alert-show="errorMessage">
+									<p>{{errorMessage | r | xlat}}</p>
+								</div>
+								<div class="view-response-message alert-danger text-center" alert-show="couponError">
+									<p>{{couponError | r | xlat}}</p>
+								</div>
+								<div class="view-error-message" ng-show="(cart_order.$error.required.length + cart_billing.$error.required.length + cart_shipping.$error.required.length + cart_billing.$error.paymentMethod.length) > 0">
+									<ul class="alert-warning">
+										<li class="text-center">
+											<span class="badge">
+												<i class="fa fa-exclamation-circle fa-inverse"></i>
+												{{cart_order.$error.required.length + cart_billing.$error.required.length + cart_shipping.$error.required.length + cart_billing.$error.paymentMethod.length}}
+											</span>
+										</li>
+										<li class="text-center">
+											<ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
+												<li ng-if="cart_order.orderid.$invalid">{{'Enter an ' + ('order' | r) + ' ' + ('ID' | r) | xlat}}</li>
+												<li ng-repeat="field in currentOrder.OrderFields">
+													<span ng-if="field.Required == true && field.Value == '' || field.Required == true && field.Value == null">Please select or enter {{field.Label}}</span>
+												</li>
+												<li ng-if="cart_shipping.shippingAddress.$invalid">{{'Please choose a ' + ('Shipping' | rl) + ' ' + ('Address' | rl) | xlat}}</li>
+												<li ng-if="cart_shipping.shippingAddressLineItem.$invalid">{{'Please choose a ' + ('Shipping' | rl) + ' ' + ('Address' | rl) | xlat}}</li>
+												<li ng-if="cart_shipping.shipMethod.$invalid">{{'Please choose a ' + ('Shipping' | rl) + ' ' + ('Method' | rl) | xlat}}</li>
+												<li ng-if="cart_billing.billingAddress.$invalid">{{'Please choose a ' + ('Billing' | rl) + ' ' + ('Address' | rl) | xlat}}</li>
+												<li ng-if="cart_billing.billingFirstName.$invalid">{{'Please enter a ' + ('Billing' | rl) + ' ' + ('First Name' | rl) | xlat}}</li>
+												<li ng-if="cart_billing.billingLastName.$invalid">{{'Please enter a ' + ('Billing' | rl) + ' ' + ('Last Name' | rl) | xlat}}</li>
+												<li ng-if="cart_billing.$error.paymentMethod">{{'Please choose a valid ' + ('Payment' | rl) + ' ' + ('Method' | rl) | xlat}}</li>
+												<li ng-if="!user.Permissions.contains('CreateBillToAddress') && billaddresses.length == 0">
+													{{'You have not been granted permission to create a ' + ('Billing' | r) + ' ' + ('Address' | r) + ', and no ' + ('Billing' | r) + ' ' + ('Addresses' | r) + ' have been assigned to you. Therefore, you are not allowed to place this ' + ('Order' | r) + ' at this time' | xlat}}
+												</li>
+												<li ng-if="!user.Permissions.contains('CreateShipToAddress') && shipaddresses.length == 0">
+													{{'You have not been granted permission to create a ' + ('Shipping' | r) + ' ' + ('Address' | r) + ', and no ' + ('Shipping' | r) + ' ' + ('Addresses' | r) + ' have been assigned to you. Therefore, you are not allowed to place this ' + ('Order' | r) + ' at this time' | xlat}}
+											</ul>
+										</li>
+										<li class="text-center">
+											<a href ng-show="(cart_order.$error.required.length + cart_billing.$error.required.length + cart_shipping.$error.required.length + cart_billing.$error.paymentMethod.length) > 1">
+												<i class="fa fa-caret-down" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
+												<i class="fa fa-caret-up" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<orderbuttons view="checkout" continue="true"></orderbuttons>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</div>

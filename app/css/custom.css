@@ -1,0 +1,113 @@
+/*
+Static file for Theme changes
+Version: 1.0
+Template: Accent
+*/
+
+
+.product-image-large {
+    border: 1px solid #dddddd;
+}
+
+.product-variants {
+    margin-top: 10px;
+}
+
+.panel-default > .panel-heading {
+    color: #ffffff;
+    background-color: #666699;
+}
+
+#cartDropdownList {
+    max-height: 280px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+p.view-inline-error {
+    color: #c9302c;
+}
+
+
+.background-home-img {
+    background: url("http://www.accent.uk.com/images/assets/background-1.jpg") no-repeat center/100%;
+}
+
+.header-dropdown-buttons .btn-group .dropdown-menu {
+    border: solid 1px #666699;
+    background-color: #666699;
+}
+
+.header-dropdown-buttons .btn-group .dropdown-menu.cart {
+    min-width: 420px;
+}
+
+.table > thead > tr > th {
+    background-color: #666699;
+    color: #ffffff;
+}
+
+.form-control {
+    height: 36px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.label {
+    color: #575a5c;
+    font-size: 13px;
+}
+
+label {
+    color: #777777;
+    font-weight: 400;
+    padding-left: 7px;
+    padding-right: 0px;
+}
+
+.cart-spec-item {
+    padding: 3px 10px;
+    font-size: 13px;
+}
+
+.alert-info {
+    font-size: 13px;
+}
+
+.alert-order-total {
+    font-size: 20px;
+    text-align: center;
+}
+
+.alert-warning {
+    list-style: none;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #aaaaaa;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #aaaaaa;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #aaaaaa;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #aaaaaa;
+}
+:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+  color:    #aaaaaa;
+}
+
+.text-info {
+    color: #333333;
+}
+
+.badge {
+    font-size: 16px;
+}
+}

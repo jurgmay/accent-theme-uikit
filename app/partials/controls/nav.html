@@ -1,0 +1,193 @@
+<section>
+	<!-- header start -->
+	<!-- classes:  -->
+	<!-- "fixed": enables fixed navigation mode (sticky menu) e.g. class="header fixed clearfix" -->
+	<!-- "dark": dark version of header e.g. class="header dark clearfix" -->
+	<!-- "full-width": mandatory class for the full-width menu layout -->
+	<!-- "centered": mandatory class for the centered logo layout -->
+	<!-- ================ -->
+	<header class="header fixed clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<!-- header-left start -->
+					<!-- ================ -->
+					<div class="header-left clearfix">
+						<!-- logo -->
+						<div class="logo" id="logo">
+						  <a href="index.html"><img alt="Accent logo" id="logo_img" src="https://www.four51.com/Themes/Custom/9837598c-9484-4abd-96bb-67077caec569/accent/images/accent_logo.png"></a>
+						</div>
+					</div><!-- header-left end -->
+				</div>
+				<div class="col-md-8">
+					<!-- header-right start -->
+					<!-- ================ -->
+					<div class="header-right clearfix">
+						<!-- main-navigation start -->
+						<!-- classes: -->
+						<!-- "onclick": Makes the dropdowns open on click, this the default bootstrap behavior e.g. class="main-navigation onclick" -->
+						<!-- "animated": Enables animations on dropdowns opening e.g. class="main-navigation animated" -->
+						<!-- "with-dropdown-buttons": Mandatory class that adds extra space, to the main navigation, for the search and cart dropdowns -->
+						<!-- ================ -->
+						<div class="main-navigation animated with-dropdown-buttons">
+							<!-- navbar start -->
+							<!-- ================ -->
+							<nav class="navbar navbar-default" role="navigation">
+								<div class="container-fluid">
+									<!-- Toggle get grouped for better mobile display -->
+									<div class="navbar-header">
+										<button class="navbar-toggle" data-target="#navbar-collapse-1" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+									</div><!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse pull-right" id="navbar-collapse-1">
+										<!-- main-menu -->
+										<ul class="nav navbar-nav pull-left">
+											<li class="back animated fadeInLeft" ng-class="{'ng-hide': isActive('catalog')}">
+												<a href back-step class="back">
+													<i class="fa fa-arrow-left"></i>
+												</a>
+											</li>
+											<li class="products" ng-class="{'active': isInPath('catalog') || isInPath('product') || isInPath('cart/default') || isInPath('search')}">
+												<a id="451qa_home_link" ng-show="Four51User.isAuthenticated()" href="catalog">
+													<i class="fa fa-home"></i>
+													<span class="hidden-xs">{{'Products' | rc | xlat}}</span>
+												</a>
+											</li>
+											<li class="order" ng-if="user.Type == 'Customer'" ng-class="{'active': isActive('order'), 'active-xs': isActive('favoriteorders')}">
+												<a id="451qa_order_link" href="order">
+													<i class="fa fa-clipboard"></i>
+													<span class="hidden-xs">{{'Orders' | r | xlat}}</span>
+												</a>
+											</li>
+											<li class="report" ng-if="user.Type == 'Customer' && user.Permissions.contains('AdvancedReporting')" ng-class="{'active': isActive('reports')}">
+												<a id="451qa_order_link" href="reports">
+													<i class="fa fa-bar-chart-o"></i>
+													<span class="hidden-xs">{{'Reports' | r | xlat}}</span>
+												</a>
+											</li>
+											<li id="451qa_mesg_link" class="contactus" ng-show="user.Permissions.contains('ViewContactUs')">
+												<a id="451qa_order_link" href="contactus">
+													<i class="fa fa-comments"></i>
+													<span class="hidden-xs">{{'Contact Us' | r | xlat}}</span>
+												</a>
+											</li>
+											<li ng-class="{'active': isActive(['admin', 'addresses', 'address', 'messages', 'message', 'favoriteorders'])}">
+												<a id="451qa_acct_link" href="admin" class="hidden-md hidden-lg">
+													<i class="fa fa-cog"></i>
+													<span class="hidden-xs">{{'Account' | r | xlat}}</span>
+												</a>
+											</li>
+											<li class="dropdown admin-user visible-md visible-lg" ng-class="{'active': isActive(['admin', 'addresses', 'address', 'messages', 'message', 'favoriteorders'])}">
+												<a id="451qa_acct_link2" class="dropdown-toggle" data-toggle="dropdown">
+													<i class="fa fa-cog"></i>
+													<span class="hidden-xs">{{'Account' | r | xlat}}</span>
+												</a>
+												<ul class="dropdown-menu">
+													<li id="451qa_user_link" ng-show="user.Permissions.contains('ViewSelfAdmin')" class="admin">
+														<a href="admin">
+															{{'User Information' | r | xlat}}
+														</a>
+													</li>
+													<li id="451qa_addy_link" ng-show="user.Type == 'Customer' && (user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress'))" class="addresses">
+														<a href="addresses">
+															{{'My ' + 'Addresses' | r | xlat}}
+														</a>
+													</li>
+													<li id="451qa_mesg_link" ng-show="user.Type == 'Customer' && user.Permissions.contains('ViewMessaging')" class="messages">
+														<a href="message">
+															{{'My ' + 'Messages' | r | xlat}}
+														</a>
+													</li>
+													<li class="favorites" ng-show="user.Type == 'Customer'">
+														<a id="451qa_fave_link" href="favoriteorders">
+															{{'Favorites' | r | xlat}}
+														</a>
+													</li>
+													<li class="divider" ng-if="user.Permissions.contains('MultipleShoppingCart') && currentOrder"></li>
+													<li>
+														<a href="#" neworder ng-if="user.Permissions.contains('MultipleShoppingCart') && currentOrder" class="neworder" ng-click="newOrderLoadingIndicator = true;startNewOrder()">
+															{{"Start" | r | xlat}} {{"New" | r | xlat}} {{"Order" | r | xlat}}
+														</a>
+													</li>
+													<li class="divider" ng-show="user.Type!='TempCustomer' || AppConst.debug"></li>
+													<li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
+														<a href="contactus">
+															{{'Contact Us' | r | xlat}}
+														</a>
+													</li>
+													<li class="divider" ng-show="user.Type!='TempCustomer' || AppConst.debug"></li>
+													<li ng-show="user.Type!='TempCustomer'" class="logout">
+														<a href="#"  class="451_btn_logout" ng-click="Logout()">
+															<i class="fa fa-power-off text-danger"></i>
+															<span>{{'Log Out' | r | xlat}}</span>
+														</a>
+													</li>
+													<li ng-if="AppConst.debug">
+														<a href="#" ng-click="Clear()">
+															<i class="fa fa-archive"></i>
+															<span class="text-nav">Clear Cache</span>
+														</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<!-- main-menu end -->
+										
+										<!-- header dropdown buttons -->
+										<div class="header-dropdown-buttons hidden-xs">
+											<div class="btn-group dropdown">
+												<button aria-expanded="false" class="btn dropdown-toggle" ng-class="{'active': isActive(['cart', 'checkout'])}" data-toggle="dropdown" type="button">
+													<i class="fa fa-shopping-basket"></i>
+													<span class="cart-count default-bg" ng-bind="cartCount" ng-show="cartCount > 0"></span>
+												</button>
+												<ul ng-click="$event.stopPropagation();" class="dropdown-menu dropdown-menu-right dropdown-animation p-5" style="min-width: 550px; max-width: 650px;">
+                                                    <li>
+											        	<div style="background-color: #ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.7);">
+                                                            <div id="cartDropdownList" class="mCustomScrollbar">
+                                                            	<div class="pt-10">
+                                                                   	<div class="row ph-10 mb-10" ng-repeat="item in currentOrder.LineItems">
+                                                                		<div class="col-md-3">
+																			<a class="line-item-link" ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
+																				<img style="max-height: 70px;" ng-src="{{item.Variant.PreviewUrl || item.Variant.SmallImageUrl || item.Product.SmallImageUrl}}" />
+																			</a>
+                                                                		</div>
+                                                                		<div class="col-md-5 text-left">
+                                                                			<a ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">{{item.Product.Name}}</a>
+                                                                		</div>
+                                                                		<div class="col-md-2 text-center" ng-show="item.Quantity * item.Product.QuantityMultiplier">
+                                                                			<span>x{{item.Quantity * item.Product.QuantityMultiplier}}</span>
+                                                                		</div>
+                                                                		<div class="col-md-2 text-right">
+                                                                			{{item.LineTotal | culturecurrency}}
+                                                                		</div>
+                                                                	</div> <!-- ROW END -->
+                                                               	</div>
+    														</div> <!-- cartDropdownList END -->
+
+															<div class="row mh-clear ph-0 pv-5" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;">
+																<div class="col-md-6 padding-clear text-left">
+																	Total Line Items: <span>{{currentOrder.LineItems.length}}</span>
+																</div>
+																<div class="col-md-6 padding-clear text-right">
+																	{{currentOrder.Subtotal | culturecurrency}}
+																</div>
+															</div> <!-- ROW END -->
+
+													        <div class="text-right p-10">
+    															<a class="btn btn-group btn-default btn-sm margin-clear" href="cart">View {{'Cart' | r | xlat}}</a>
+	        													<a class="btn btn-group btn-success btn-sm margin-clear " href="checkout">{{'Checkout' | r | xlat}}</a>
+			        										</div>
+					        							</div>
+													</li>
+												</ul>	
+					        				</div>
+							        	</div><!-- header dropdown buttons end-->
+   									</div>
+    							</div>
+	        				</nav><!-- navbar end -->
+			        	</div><!-- main-navigation end -->
+					</div><!-- header-right end -->
+				</div>
+			</div>
+		</div>
+	</header>
+</section>
