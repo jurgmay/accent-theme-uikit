@@ -1,5 +1,6 @@
-<div class="451qa_prod_item row">
-    <div class="col-xs-12 text-center">
+
+<div class="uk-container">
+    <div class="uk-text-center">
         <a class="thumbnail" href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">
             <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >
                 <img ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>
@@ -11,7 +12,7 @@
     </div>
     <div class="col-xs-12 text-left">
         <div class="panel-body">
-            <h3 class="text-center">{{LineItem.Product.Name}}</h3>
+            <h3 class="uk-text-center">{{LineItem.Product.Name}}</h3>
             <div class="panel-footer">
                 <div>
                     <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
@@ -33,3 +34,16 @@
         </div>
     </div>
 </div>
+
+<!-- .subfooter start -->
+<!-- ================ -->
+<div class="uk-container uk-margin-bottom uk-text-center" ng-show="isActive('catalog')">
+    <p class="uk-text-small">Powered by</p>
+    <p>
+        <img alt="Accent logo" src="https://www.four51.com/Themes/Custom/9837598c-9484-4abd-96bb-67077caec569/assets/sbc/accent-logo.png" style="display: inline-block; "/>
+    </p>
+    <p class="uk-text-small">
+        {{'Copyright' | xlat}} © {{year}} Accent. {{'All Rights Reserved' | xlat}}.
+    </p>
+</div>
+<!-- subfooter end -->
