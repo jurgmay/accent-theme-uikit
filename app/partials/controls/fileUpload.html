@@ -2,11 +2,12 @@
 
 <div>
     <img class="fileInput">
-    <loadingindicator ng-show="uploadFileIndicator" title="{{'Uploading' | r | xlat}}"/>
 
 	<div>
 		<label>{{customfield.Label | r}}</label>
 	</div>
+
+    <loadingindicator ng-show="uploadFileIndicator" title="{{'Uploading' | r | xlat}}"/>
 
     <img ng-show="customfield.File.IsImage && customfield.FileType == 'Image'" ng-src="{{customfield.File.Url}}"></img>
     <a ng-href="{{customfield.File.Url}}">{{customfield.File.OriginalName}}</a>
@@ -14,15 +15,13 @@
         <input name="replace" class="replace" type="checkbox" ng-model="replace"></input> {{'Replace' | r | xlat}}
         <input name="delete" class="delete" type="checkbox"></input> {{'Delete' | r | xlat}}
     </div>
-    <div ng-show="replace || !customfield.File" ng-class="{'file-upload-required text-danger': customfield.Required }" class="btn btn-primary mt-0 mb-10" style="width: 100%">
-        <input name="upload" class="upload" type="file" style="width: 100%"></input>
+    <div ng-show="replace || !customfield.File" ng-class="{'file-upload-required text-danger': customfield.Required }">
+        <input name="upload" class="upload uk-button uk-button-default" type="file"></input>
     </div>
     <input type="hidden" ng-required="customfield.Required" ng-model="customfield.File.ID"></input>
-    <div class="error ui-state-error-text text-danger"></div>
-    <div class="alert alert-info mt-0 mb-10 p-10" ng-show="replace || !customfield.File">
-        {{customfield.UploadInstructions}}
+    <div class="error ui-state-error-text"></div>
+    <div class="uk-text-danger" ng-show="replace || !customfield.File">
         <ul ng-show="replace || !customfield.File">
-            <li>{{'Allowed File Types' | r | xlat}}: {{customfield.AllowedExt | r}}</li>
             <li ng-if="customfield.MinSize > 0">{{'Minimum File Size' | r | xlat}}: {{(customfield.MinSize | kb) + ' kb'}}</li>
             <li ng-if="customfield.MaxSize > 0">{{'Maximum File Size' | r | xlat}}: {{(customfield.MaxSize | kb) + ' kb'}}</li>
             <li ng-if="customfield.MinHeight > 0 && (customfield.File.IsImage || customfield.FileType == 'Image')">{{'Minimum Height' | xlat}}: {{customfield.MinHeight + ' px'}}</li>

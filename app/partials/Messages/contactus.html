@@ -1,51 +1,22 @@
-<!-- *** contactUs *** -->
+<!-- *** contactus *** -->
 
-<section>
-    <!-- breadcrumb start -->
-    <!-- ================ -->
-    <div class="breadcrumb-container">
-		<div class="container">
-			<ol class="breadcrumb">
-				<li><i class="fa fa-home pr-10"></i><a href="index.html">Home</a></li>
-				<li class="active">{{('Contact' | r) + ' ' + ('Us' | r) | xlat }}</li>
-			</ol>
-		</div>
-	</div>
-    <!-- breadcrumb end -->
-    
-	<accountnavigation ng-show="user.Permissions.contains('ViewSelfAdmin') || user.Type == 'Customer'" />
+<div id="page-start"></div>	
 
-	<!-- main-container start -->
-	<!-- ==================== -->
-	<div class="main-container"> <!-- main container start -->
-		<div class="container"> <!-- container start -->
-			<div class="row"> <!-- row start -->
-				<div class="main col-md-12">
+<section class="uk-section uk-padding-remove uk-margin-large">
+	<div class="uk-container uk-text-center">   
+		<!-- page-title start -->
+		<!-- ================ -->
+		<div class="uk-text-center">
+			<h1 class="uk-heading uk-text-uppercase">{{('Contact' | r) + ' ' + ('Us' | r) | xlat }}</h1>
+			<div class="uk-divider-small"></div>
+		</div>	
+		<!-- page-title end -->
 
-					<!-- page-title start -->
-					<!-- ================ -->
-					<h1 class="page-title">{{('Contact' | r) + ' ' + ('Us' | r) | xlat }}</h1>
-					<div class="separator-2"></div>
-					<!-- page-title end -->
-
-					<div class="row">
-                        <div class="col-md-12">
-                            <div class="alert alert-icon alert-info" role="alert">
-                                <i class="fa fa-info-circle"></i>
-        						<h4>If you have any queries regarding external print or the use of this portal please contact the support team at Accent.</h4>
-        						<h4><strong>Telephone: 0117 941 8000</strong></h4>
-        						<h4><strong>Email: info@accent.uk.com</strong></h4>
-        						<h4>Accent</h4>
-        						<h4>Latcham Complex</h4>
-								<h4>1 Western Drive</h4>
-        						<h4>Hengrove</h4>
-        						<h4>Bristol</h4>
-        						<h4>BS14 0AF</h4>
-        					</div>
-    					</div>
-					</div>
-				</div> <!-- col -->
-			</div> <!-- row -->
-		</div> <!-- container -->
+		<h4 class="uk-margin-medium-bottom">If you have any queries regarding the use of this portal please contact the support team at Accent.</h4>
+		<span uk-icon="icon: receiver; ratio: 2"></span>
+		<h4 class="uk-margin-small-top uk-margin-medium-bottom"><strong>0117 941 8000</strong></h4>
+		<span uk-icon="icon: mail; ratio: 2"></span>
+		<h4 class="uk-margin-small-top uk-margin-medium-bottom"><strong>info@accent.uk.com</strong></h4>
+		<h5>Accent, Latcham Complex, 1 Western Drive, Hengrove, Bristol BS14 0AF</h5>
 	</div> <!-- main containers -->
-</div> <!-- section -->
+</section> <!-- section -->
