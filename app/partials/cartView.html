@@ -27,59 +27,50 @@
 						<div class="uk-divider"></div>
 						<!-- page-title end -->
 
-						<div class="uk-float-right" ng-click="onPrint()">
-							<span>
-								<a><i class="fa fa-print text-primary"" ></i><span> {{'Print' | r | xlat}}</span></a>
-							</span>
-						</div>
-
 						<!-- header start -->
 						<!-- ============ -->
 						<div class=""> <!-- row -->
 							<div class="">
 								<div uk-grid>
-									<div class="col-xs-6">
-										<div class="uk-width-auto@m">
-											Product
-										</div>
+									<div class="uk-width-1-2">
+										Product
 									</div>
 
-									<div class="col-sm-2" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
-										<div class="uk-width-auto@m">
-											Date Needed
+									<div class="uk-width-1-2">
+										<div class="uk-width-1-6" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
+											<div class="uk-width-auto@m">
+												Date Needed
+											</div>
 										</div>
-									</div>
 
-									<div class="col-sm-1" ng-if="(user.Permissions.contains('HidePricing'))">
-										<div class="uk-width-auto@m" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
-											<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
-												<div class="row view-form-icon">
-													<div class="">
-														{{'Cost Center' | r | xlat}}
+										<div class="uk-width-1-6" ng-if="(user.Permissions.contains('HidePricing'))">
+											<div class="uk-width-auto@m" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
+												<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
+													<div class="row view-form-icon">
+														<div class="">
+															{{'Cost Center' | r | xlat}}
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
 
-									<div class="uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
-										Unit Price
-									</div>
+										<div class="uk-width-1-6 uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
+											Unit Price
+										</div>
 
-									<div class="">
-										Quantity
-									</div>
+										<div class="uk-width-1-6">
+											Quantity
+										</div>
 
-									<div class="">
-										<div class="uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
+										<div class="uk-width-1-6 uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
 											Total	
 										</div>
+										
+										<div class="">
+											&nbsp;
+										</div>
 									</div>
-									
-									<div class="">
-										&nbsp;
-									</div>
-
 								</div> <!-- row end -->
 							</div>
 						</div> <!-- row end -->
@@ -301,10 +292,7 @@
 								<p>
 									<strong>{{currentOrder.Subtotal | culturecurrency}}</strong>
 								</p>
-								<p ng-show="TaxMethod" ng-if="user.Company.TaxMethod != 'NoTax'">
-									<span class="text-info">{{'Shipping, handling and tax may be added to this subtotal.' | r | xlat}}</span>
-								</p>
-								<button type="button" neworder ng-if="user.Permissions.contains('MultipleShoppingCart') && currentOrder" class="btn btn-default" ng-click="newOrderLoadingIndicator = true;startNewOrder()">
+								<button type="button" neworder ng-if="user.Permissions.contains('MultipleShoppingCart') && currentOrder" class="uk-button uk-button-default" ng-click="newOrderLoadingIndicator = true;startNewOrder()">
 									<loadingindicator  ng-show="newOrderLoadingIndicator" />
 									<small>{{"Start" | r | xlat}} {{"New" | r | xlat}} {{"Order" | r | xlat}}</small>
 								</button>
@@ -313,7 +301,7 @@
 
 						<!-- end of line items -->
 						<!-- ================= -->
-						<hr class="uk-divider uk-margin-small">
+						<div class="uk-divider uk-margin-small"></div>
 
 						<!-- cancel button -->
 						<!-- ================ -->
@@ -394,5 +382,4 @@
             </div>
         </form>
     </div>
-    <cartprint class="visible-print" />
 </section>
