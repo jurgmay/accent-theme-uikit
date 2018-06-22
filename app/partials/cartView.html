@@ -92,96 +92,94 @@
 
 						<!-- line items -->
 						<!-- ========== -->
-						<div class="row" ng-repeat="item in currentOrder.LineItems">
-							<div class="col-md-12">
-								<div class="row">
-									<div class="col-xs-6 pr-0">
-										<div class="row">
-											
-											<!-- thumbnail -->
-											<!-- ========= -->
-											<div class="uk-width-auto@m">
-												<figure>
-													<a class="line-item-link" ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
-														<img ng-src="{{item.Variant.PreviewUrl || item.Variant.SmallImageUrl || item.Product.SmallImageUrl}}" />
-													</a>
-												</figure>
+						<div class="uk-grid">
+							<div class="" ng-repeat="item in currentOrder.LineItems">
+								<div class="">
+									<div class="uk-width-1-2">
+										<!-- thumbnail -->
+										<!-- ========= -->
+										<div class="uk-width-1-6">
+											<figure>
+												<a class="line-item-link" ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
+													<img ng-src="{{item.Variant.PreviewUrl || item.Variant.SmallImageUrl || item.Product.SmallImageUrl}}" />
+												</a>
+											</figure>
+										</div>
+										
+										<!-- product description -->
+										<!-- =================== -->
+										<div class="uk-width-5-6">
+											<div ng-if="currentOrder.Status != 'AwaitingApproval' || isEditforApproval">
+												<a class="line-item-link" ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
+													<p class="mb-0 mt-5">
+														 <i ng-show="item.KitIsInvalid" class="fa fa-exclamation-triangle"></i>
+														 {{item.Product.Name}}<span ng-if="item.Variant.ExternalID"> - {{item.Variant.ExternalID}}</span>
+													</p>
+												</a>
+												<p class="mb-0 mt-5">
+													<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
+												</p>
 											</div>
-											
-											<!-- product description -->
-											<!-- =================== -->
-											<div class="uk-width-auto@m">
-												<div ng-if="currentOrder.Status != 'AwaitingApproval' || isEditforApproval">
-													<a class="line-item-link" ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
-														<p class="mb-0 mt-5">
-															 <i ng-show="item.KitIsInvalid" class="fa fa-exclamation-triangle"></i>
-															 {{item.Product.Name}}<span ng-if="item.Variant.ExternalID"> - {{item.Variant.ExternalID}}</span>
-														</p>
-													</a>
-													<p class="mb-0 mt-5">
-														<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
-													</p>
-												</div>
-												<div ng-if="currentOrder.Status == 'AwaitingApproval' && !isEditforApproval">
-													<p class="mb-0 mt-5">
-														{{item.Product.Name}}
-													</p><br />
-													<p class="mb-0 mt-5">
-														<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
-													</p>
-												</div>
+											<div ng-if="currentOrder.Status == 'AwaitingApproval' && !isEditforApproval">
+												<p class="mb-0 mt-5">
+													{{item.Product.Name}}
+												</p><br />
+												<p class="mb-0 mt-5">
+													<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
+												</p>
+											</div>
 
-												<!-- show/hide specifications -->
+											<!-- show/hide specifications -->
+											<!-- ======================== -->
+											<div>
+												<!-- is variable spec product -->
 												<!-- ======================== -->
-												<div>
-													<!-- is variable spec product -->
-													<!-- ======================== -->
-													<span ng-if="item.Variant.IsMpowerVariant">
+												<span ng-if="item.Variant.IsMpowerVariant">
 
-														<button type="button" class="btn btn-default btn-xs" ng-if="item.Product.SpecCount > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
-															<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> {{('Show' | r) + ' ' + ('Specification' | r) + 's' | xlat}}</span>
-															<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> {{('Hide' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
-														</button>
-														
-														<button type="button" title="{{'Download' | r | xlat}}" class="btn btn-default btn-xs" ng-click="downloadProof(item)">
-															<span><i class="fa fa-download"></i> {{'Download Proof' | r | xlat}}</span>
-														</button>
-														
-														<!-- specs -->
-														<!-- =========================== -->
-														<ul ng-show="item.toggleSpecs == true" class="list-group">
-															<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified) || spec.Value == ''" ng-repeat="spec in item.Variant.Specs | orderBy : 'ListOrder' | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
-																<span class="text-info">{{spec.Label || spec.Name}}: </span>
-																<span ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span></span>
-																<span ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
-															</li>
-														</ul>
-													</span>
-
-													<!-- not a variable spec product -->
+													<button type="button" class="btn btn-default btn-xs" ng-if="item.Product.SpecCount > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
+														<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> {{('Show' | r) + ' ' + ('Specification' | r) + 's' | xlat}}</span>
+														<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> {{('Hide' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
+													</button>
+													
+													<button type="button" title="{{'Download' | r | xlat}}" class="btn btn-default btn-xs" ng-click="downloadProof(item)">
+														<span><i class="fa fa-download"></i> {{'Download Proof' | r | xlat}}</span>
+													</button>
+													
+													<!-- specs -->
 													<!-- =========================== -->
-													<span ng-if="!item.Variant.IsMpowerVariant">
+													<ul ng-show="item.toggleSpecs == true" class="list-group">
+														<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified) || spec.Value == ''" ng-repeat="spec in item.Variant.Specs | orderBy : 'ListOrder' | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
+															<span class="text-info">{{spec.Label || spec.Name}}: </span>
+															<span ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span></span>
+															<span ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
+														</li>
+													</ul>
+												</span>
 
-														<button type="button" class="btn btn-default btn-xs" ng-show="item.SpecsLength > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
-															<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> {{('Show' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
-															<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> {{('Hide' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
-														</button>
+												<!-- not a variable spec product -->
+												<!-- =========================== -->
+												<span ng-if="!item.Variant.IsMpowerVariant">
 
-														<!-- spec grid -->
-														<!-- =========================== -->
-														<ul ng-show="item.toggleSpecs == true" class="list-group">
-															<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified)' || spec.Value == ''" ng-repeat="spec in item.Specs | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
-																<span class="text-info">{{spec.Label || spec.Name}}: </span>
-																<span ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span></span>
-																<span ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
-															</li>
-														</ul>
-													</span>
-												</div>
+													<button type="button" class="btn btn-default btn-xs" ng-show="item.SpecsLength > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
+														<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> {{('Show' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
+														<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> {{('Hide' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
+													</button>
+
+													<!-- spec grid -->
+													<!-- =========================== -->
+													<ul ng-show="item.toggleSpecs == true" class="list-group">
+														<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified)' || spec.Value == ''" ng-repeat="spec in item.Specs | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
+															<span class="text-info">{{spec.Label || spec.Name}}: </span>
+															<span ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span></span>
+															<span ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
+														</li>
+													</ul>
+												</span>
 											</div>
 										</div>
 									</div>
 
+								<div class="uk-width-1-2">
 									<!-- date needed -->
 									<!-- =========== -->
 									<div class="uk-width-auto@m" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
@@ -277,6 +275,7 @@
 									</div>
 
 
+								</div> <!-- row end -->
 								</div> <!-- row end -->
 
 								<!-- line item separator -->
