@@ -92,7 +92,7 @@
 
 						<!-- line items -->
 						<!-- ========== -->
-								<div uk-grid ng-repeat="item in currentOrder.LineItems">
+								<div uk-grid ng-repeat="item in currentOrder.LineItems" class="uk-margin-small">
 									<div class="uk-width-1-2">
 										<div uk-grid>
 											<!-- thumbnail -->
@@ -109,21 +109,21 @@
 											<!-- =================== -->
 											<div class="uk-width-2-3">
 												<div ng-if="currentOrder.Status != 'AwaitingApproval' || isEditforApproval">
-													<a class="line-item-link" ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
-														<p class="mb-0 mt-5">
+													<a ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
+														<p>
 															 <i ng-show="item.KitIsInvalid" class="fa fa-exclamation-triangle"></i>
 															 {{item.Product.Name}}<span ng-if="item.Variant.ExternalID"> - {{item.Variant.ExternalID}}</span>
 														</p>
 													</a>
-													<p class="mb-0 mt-5">
+													<p>
 														<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
 													</p>
 												</div>
 												<div ng-if="currentOrder.Status == 'AwaitingApproval' && !isEditforApproval">
-													<p class="mb-0 mt-5">
+													<p>
 														{{item.Product.Name}}
 													</p><br />
-													<p class="mb-0 mt-5">
+													<p>
 														<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
 													</p>
 												</div>
@@ -135,7 +135,7 @@
 													<!-- ======================== -->
 													<span ng-if="item.Variant.IsMpowerVariant">
 
-														<button type="button" class="uk-button uk-button-small uk-button-defaultuk-button-default" ng-if="item.Product.SpecCount > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
+														<button type="button" class="uk-button uk-button-small uk-button-default" ng-if="item.Product.SpecCount > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
 															<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> Show Specs</span>
 															<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> Hide Specs</span>
 														</button>
@@ -148,9 +148,9 @@
 														<!-- =========================== -->
 														<ul ng-show="item.toggleSpecs == true" class="list-group">
 															<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified) || spec.Value == ''" ng-repeat="spec in item.Variant.Specs | orderBy : 'ListOrder' | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
-																<span class="text-info">{{spec.Label || spec.Name}}: </span>
-																<span ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span></span>
-																<span ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
+																<span class="uk-text-small uk-text-muted">{{spec.Label || spec.Name}}: </span>
+																<span class="uk-text-small" ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span></span>
+																<span class="uk-text-small" ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
 															</li>
 														</ul>
 													</span>
