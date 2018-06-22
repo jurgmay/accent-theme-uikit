@@ -146,7 +146,7 @@
 														
 														<!-- specs -->
 														<!-- =========================== -->
-														<ul ng-show="item.toggleSpecs == true" class="list-group">
+														<ul ng-show="item.toggleSpecs == true" class="uk-list uk-list-divider">
 															<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified) || spec.Value == ''" ng-repeat="spec in item.Variant.Specs | orderBy : 'ListOrder' | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
 																<span class="uk-text-small uk-text-muted">{{spec.Label || spec.Name}}: </span>
 																<span class="uk-text-small" ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span></span>
@@ -242,14 +242,14 @@
 											<!-- unit price -->
 											<!-- ========== -->
 											<div class="uk-width-auto@m" ng-if="!(user.Permissions.contains('HidePricing'))">
-												<p class="text-right">
+												<p class="uk-text-right">
 													{{item.UnitPrice | culturecurrency}}
 												</p>
 											</div>
 
 											<!-- quantity -->
 											<!-- ======== -->
-											<div class="col-sm-1" style="margin-top: -3px;">
+											<div class="" style="margin-top: -3px;">
 												<p>
 													<quantityfield required="true" lineitem="item" class="quantity"/>
 												</p>
@@ -259,7 +259,7 @@
 											<!-- line total -->
 											<!-- ========== -->
 											<div class="uk-width-auto@m">
-												<div class="pr-10 mt-5" ng-if="!(user.Permissions.contains('HidePricing'))">
+												<div class="" ng-if="!(user.Permissions.contains('HidePricing'))">
 													<p class="text-right">
 														{{item.LineTotal | culturecurrency}}
 													</p>
@@ -271,7 +271,7 @@
 											<!-- ====== -->
 											<div class="uk-width-auto@m">
 												<button type="button" title="Remove Item" class="uk-button uk-button-small uk-button-danger" ng-click="removeItem(item)">
-													<span class="fa fa-minus-circle fa-inverse mr-5"></span> Remove
+													<span class="fa fa-minus-circle fa-inverse"></span> Remove
 												</button>
 											</div>
 
@@ -282,7 +282,7 @@
 
 								<!-- line item separator -->
 								<!-- =================== -->
-								<div class="row">
+								<div class="">
 									<div class="uk-width-1-1">
 										<div class="uk-divider"></div>
 									</div>
@@ -313,9 +313,7 @@
 
 						<!-- end of line items -->
 						<!-- ================= -->
-						<div class="row">
-							<div class="col-md-12" style="border-bottom: solid 2px #09afdf;"></div>
-						</div>
+						<hr class="uk-divider uk-margin-small">
 
 						<!-- cancel button -->
 						<!-- ================ -->
