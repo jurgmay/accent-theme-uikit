@@ -135,12 +135,12 @@
 													<!-- ======================== -->
 													<span ng-if="item.Variant.IsMpowerVariant">
 
-														<button type="button" class="uk-button uk-button-small uk-button-primary" ng-if="item.Product.SpecCount > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
-															<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> {{('Show' | r) + ' ' + ('Specification' | r) + 's' | xlat}}</span>
-															<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> {{('Hide' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
+														<button type="button" class="uk-button uk-button-small uk-button-defaultuk-button-default" ng-if="item.Product.SpecCount > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
+															<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> Show Specs</span>
+															<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> Hide Specs</span>
 														</button>
 														
-														<button type="button" title="{{'Download' | r | xlat}}" class="uk-button uk-button-small uk-button-primary" ng-click="downloadProof(item)">
+														<button type="button" title="{{'Download' | r | xlat}}" class="uk-button uk-button-small uk-button-default" ng-click="downloadProof(item)">
 															<span><i class="fa fa-download"></i> {{'Download Proof' | r | xlat}}</span>
 														</button>
 														
@@ -159,7 +159,7 @@
 													<!-- =========================== -->
 													<span ng-if="!item.Variant.IsMpowerVariant">
 
-														<button type="button" class="uk-button uk-button-small uk-button-primary" ng-show="item.SpecsLength > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
+														<button type="button" class="uk-button uk-button-small uk-button-default" ng-show="item.SpecsLength > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
 															<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> {{('Show' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
 															<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> {{('Hide' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
 														</button>
@@ -203,7 +203,7 @@
 												</div>
 												<div class="row pull-left">
 													<div class="col-xs-9">
-														<button type="button" title="{{'copy to all' | r | xlat}}" class="uk-button uk-button-small uk-button-primary uk-float-left" value="{{'copy to all' | r | xlat}}" ng-click="copyAddressToAll()" ng-show="item.DateNeeded" ng-if="$index == 0 && currentOrder.LineItems.length > 1 && user.CostCenters.length != 1" >
+														<button type="button" title="{{'copy to all' | r | xlat}}" class="uk-button uk-button-small uk-button-default uk-float-left" value="{{'copy to all' | r | xlat}}" ng-click="copyAddressToAll()" ng-show="item.DateNeeded" ng-if="$index == 0 && currentOrder.LineItems.length > 1 && user.CostCenters.length != 1" >
 															Copy date to all items
 														</button>
 													</div>
@@ -271,7 +271,7 @@
 											<!-- ====== -->
 											<div class="uk-width-auto@m">
 												<button type="button" title="Remove Item" class="uk-button uk-button-small uk-button-danger" ng-click="removeItem(item)">
-													<span class="fa fa-minus-circle fa-inverse mr-5"></span>Remove
+													<span class="fa fa-minus-circle fa-inverse mr-5"></span> Remove
 												</button>
 											</div>
 
@@ -321,7 +321,7 @@
 						<!-- ================ -->
 						<div class="row pull-left"> <!-- row start -->
 							<div class="col-md-12">
-								<button type="button" class="btn btn-danger" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
+								<button type="button" class="uk-button uk-button-small uk-button-danger" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
 									<span ng-if="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</span>
 									<span ng-if="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</span>
 								</button>
@@ -332,18 +332,18 @@
 						<!-- ================================================= -->
 						<div class="row pull-right"> <!-- row start -->
 							<div class="col-md-12">
-								<button type="button" class="btn btn-info" redirect="catalog">
+								<button type="button" class="uk-button uk-button-small uk-button-default" redirect="catalog">
 									<span class="hidden-xs">{{'Continue Shopping' | r | xlat}}</span>
 									<span class="visible-xs">{{'Shop' | r | xlat}}</span>
 								</button>
 
-								<button type="submit" class="btn btn-primary" ng-click="saveChanges()">
+								<button type="submit" class="uk-button uk-button-small uk-button-default" ng-click="saveChanges()">
 									<span class="fa fa-spinner fa-spin" ng-show="displayLoadingIndicator"></span>
 									<span ng-show="displayLoadingIndicator"> Saving...</span>
 									<span ng-hide="displayLoadingIndicator">{{('Save' | r) + ' ' + ('Order' | r) | xlat}}</span>
 								</button>
 
-								<button type="button" class="btn" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid || kitValidation">
+								<button type="button" class="uk-button uk-button-small uk-button-primary" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid || kitValidation">
 									<i ng-show="cart.$invalid || kitValidation" class="fa fa-warning"></i>
 									<span>{{'Check Out' | r | xlat}} {{window.outerWidth}}</span>
 								</button>
