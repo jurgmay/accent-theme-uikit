@@ -1,5 +1,3 @@
-<!-- *** cartView *** -->
-
 <section>
     <div ng-show="currentOrder" class="hidden-print">
         <!-- breadcrumb start -->
@@ -16,20 +14,20 @@
         
 		<!-- main-container start -->
 		<!-- ==================== -->
-		<section class="main-container">
-			<div class="container">
-				<div class="row">
+		<section>
+			<div class="uk-container">
+				<div class=""> <!-- row -->
 
 					<!-- main start -->
 					<!-- ========== -->
-					<div class="main col-md-12">
+					<div class="">
 						<!-- page-title start -->
 						<!-- ================ -->
-						<h1 class="page-title">Your {{'Cart' | r | xlat}}</h1>
-						<div class="separator-2"></div>
+						<h1 class="">Your {{'Cart' | r | xlat}}</h1>
+						<div class="uk-divider"></div>
 						<!-- page-title end -->
 
-						<div class="pull-right pr-10 mb-5" ng-click="onPrint()">
+						<div class="uk-float-right" ng-click="onPrint()">
 							<span>
 								<a><i class="fa fa-print text-primary"" ></i><span> {{'Print' | r | xlat}}</span></a>
 							</span>
@@ -37,56 +35,48 @@
 
 						<!-- header start -->
 						<!-- ============ -->
-						<div class="row">
-							<div class="col-md-12 mb-10" style="font-size: 16px; color: #ffffff; padding-top: 8px; padding-bottom: 8px; background-color: #09afdf;">
-								<div class="row">
+						<div class=""> <!-- row -->
+							<div class="">
+								<div uk-grid>
 									<div class="col-xs-6">
-										<div class="row">
-											<div class="col-sm-9 col-sm-offset-3">
-												Product
-											</div>
+										<div class="uk-width-auto@m">
+											Product
 										</div>
 									</div>
 
 									<div class="col-sm-2" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
-										<div class="row pull-left">
-											<div class="col-xs-12"">
-												Date Needed
-											</div>
+										<div class="uk-width-auto@m">
+											Date Needed
 										</div>
 									</div>
 
 									<div class="col-sm-1" ng-if="(user.Permissions.contains('HidePricing'))">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="row" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
-													<div class="col-xs-12 col-sm-6" ng-if="user.Permissions.contains('CostCenterPerLine')">
-														<div class="row view-form-icon">
-															<div class="col-xs-9">
-																{{'Cost Center' | r | xlat}}
-															</div>
-														</div>
+										<div class="uk-width-auto@m" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
+											<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
+												<div class="row view-form-icon">
+													<div class="">
+														{{'Cost Center' | r | xlat}}
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-sm-1 text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
+									<div class="uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
 										Unit Price
 									</div>
 
-									<div class="col-sm-1">
+									<div class="">
 										Quantity
 									</div>
 
-									<div class="col-sm-1">
-										<div class="pr-10 text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
+									<div class="">
+										<div class="uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
 											Total	
 										</div>
 									</div>
 									
-									<div class="col-sm-1">
+									<div class="">
 										&nbsp;
 									</div>
 
