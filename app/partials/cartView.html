@@ -1,17 +1,5 @@
 <section>
     <div ng-show="currentOrder" class="hidden-print">
-        <!-- breadcrumb start -->
-        <!-- ================ -->
-        <div class="breadcrumb-container">
-			<div class="container">
-				<ol class="breadcrumb">
-					<li><i class="fa fa-home pr-10"></i><a href="index.html">Home</a></li>
-					<li class="active">{{'Cart' | r | xlat}}</li>
-				</ol>
-			</div>
-		</div>
-        <!-- breadcrumb end -->        
-        
 		<!-- main-container start -->
 		<!-- ==================== -->
 		<section>
@@ -180,7 +168,7 @@
 												<div class="row pull-left">
 													<div class="col-xs-9" style="margin-top: -3px;">
 														<!--Default Datepicker -->
-														<div class="btn btn-default btn-block btn-date hidden-lg hidden-md"
+														<div class="uk-button uk-button-default btn-block btn-date"
 															 ng-click="$event.preventDefault();$event.stopPropagation();opened = !opened;"
 															 style="margin:0; height:40px; padding-top:8px;">
 															{{item.DateNeeded ? '' : ('Tap to set a date' | xlat)}}
