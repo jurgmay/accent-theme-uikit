@@ -164,15 +164,15 @@
 										<div uk-grid>
 											<!-- date needed -->
 											<!-- =========== -->
-											<div class="uk-width-auto@m" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
-												<div class="row pull-left">
-													<div class="col-xs-9" style="margin-top: -3px;">
+											<div class="uk-width-auto" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
+												<div class="">
+													<div class="" style="">
 														<!--Default Datepicker -->
-														<div class="uk-button uk-button-default btn-block btn-date"
+														<div class="uk-hidden@m uk-button uk-button-default"
 															 ng-click="$event.preventDefault();$event.stopPropagation();opened = !opened;"
 															 style="margin:0; height:40px; padding-top:8px;">
 															{{item.DateNeeded ? '' : ('Tap to set a date' | xlat)}}
-															<span class="text-info">{{item.DateNeeded | date:user.Culture.DateFormat.short}}</span>
+															<span class="">{{item.DateNeeded | date:user.Culture.DateFormat.short}}</span>
 														</div>
 														<input name="dateneeded" placeholder="{{'Date' | xlat}}" ng-model="item.DateNeeded" ng-required="user.Permissions.contains('DateNeededRequired')"
 															   type="text"
@@ -182,8 +182,8 @@
 															   min="currentDate"/>
 													</div>
 												</div>
-												<div class="row pull-left">
-													<div class="col-xs-9">
+												<div class="">
+													<div class="">
 														<button type="button" title="{{'copy to all' | r | xlat}}" class="uk-button uk-button-small uk-button-default uk-float-left" value="{{'copy to all' | r | xlat}}" ng-click="copyAddressToAll()" ng-show="item.DateNeeded" ng-if="$index == 0 && currentOrder.LineItems.length > 1 && user.CostCenters.length != 1" >
 															Copy date to all items
 														</button>
@@ -271,7 +271,7 @@
 
 						<!-- grand total footer -->
 						<!-- ================== -->
-						<div class="row"> <!-- row start -->
+						<div class="">
 							<div class="col-md-4 col-lg-3">
 								<strong>{{currentOrder.LineItems.length}} {{'item' + (currentOrder.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in your' | rl | xlat:(currentOrder.LineItems.length)}} {{'cart' | rl | xlat}}</strong>
 							</div>
@@ -287,7 +287,7 @@
 									<small>{{"Start" | r | xlat}} {{"New" | r | xlat}} {{"Order" | r | xlat}}</small>
 								</button>
 							</div>
-						</div> <!-- row end -->
+						</div>
 
 						<!-- end of line items -->
 						<!-- ================= -->
