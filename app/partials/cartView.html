@@ -177,7 +177,7 @@
 														<input name="dateneeded" placeholder="{{'Date' | xlat}}" ng-model="item.DateNeeded" ng-required="user.Permissions.contains('DateNeededRequired')"
 															   type="text"
 															   class=""
-															   datepicker-popup="{{user.Culture.DateFormat.short}}"
+															   data-uk-datepicker="{format:'{{user.Culture.DateFormat.short}}'}"
 															   is-open="opened"
 															   min="currentDate"/>
 													</div>
