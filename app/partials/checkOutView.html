@@ -10,21 +10,21 @@
 		<div class="uk-text-center">
 			<h1 class="uk-heading uk-text-uppercase">Delivery</h1>
 			<div class="uk-divider-small"></div>
-		</div>	
+		</div>
 		<!-- page-title end -->
 		
 		<section>
-			<div class="panel">
+			<div>
 
 				<loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we update your order' | r | xlat}}" />
 
 				<div class="col col-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
 
-					<div class="row">
-						<div class="col-md-6">
+					<div uk-grid>
+						<div class="uk-width-1-2">
 							<orderdetails ng-show="hasOrderConfig" />
 						</div>
-						<div class="col-md-6">
+						<div class="uk-width-1-2">
 							<ordershipping />
 							<orderapprovals ng-show="currentOrder.Approvals" />
 							<!-- <orderbilling ng-show="currentOrder.BillingEnabled" /> -->

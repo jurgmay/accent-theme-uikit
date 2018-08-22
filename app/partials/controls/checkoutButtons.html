@@ -2,9 +2,9 @@
 
 <!-- cancel button -->
 <!-- ================ -->
-<div class="row pull-left"> <!-- row start -->
-	<div class="col-md-12">
-		<button type="button" class="btn btn-danger" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
+<div class="uk-float-left">
+	<div>
+		<button type="button" class="uk-button uk-button-small uk-button-danger" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
 			<span ng-if="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</span>
 			<span ng-if="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</span>
 		</button>
@@ -13,20 +13,20 @@
 
 <!-- continue shopping, save cart and checkout buttons -->
 <!-- ================================================= -->
-<div class="row pull-right"> <!-- row start -->
-	<div class="col-md-12">
-		<button type="button" class="btn btn-info" redirect="catalog">
+<div class="uk-float-right">
+	<div>
+		<button type="button" class="uk-button uk-button-small uk-button-default" redirect="catalog">
 			<span class="hidden-xs">{{'Continue Shopping' | r | xlat}}</span>
 			<span class="visible-xs">{{'Shop' | r | xlat}}</span>
 		</button>
 
-		<button type="submit" class="btn btn-primary" ng-click="saveChanges()">
+		<button type="submit" class="uk-button uk-button-small uk-button-default" ng-click="saveChanges()">
 			<span class="fa fa-spinner fa-spin" ng-show="displayLoadingIndicator"></span>
 			<span ng-show="displayLoadingIndicator"> Saving...</span>
 			<span ng-hide="displayLoadingIndicator">{{('Save' | r) + ' ' + ('Order' | r) | xlat}}</span>
 		</button>
 
-		<button class="btn"
+		<button class="uk-button uk-button-small uk-button-primary"
                 ng-class="{'btn-warning': cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid || submitClicked, 'btn-success': !cart_shipping.$invalid && !cart_order.$invalid && !cart_billing.$invalid || !submitClicked }"
                 ng-click="submitOrder()" ng-disabled="cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid || submitClicked">
             <i ng-show="cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid || submitClicked" class="fa fa-warning"></i>
