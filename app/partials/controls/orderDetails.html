@@ -1,9 +1,8 @@
 <!-- *** orderDetails *** -->
 
-<div class="panel panel-default panel-order">
-    <div class="panel-heading" ng-class="{'no': cart_order.$invalid, 'yes': !cart_order.$invalid, 'open': checkOutSection == 'order' }">
-        <h3 class="panel-title panel-primary">
-            <i class="pull-left" ng-class="{'fa fa-warning': cart_order.$invalid, 'fa fa-check-circle': !cart_order.$invalid }"></i>
+<div>
+    <div ng-class="{'no': cart_order.$invalid, 'yes': !cart_order.$invalid, 'open': checkOutSection == 'order' }">
+        <h3>
             {{'Order' | r | xlat}}
         </h3>
     </div>
