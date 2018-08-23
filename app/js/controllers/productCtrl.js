@@ -160,6 +160,14 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 			$scope.loadingIndicator = false;
 		});
 	};
+	
+	$scope.showErrorModal = function() {
+
+		UIkit.modal.dialog('<p>UIkit dialog!</p>');	
+
+		// your logic goes here
+		return true;
+	};
 
 	$scope.$on('event:imageLoaded', function(event, result) {
 		$scope.loadingImage = false;
