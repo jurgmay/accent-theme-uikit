@@ -86,8 +86,20 @@
 						</ul>
 					</div>
 				</li>
+				<li class="viewcart">
+					<a href="cart">
+						<button class="" ng-class="{'active': isActive(['cart', 'checkout'])}" data-toggle="" type="button">
+							<i class="fa fa-shopping-basket"></i>
+							<span class="cart-count default-bg" ng-bind="cartCount" ng-show="cartCount > 0"></span>
+						</button>
+					</a>
+				</li>				
 			</ul>
 			<!-- main-menu end -->
 		</div>
 	</nav>
 </nav>
+
+
+
+
