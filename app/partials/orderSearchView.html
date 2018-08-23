@@ -79,12 +79,15 @@
 								<div class="uk-width-1-3">
 									<div class="has-feedback">
 										<label for="inputName" class="uk-form-label">{{'Order ID' | r | xlat}}</label>
-										<input type="text" class="uk-form-controls" ng-model="criteria.OrderID" placeholder="{{('Order' | r) + ' ' + ('ID' | r) | xlat}}" autocomplete="off">
-										<i class="fa fa-pencil form-control-feedback"></i>
+										<div class="uk-inline">
+											<span class="uk-form-icon" uk-icon="icon: user"></span>
+											<input type="text" class="uk-input" ng-model="criteria.OrderID" placeholder="{{('Order' | r) + ' ' + ('ID' | r) | xlat}}" autocomplete="off">
+										</div>
 									</div>
+
 									<div class="has-feedback">
 										<label for="inputName" class="uk-form-label">{{('Ship' | r) + ' ' + ('Address' | r) | xlat}}</label>
-										<input type="text" class="uk-form-controls" ng-model="criteria.ShippingAddress" placeholder="{{('Shipping' | r) + ' ' + ('Address' | r) | xlat}}" autocomplete="off">
+										<input type="text" class="uk-input" ng-model="criteria.ShippingAddress" placeholder="{{('Shipping' | r) + ' ' + ('Address' | r) | xlat}}" autocomplete="off">
 										<i class="fa fa-map-marker form-control-feedback"></i>
 									</div>
 								</div>
@@ -100,7 +103,7 @@
 										</div>
 										<input name="daterangefrom" placeholder="{{('Start' | r) + ' ' + ('Date' | r) | xlat}}" ng-model="criteria.DateRangeFrom"
 											   type="text"
-											   class="uk-form-controls"
+											   class="uk-input"
 											   datepicker-popup="{{user.Culture.DateFormat.short}}"
 											   is-open="startopened"/>
 										<i class="fa fa-calendar form-control-feedback"></i>
@@ -115,7 +118,7 @@
 										</div>
 										<input name="daterangeto" placeholder="{{('End' | r) + ' ' + ('Date' | r) | xlat}}" ng-model="criteria.DateRangeTo"
 											   type="text"
-											   class="uk-form-controls"
+											   class="uk-input"
 											   datepicker-popup="{{user.Culture.DateFormat.short}}"
 											   is-open="endopened"
 											   min="criteria.DateRangeFrom"/>
@@ -127,7 +130,7 @@
 									<div class="uk-alert-primary">
 										<p><i class="fa fa-info-circle"></i> {{'Only display last n orders' | r | xlat}}</p>
 										<div>
-											<input class="uk-form-controls" type="text" ng-model="criteria.LastN" placeholder="# {{'of' | xlat}} {{'Orders' | r | xlat}}" autocomplete="off" />
+											<input class="uk-input" type="text" ng-model="criteria.LastN" placeholder="# {{'of' | xlat}} {{'Orders' | r | xlat}}" autocomplete="off" />
 										</div>
 									</div>
 								</div>
