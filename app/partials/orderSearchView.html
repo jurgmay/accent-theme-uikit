@@ -2,7 +2,10 @@
 
 <div id="page-start"></div>	
 
-<section class="uk-section uk-padding-remove uk-margin-large">
+<section class="uk-section">
+
+	<!-- main-container start -->
+	<!-- ==================== -->
 	<div class="uk-container">   
 		<!-- page-title start -->
 		<!-- ================ -->
@@ -12,24 +15,19 @@
 		</div>	
 		<!-- page-title end -->
 		
-		<div class="main" ng-if="!hasStandardTypes && !hasReplenishmentTypes && !hasPriceRequestTypes">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">{{'Orders' | r | xlat}}</h3>
-				</div>
-				<div class="panel-body">
-					<p class="alert alert-warning">{{'Your search resulted in no records. Please refine your search.' | r | xlat}}</p>
-				</div>
+		<div class="uk-text-center" ng-if="!hasStandardTypes && !hasReplenishmentTypes && !hasPriceRequestTypes">
+			<div>
+				<p>{{'Your search resulted in no records. Please refine your search.' | r | xlat}}</p>
 			</div>
 		</div>
 
-		<div class="order-types">
-			<div class="main col-md-3">
-				<div class="panel panel-default" ng-show="hasStandardTypes">
-					<div class="panel-heading">
-						<h3 class="panel-title">{{('Standard' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
+		<div uk-grid>
+			<div class="uk-width-1-3" ng-show="hasStandardTypes">
+				<div class="uk-card">
+					<div class="uk-card-header">
+						<h3 class="uk-card-title">{{('Standard' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
 					</div>
-					<div class="panel-body">
+					<div class="uk-card-body">
 						<ul class="list">
 							<li ng-repeat="criteria in OrderSearchCriteria | filter:{Type:'Standard'}" ng-show="criteria.Count">
 								<a ng-href="#" ng-click="OrderSearch($event,{{criteria}})">{{criteria.DisplayName | r | xlat}} Orders</a><span class="badge ml-5"> {{criteria.Count}}</span>
@@ -39,12 +37,12 @@
 				</div>
 			</div>
 
-			<div class="main col-md-3">
-				<div class="panel panel-default" ng-show="hasReplenishmentTypes">
-					<div class="panel-heading">
-						<h3 class="panel-title">{{('Replenishment' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
+			<div class="uk-width-1-3" ng-show="hasReplenishmentTypes">
+				<div class="panel panel-default">
+					<div class="uk-card-header">
+						<h3 class="uk-card-title">{{('Replenishment' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
 					</div>
-					<div class="panel-body">
+					<div class="uk-card-body">
 						<ul>
 							<li ng-repeat="criteria in OrderSearchCriteria | filter:{Type:'Replenishment'}" ng-show="criteria.Count">
 								<a ng-href="#" ng-click="OrderSearch($event,{{criteria}})">{{criteria.DisplayName | r | xlat}} <span class="badge" >{{criteria.Count}}</span></a>
@@ -54,12 +52,12 @@
 				</div>
 			</div>
 
-			<div class="main col-md-3">
-				<div class="panel panel-default" ng-show="hasPriceRequestTypes">
-					<div class="panel-heading">
-						<h3 class="panel-title">{{'Price Request' | r | xlat}}</h3>
+			<div class="uk-width-1-3" ng-show="hasPriceRequestTypes">
+				<div class="panel panel-default">
+					<div class="uk-card-header">
+						<h3 class="uk-card-title">{{'Price Request' | r | xlat}}</h3>
 					</div>
-					<div class="panel-body">
+					<div class="uk-card-body">
 						<ul>
 							<li ng-repeat="criteria in OrderSearchCriteria | filter:{Type:'PriceRequest'}" ng-show="criteria.Count">
 								<a ng-href="#" ng-click="OrderSearch($event,{{criteria}})">{{criteria.DisplayName | r | xlat}} <span clas="badge">{{criteria.Count}}</span></a>
@@ -70,15 +68,15 @@
 			</div>
 		</div> <!-- order types -->
 						
-		<div class="col-md-9">	
-			<div class="panel panel-default" ng-show="hasStandardTypes || hasReplenishmentTypes || hasPriceRequestTypes">
-				<div class="panel-heading">
-					<h3 class="panel-title">{{('Search' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
+		<div class="uk-width-2-3">	
+			<div class="uk-card" ng-show="hasStandardTypes || hasReplenishmentTypes || hasPriceRequestTypes">
+				<div class="uk-card-header">
+					<h3 class="uk-card-title">{{('Search' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
 				</div>
 
-				<div class="form" role="form">
-					<div class="panel-body">
-						<div class="row">
+				<div class="uk-form" role="form">
+					<div class="uk-card-body">
+						<div>
 							<div class="col-sm-4 view-form-icon">
 								<div class="form-group has-feedback">
 									<label for="inputName" class="control-label">{{'Order ID' | r | xlat}}</label>
@@ -140,16 +138,16 @@
 								<button type="submit" class="btn btn-primary pull-left mb-0" ng-click="OrderSearch($event, criteria)">{{'Search' | r | xlat}}</button>
 							</div>
 						</div>
-					</div> <!-- panel-body end -->
+					</div> <!-- uk-card-body end -->
 				</div> <!-- form end -->
 			</div>
 		</div> <!-- col -->
 
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default" style="min-height: 100px;" ng-show="showNoResults">
-					<div class="panel-heading">
-						<h3 class="panel-title">
+		<div>
+			<div>
+				<div class="uk-card" style="min-height: 100px;" ng-show="showNoResults">
+					<div class="uk-card-header">
+						<h3 class="uk-card-title">
 							<span class="text-info" ng-show="orderSearchStat.Type">
 								{{(orderSearchStat.Type) + ' ' + ('Orders' | rl) | xlat}}:
 							</span>
@@ -160,15 +158,15 @@
 						</h3>
 					</div>
 
-					<div class="panel-body">
+					<div class="uk-card-body">
 						<div class="panel-table">
 							<loadingindicator ng-show="pagedIndicator" />
 							<div ng-show="settings.listCount > settings.pageSize">
 								<pagination page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="settings.listCount"
 											items-per-page="settings.pageSize" direction-links="true"></pagination>
 							</div>
-							<div class="row p-10">
-								<div class="col-xs-12">{{'Your search resulted in no records. Please refine your search.' | r | xlat}}</div>
+							<div>
+								<div>{{'Your search resulted in no records. Please refine your search.' | r | xlat}}</div>
 							</div>
 						</div>
 					</div>
@@ -176,11 +174,11 @@
 			</div> <!-- col -->
 		</div> <!-- row -->
 
-		<div class="row">
+		<div>
 			<div class="col-lg-12">
-				<div class="panel panel-default" ng-show="orders">
-					<div class="panel-heading">
-						<h3 class="panel-title">
+				<div class="uk-card" ng-show="orders">
+					<div class="uk-card-header">
+						<h3 class="uk-card-title">
 							<span ng-show="orderSearchStat.Type">
 								{{(orderSearchStat.Type) + ' ' + ('Orders' | rl) | xlat}}:
 							</span>
@@ -191,7 +189,7 @@
 						</h3>
 					</div>
 
-					<div class="panel-body">
+					<div class="uk-card-body">
 						<div class="panel-table">
 							<loadingindicator ng-show="pagedIndicator" />
 
