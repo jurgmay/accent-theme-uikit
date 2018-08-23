@@ -23,7 +23,7 @@
 
 		<div uk-grid>
 			<div class="uk-width-1-4" ng-show="hasStandardTypes">
-				<div class="uk-card uk-card-small uk-card-default">
+				<div class="uk-card uk-card-small uk-card-default uk-card-default">
 					<div class="uk-card-header">
 						<h3 class="uk-card-title">{{('Standard' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
 					</div>
@@ -38,7 +38,7 @@
 			</div>
 
 			<div class="uk-width-1-4" ng-show="hasReplenishmentTypes">
-				<div class="uk-card uk-card-small uk-card-default">
+				<div class="uk-card uk-card-small uk-card-default uk-card-default">
 					<div class="uk-card-header">
 						<h3 class="uk-card-title">{{('Replenishment' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
 					</div>
@@ -53,7 +53,7 @@
 			</div>
 
 			<div class="uk-width-1-4" ng-show="hasPriceRequestTypes">
-				<div class="uk-card uk-card-small uk-card-default">
+				<div class="uk-card uk-card-small uk-card-default uk-card-default">
 					<div class="uk-card-header">
 						<h3 class="uk-card-title">{{'Price Request' | r | xlat}}</h3>
 					</div>
@@ -68,8 +68,8 @@
 			</div>
 						
 			<div class="uk-width-3-4">	
-				<div class="uk-card uk-card-small" ng-show="hasStandardTypes || hasReplenishmentTypes || hasPriceRequestTypes">
-					<div class="uk-card-header uk-card-primary">
+				<div class="uk-card uk-card-small uk-card-default" ng-show="hasStandardTypes || hasReplenishmentTypes || hasPriceRequestTypes">
+					<div class="uk-card-header">
 						<h3 class="uk-card-title">{{('Search' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
 					</div>
 
@@ -132,7 +132,7 @@
 									</div>
 								</div>
 								
-								<div class="uk-width-1-3">
+								<div class="uk-width-1-3 uk-alert-primary" uk-alert>
 									<div class="uk-alert-default">
 										<p><i class="fa fa-info-circle"></i> {{'Only display last n orders' | r | xlat}}</p>
 										<div>
@@ -141,7 +141,7 @@
 									</div>
 								</div>
 							</div> <!-- row end -->
-							<div>
+							<div class="uk-margin-medium">
 								<div>
 									<button type="submit" class="uk-button uk-button-primary" ng-click="OrderSearch($event, criteria)">{{'Search' | r | xlat}}</button>
 								</div>
@@ -154,8 +154,8 @@
 
 		<div>
 			<div>
-				<div class="uk-card uk-card-small" style="min-height: 100px;" ng-show="showNoResults">
-					<div class="uk-card-header uk-card-primary">
+				<div class="uk-card uk-card-small uk-card-default" style="min-height: 100px;" ng-show="showNoResults">
+					<div class="uk-card-header">
 						<h3 class="uk-card-title">
 							<span class="text-info" ng-show="orderSearchStat.Type">
 								{{(orderSearchStat.Type) + ' ' + ('Orders' | rl) | xlat}}:
@@ -185,8 +185,8 @@
 
 		<div>
 			<div class="">
-				<div class="uk-card uk-card-small" ng-show="orders">
-					<div class="uk-card-header uk-card-primary">
+				<div class="uk-card uk-card-small uk-card-default" ng-show="orders">
+					<div class="uk-card-header">
 						<h3 class="uk-card-title">
 							<span ng-show="orderSearchStat.Type">
 								{{(orderSearchStat.Type) + ' ' + ('Orders' | rl) | xlat}}:
