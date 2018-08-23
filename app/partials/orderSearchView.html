@@ -23,8 +23,8 @@
 
 		<div uk-grid>
 			<div class="uk-width-1-4" ng-show="hasStandardTypes">
-				<div class="uk-card uk-card-small">
-					<div class="uk-card-header uk-card-primary uk-card-primary">
+				<div class="uk-card uk-card-small uk-card-default">
+					<div class="uk-card-header">
 						<h3 class="uk-card-title">{{('Standard' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
 					</div>
 					<div class="uk-card-body">
@@ -38,8 +38,8 @@
 			</div>
 
 			<div class="uk-width-1-4" ng-show="hasReplenishmentTypes">
-				<div class="uk-card uk-card-small">
-					<div class="uk-card-header uk-card-primary">
+				<div class="uk-card uk-card-small uk-card-default">
+					<div class="uk-card-header">
 						<h3 class="uk-card-title">{{('Replenishment' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
 					</div>
 					<div class="uk-card-body">
@@ -53,8 +53,8 @@
 			</div>
 
 			<div class="uk-width-1-4" ng-show="hasPriceRequestTypes">
-				<div class="uk-card uk-card-small">
-					<div class="uk-card-header uk-card-primary">
+				<div class="uk-card uk-card-small uk-card-default">
+					<div class="uk-card-header">
 						<h3 class="uk-card-title">{{'Price Request' | r | xlat}}</h3>
 					</div>
 					<div class="uk-card-body">
@@ -75,23 +75,23 @@
 
 					<div class="uk-form" role="form">
 						<div class="uk-card-body">
-							<div>
+							<div uk-grid>
 								<div class="uk-width-1-3">
 									<div class="has-feedback">
-										<label for="inputName" class="control-label">{{'Order ID' | r | xlat}}</label>
-										<input type="text" class="form-control" ng-model="criteria.OrderID" placeholder="{{('Order' | r) + ' ' + ('ID' | r) | xlat}}" autocomplete="off">
+										<label for="inputName" class="uk-form-label">{{'Order ID' | r | xlat}}</label>
+										<input type="text" class="uk-form-controls" ng-model="criteria.OrderID" placeholder="{{('Order' | r) + ' ' + ('ID' | r) | xlat}}" autocomplete="off">
 										<i class="fa fa-pencil form-control-feedback"></i>
 									</div>
 									<div class="has-feedback">
-										<label for="inputName" class="control-label">{{('Ship' | r) + ' ' + ('Address' | r) | xlat}}</label>
-										<input type="text" class="form-control" ng-model="criteria.ShippingAddress" placeholder="{{('Shipping' | r) + ' ' + ('Address' | r) | xlat}}" autocomplete="off">
+										<label for="inputName" class="uk-form-label">{{('Ship' | r) + ' ' + ('Address' | r) | xlat}}</label>
+										<input type="text" class="uk-form-controls" ng-model="criteria.ShippingAddress" placeholder="{{('Shipping' | r) + ' ' + ('Address' | r) | xlat}}" autocomplete="off">
 										<i class="fa fa-map-marker form-control-feedback"></i>
 									</div>
 								</div>
 
 								<div class="uk-width-1-3">
 									<div class="has-feedback">
-										<label for="inputName" class="control-label">{{('Start' | r) + ' ' + ('Date' | r) | xlat}}</label>
+										<label for="inputName" class="uk-form-label">{{('Start' | r) + ' ' + ('Date' | r) | xlat}}</label>
 										<div class="uk-button uk-button-default uk-button-block uk-button-date hidden-lg hidden-md"
 											 ng-click="$event.preventDefault();$event.stopPropagation();startopened = !startopened;"
 											 style="margin:0; height:40px; padding-top:8px;">
@@ -100,13 +100,13 @@
 										</div>
 										<input name="daterangefrom" placeholder="{{('Start' | r) + ' ' + ('Date' | r) | xlat}}" ng-model="criteria.DateRangeFrom"
 											   type="text"
-											   class="form-control"
+											   class="uk-form-controls"
 											   datepicker-popup="{{user.Culture.DateFormat.short}}"
 											   is-open="startopened"/>
 										<i class="fa fa-calendar form-control-feedback"></i>
 									</div>
 									<div class="has-feedback">
-										<label for="inputName" class="control-label">{{('End' | r) + ' ' + ('Date' | r) | xlat}}</label>
+										<label for="inputName" class="uk-form-label">{{('End' | r) + ' ' + ('Date' | r) | xlat}}</label>
 										<div class="uk-button uk-button-default uk-button-block uk-button-date hidden-lg hidden-md"
 										 ng-click="$event.preventDefault();$event.stopPropagation();endopened = !endopened;"
 										 style="margin:0; height:40px; padding-top:8px;">
@@ -115,7 +115,7 @@
 										</div>
 										<input name="daterangeto" placeholder="{{('End' | r) + ' ' + ('Date' | r) | xlat}}" ng-model="criteria.DateRangeTo"
 											   type="text"
-											   class="form-control"
+											   class="uk-form-controls"
 											   datepicker-popup="{{user.Culture.DateFormat.short}}"
 											   is-open="endopened"
 											   min="criteria.DateRangeFrom"/>
@@ -124,17 +124,17 @@
 								</div>
 								
 								<div class="uk-width-1-3">
-									<div class="alert alert-info col-sm-12 margin-clear">
-										<p class="mb-10"><i class="fa fa-info-circle"></i> {{'Only display last n orders' | r | xlat}}</p>
+									<div class="uk-alert-primary">
+										<p><i class="fa fa-info-circle"></i> {{'Only display last n orders' | r | xlat}}</p>
 										<div>
-											<input class="form-control" type="text" ng-model="criteria.LastN" placeholder="# {{'of' | xlat}} {{'Orders' | r | xlat}}" autocomplete="off" />
+											<input class="uk-form-controls" type="text" ng-model="criteria.LastN" placeholder="# {{'of' | xlat}} {{'Orders' | r | xlat}}" autocomplete="off" />
 										</div>
 									</div>
 								</div>
 							</div> <!-- row end -->
-							<div class="row">
-								<div class="">
-									<button type="submit" class="uk-button uk-button-default" ng-click="OrderSearch($event, criteria)">{{'Search' | r | xlat}}</button>
+							<div>
+								<div>
+									<button type="submit" class="uk-button uk-button-primary" ng-click="OrderSearch($event, criteria)">{{'Search' | r | xlat}}</button>
 								</div>
 							</div>
 						</div> <!-- uk-card-body end -->
