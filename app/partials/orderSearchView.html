@@ -207,25 +207,26 @@
 											items-per-page="settings.pageSize" direction-links="true"></pagination>
 							</div>
 
-							<table class="uk-table">
+							<table class="uk-table uk-table-hover uk-margin-remove">
 								<thead>
 									<tr>
-										<th>Order {{'ID' | r | xlat}}</th>
-										<th>{{'Type' | r | xlat}}</th>
-										<th>{{'Status' | r | xlat}}</th>
-										<th>{{'Submitted' | r | xlat}} By</th>
-										<th>{{('Submitted' | r) + ' ' + ('Date' | r) | xlat}}</th>
-										<th ng-if="!(user.Permissions.contains('HidePricing'))">{{'Total' | r | xlat}}</th>
+										<th class="uk-padding-remove-top ng-binding">Order {{'ID' | r | xlat}}</th>
+										<th class="uk-padding-remove-top ng-binding">{{'Type' | r | xlat}}</th>
+										<th class="uk-padding-remove-top ng-binding">{{'Status' | r | xlat}}</th>
+										<th class="uk-padding-remove-top ng-binding">{{'Submitted' | r | xlat}} By</th>
+										<th class="uk-padding-remove-top ng-binding">{{('Submitted' | r) + ' ' + ('Date' | r) | xlat}}</th>
+										<th  class="uk-padding-remove-top ng-binding" ng-if="!(user.Permissions.contains('HidePricing'))">{{'Total' | r | xlat}}</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="order in orders | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
-										<td><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.ExternalID || ('(unspecified)' | xlat)}}</a></td>
-										<td>{{order.Type}}</td>
-										<td>{{order.StatusText}}</td>
-										<td>{{order.FromUserFirstName + ' ' + order.FromUserLastName}}</td>
-										<td>{{order.DateSubmitted || order.DateCreated | date:user.Culture.DateFormat.long}}</td>
-										<td ng-if="!(user.Permissions.contains('HidePricing'))">{{order.Total | culturecurrency}}</td>
+
+								<tr ng-repeat="order in orders | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
+										<td class="uk-padding-remove-top"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.ExternalID || ('(unspecified)' | xlat)}}</a></td>
+										<td class="uk-padding-remove-top"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.Type}}</a></td>
+										<td class="uk-padding-remove-top"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.StatusText}}</a></td>
+										<td class="uk-padding-remove-top"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.FromUserFirstName + ' ' + order.FromUserLastName}}</a></td>
+										<td class="uk-padding-remove-top"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.DateSubmitted || order.DateCreated | date:user.Culture.DateFormat.long}}</a></td>
+										<td  class="uk-padding-remove-top" ng-if="!(user.Permissions.contains('HidePricing'))"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.Total | culturecurrency}}</a></td>
 									</tr>
 								</tbody>
 							</table>
