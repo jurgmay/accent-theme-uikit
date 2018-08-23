@@ -22,8 +22,8 @@
 				</div>
 				<div class="uk-card-body">
 					<div class="col-md-6 col-md-offset-3">
-						<label>{{'Username' | r | xlat}}</label><input name="username" class="form-control" type="text" ng-model="loginasuser.Username" autocomplete="off" required placeholder="{{'Username' | r | xlat}}" /><br />
-						<label>{{'Password' | r | xlat}}</label><input name="password" class="form-control" type="password" ng-model="loginasuser.Password" autocomplete="off" required placeholder="{{'Password' | r | xlat}}" /><br />
+						<label>{{'Username' | r | xlat}}</label><input name="username" class="uk-input" type="text" ng-model="loginasuser.Username" autocomplete="off" required placeholder="{{'Username' | r | xlat}}" /><br />
+						<label>{{'Password' | r | xlat}}</label><input name="password" class="uk-input" type="password" ng-model="loginasuser.Password" autocomplete="off" required placeholder="{{'Password' | r | xlat}}" /><br />
 					</div>
 				</div>
 				<div class="uk-card-footer">
@@ -42,7 +42,7 @@
 					</div>
 					<div class="uk-card-body">
 							<label>{{'Email' | r | xlat}}</label>
-							<input name="username" required class="form-control" type="text" ng-model="loginasuser.Email" autocomplete="off" placeholder="{{'Email' | r | xlat}}" />
+							<input name="username" required class="uk-input" type="text" ng-model="loginasuser.Email" autocomplete="off" placeholder="{{'Email' | r | xlat}}" />
 							<br/>
 							<div class="uk-card-footer">
 								<input class="btn btn-medium btn-primary" type="submit" ng-disabled="login_help.$invalid" id="451_btn_login_existing" value="{{'Reset' | r | xlat}}" />
@@ -66,19 +66,19 @@
 						<p class="alert-warning">{{'An email was sent with your username and verification code.' | r | xlat}}</p>
 						<div class="row">
 							<label>{{'Username' | r | xlat}}</label>
-							<input required name="username" class="form-control" type="text" ng-model="loginasuser.UserName" autocomplete="off" placeholder="{{'Username' | r | xlat}}" />
+							<input required name="username" class="uk-input" type="text" ng-model="loginasuser.UserName" autocomplete="off" placeholder="{{'Username' | r | xlat}}" />
 						</div>
 						<div class="row">
 							<label>{{'Verification code from email' | r | xlat}}</label>
-							<input required name="token" class="form-control" type="text" ng-model="loginasuser.PasswordResetToken" autocomplete="off" placeholder="{{'Verification Code' | r | xlat}}" />
+							<input required name="token" class="uk-input" type="text" ng-model="loginasuser.PasswordResetToken" autocomplete="off" placeholder="{{'Verification Code' | r | xlat}}" />
 						</div>
 						<div class="row">
 							<label>New {{'Password' | r}}</label>
-							<input required class="form-control" name="new_password" type="password" ng-model="loginasuser.NewPassword" placeholder="New {{'Password' | r}}" />
+							<input required class="uk-input" name="new_password" type="password" ng-model="loginasuser.NewPassword" placeholder="New {{'Password' | r}}" />
 						</div>
 						<div class="row">
 							<label>Confirm {{'Password' | r}}</label>
-							<input required class="form-control" name="confirm_password" type="password" ng-model="loginasuser.ConfirmPassword"  placeholder="Confirm {{'Password' | r}}" ng-match="loginasuser.NewPassword" />
+							<input required class="uk-input" name="confirm_password" type="password" ng-model="loginasuser.ConfirmPassword"  placeholder="Confirm {{'Password' | r}}" ng-match="loginasuser.NewPassword" />
 							<inlineerror ng-show="resetbytoken.confirm_password.$error.match" title="{{'Password' | r}}s do not match!" /><br />
 						</div>
 						<div xclass="uk-card-footer">
@@ -98,29 +98,29 @@
 							<div class="form-group has-feedback">
 								<label for="inputName" class="uk-form-label">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
 								<div class= "uk-inline">
-									<input name="firstname" type="text" class="form-control" id="inputName" required ng-model="user.FirstName" placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" >
-									<i class="fa fa-pencil form-control-feedback"></i>
+									<input name="firstname" type="text" class="uk-input" id="inputName" required ng-model="user.FirstName" placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" >
+									<i class="fa fa-pencil uk-input-feedback"></i>
 								</div>
 							</div>
 							<div class="form-group has-feedback">
 								<label for="inputName" class="uk-form-label">{{('Last' | r) + ' ' + ('Name' | r) | xlat}}</label>
 								<div class= "uk-inline">
 									<span class="uk-form-icon" uk-icon="icon: location"></span>
-									<input name="lastname" type="text" class="form-control" id="inputName" required ng-model="user.LastName" placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" >
+									<input name="lastname" type="text" class="uk-input" id="inputName" required ng-model="user.LastName" placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" >
 								</div>
 							</div>
 							<div class="form-group has-feedback">
 								<label for="inputName" class="uk-form-label">{{'Phone' | r | xlat}}</label>
 								<div class= "uk-inline">
 									<span class="uk-form-icon" uk-icon="icon: location"></span>
-									<input name="lastname" type="text" class="form-control" id="inputName" required ng-model="user.Phone" placeholder="{{('Telephone' | r) | xlat}}" autocomplete="off" >
+									<input name="lastname" type="text" class="uk-input" id="inputName" required ng-model="user.Phone" placeholder="{{('Telephone' | r) | xlat}}" autocomplete="off" >
 								</div>
 							</div>
 							<div class="form-group has-feedback">
 								<label for="inputName" class="uk-form-label">{{'Email' | r | xlat}}</label>
 								<div class= "uk-inline">
 									<span class="uk-form-icon" uk-icon="icon: location"></span>
-									<input name="email" type="text" class="form-control" id="inputName" required ng-model="user.Email" placeholder="{{('Email' | r) | xlat}}" autocomplete="off" >
+									<input name="email" type="text" class="uk-input" id="inputName" required ng-model="user.Email" placeholder="{{('Email' | r) | xlat}}" autocomplete="off" >
 								</div>
 							</div>
 							<inlineerror ng-show="user_form.email.$invalid" title="{{'Please enter a valid' + ' ' +  ('Email' | rl) + ' ' + ('Address' | rl) | xlat}}" />
@@ -128,24 +128,24 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group has-feedback">
-							<label for="inputName" class="col-sm-4 uk-form-label">{{'Username' | r | xlat}}</label>
+							<label for="inputName" class="uk-form-label">{{'Username' | r | xlat}}</label>
 							<div class= "uk-inline">
 								<span class="uk-form-icon" uk-icon="icon: location"></span>
-								<input name="username" type="text" class="form-control" id="inputName" required ng-model="user.TempUsername" placeholder="{{'Username' | r | xlat}}" autocomplete="off" >
+								<input name="username" type="text" class="uk-input" id="inputName" required ng-model="user.TempUsername" placeholder="{{'Username' | r | xlat}}" autocomplete="off" >
 							</div>
 						</div>
 						<div class="form-group has-feedback">
-							<label for="inputName" class="col-sm-4 uk-form-label">{{'Password' | r | xlat}}</label>
+							<label for="inputName" class="uk-form-label">{{'Password' | r | xlat}}</label>
 							<div class= "uk-inline">
 								<span class="uk-form-icon" uk-icon="icon: location"></span>
-								<input name="password" type="password" class="form-control" id="inputName" ng-required="user.Type == 'TempCustomer'" ng-model="user.Password" placeholder="{{'Password' | r | xlat}}" autocomplete="off" >
+								<input name="password" type="password" class="uk-input" id="inputName" ng-required="user.Type == 'TempCustomer'" ng-model="user.Password" placeholder="{{'Password' | r | xlat}}" autocomplete="off" >
 							</div>
 						</div>
 						<div class="form-group has-feedback">
-							<label for="inputName" class="col-sm-4 uk-form-label">{{('Confirm' | r) + ' ' + ('Password' | r) | xlat}}</label>
+							<label for="inputName" class="uk-form-label">{{('Confirm' | r) + ' ' + ('Password' | r) | xlat}}</label>
 							<div class= "uk-inline">
 								<span class="uk-form-icon" uk-icon="icon: location"></span>
-								<input name="confirm_password" type="password" class="form-control" ng-required="user.Type == 'TempCustomer' || user.Password" id="inputName" required ng-model="user.ConfirmPassword" placeholder="{{('Confirm' | r) + ' ' + ('Password' | r) | xlat}}" autocomplete="off" >
+								<input name="confirm_password" type="password" class="uk-input" ng-required="user.Type == 'TempCustomer' || user.Password" id="inputName" required ng-model="user.ConfirmPassword" placeholder="{{('Confirm' | r) + ' ' + ('Password' | r) | xlat}}" autocomplete="off" >
 							</div>
 						</div>
 						<!--TODO username input shouldn't default to temporary usernames, if the user is temp, make the placeholder show instead !-->
