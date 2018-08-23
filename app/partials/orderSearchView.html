@@ -199,7 +199,7 @@
 					</div>
 
 					<div class="uk-card-body">
-						<div uk-grid>
+						<div class="uk-container">
 							<loadingindicator ng-show="pagedIndicator" />
 
 							<div ng-show="settings.listCount > settings.pageSize && !pagedIndicator">
@@ -229,42 +229,6 @@
 									</tr>
 								</tbody>
 							</table>
-
-
-							<div class="row hidden-xs text-info" ng-show="!pagedIndicator">
-								<div class="col-xs-12 col-sm-2">{{'ID' | r | xlat}}</div>
-								<div class="col-xs-12 col-sm-2">{{'Type' | r | xlat}}</div>
-								<div class="col-xs-12 col-sm-2">{{'Status' | r | xlat}}</div>
-								<div class="col-xs-12 col-sm-3">{{'Submitted' | r | xlat}} By</div>
-								<div class="col-xs-12 col-sm-2">{{('Submitted' | r) + ' ' + ('Date' | r) | xlat}}</div>
-								<div class="col-xs-12 col-sm-1" ng-if="!(user.Permissions.contains('HidePricing'))">{{'Total' | r | xlat}}</div>
-							</div>
-							<div class="row" ng-repeat="order in orders | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
-								<div class="col-sm-2">
-									<span class="visible-xs panel-table-heading-xs text-info">{{'ID' | r | xlat}}</span>
-									<a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.ExternalID || ('(unspecified)' | xlat)}}</a>
-								</div>
-								<div class="col-sm-2">
-									<span class="visible-xs panel-table-heading-xs text-info">{{'Type' | r | xlat}}</span>
-									{{order.Type}}
-								</div>
-								<div class="col-sm-2">
-									 <span class="visible-xs panel-table-heading-xs text-info">{{'Status' | r | xlat}}</span>
-									{{order.StatusText}}
-								</div>
-								<div class="col-sm-3">
-									<span class="visible-xs panel-table-heading-xs text-info">{{'Submitted' | r | xlat}}</span>
-									{{order.FromUserFirstName + ' ' + order.FromUserLastName}}
-								</div>
-								<div class="col-sm-2">
-									<span class="visible-xs panel-table-heading-xs text-info">{{('Submitted' | r) + ' ' + ('Date' | r) | xlat}}</span>
-									{{order.DateSubmitted || order.DateCreated | date:user.Culture.DateFormat.long}}
-								</div>
-								<div class="col-sm-1 text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
-									<span class="visible-xs heading-xs text-info">{{'Total' | r}}</span>
-									{{order.Total | culturecurrency}}
-								</div>
-							</div>
 							
 							<div ng-show="settings.listCount > settings.pageSize && !pagedIndicator">
 								<pagination page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="settings.listCount"
