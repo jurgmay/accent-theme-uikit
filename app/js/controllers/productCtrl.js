@@ -163,7 +163,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 	
 	$scope.showErrorModal = function() {
 
-		UIkit.modal.dialog('<p>UIkit dialog!</p>');	
+		// UIkit.modal.dialog('<p>UIkit dialog!</p>');	
 
 		// your logic goes here
 		return true;
