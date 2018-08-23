@@ -18,40 +18,32 @@
 		
 			<loadingindicator ng-show="loading" />
 						
-			<div class="panel panel-default" ng-if="favoriteorders.length == 0">
-				<div class="panel-heading">
-					<h3 class="panel-title panel-primary">{{('Favorite' | r) + ' ' + ('Orders' | r) | xlat }}</h3>
+			<div class="uk-text-center" ng-if="favoriteorders.length == 0">				
+				<div>
+					<p>{{'You have no ' + ('Favorite' | rl) + ' ' + ('orders' | rl) + ' yet.' | xlat}}</p>
 				</div>
 				
-				<div class="panel-body">
-					<p class="alert alert-warning">{{'You have no ' + ('Favorite' | rl) + ' ' + ('Orders' | rl) + ' yet!' | xlat}}</p>
-				</div>
-				
-				<div class="panel-footer text-center">
-					<button type="button" class="btn btn-primary" redirect="order">{{('View' | r) + ' ' + ('Orders' | r) | xlat}}</button>
+				<div>
+					<button type="button" class="uk-button uk-button-default" redirect="order">{{('View' | r) + ' ' + ('Orders' | r) | xlat}}</button>
 				</div>
 			</div>
 			
-			<div class="panel panel-default" ng-if="favoriteorders.length > 0">
-			
-				<div class="panel-heading">
-					<h3 class="panel-title panel-primary">{{('Favorite' | r) + ' ' + ('Orders' | r) | xlat }}</h3>
-				</div>
-				
+			<div ng-if="favoriteorders.length > 0">
+	
 				<div class="panel-body view-form-icon" ng-if="favoriteorders.length > 0">
-					<form role="search">
-						<div class="input-group">
-							<label ng-show="searchTerm">{{'Search' | r | xlat}}</label>
-							<input class="form-control" type="text" placeholder="{{'Search' | r | xlat}}" ng-model="searchTerm" autocomplete="off" />
+					<form role="search" class="uk-form-stacked">
+						<div>
+							<label class="uk-form-label" ng-show="searchTerm">{{'Search' | r | xlat}}</label>
+							<input class="uk-form-controls" type="text" placeholder="{{'Search' | r | xlat}}" ng-model="searchTerm" autocomplete="off" />
 							<i class="fa fa-search"></i>
-							<div class="input-group-btn">
-								<button type="submit" ng-click="search(searchTerm)" class="btn btn-primary">{{'Search' | r | xlat}}</button>
+							<div>
+								<button type="submit" ng-click="search(searchTerm)" class="uk-button uk-button-default">{{'Search' | r | xlat}}</button>
 							</div>
 						</div>
 					</form>
 					
 					<div class="table-responsive">
-						<table class="table table-striped">
+						<table class="uk-table uk-table-striped">
 							<tr>
 								<th><input type='checkbox' ng-click="checkAll($event)" /></th>
 								<th>{{'Name' | r}}</th>
@@ -66,8 +58,8 @@
 								<td><a ng-href="order/{{order.ID}}">{{order.ExternalID}}</a></td>
 								<td>{{order.DateCompleted | date:'medium'}}</td>
 								<td> {{order.Type}}</td>
-								<td class="text-center" ng-if="!(user.Permissions.contains('HidePricing'))">
-									<button ng-disabled="currentOrder" type="button" class="btn btn-default btn-sm" ng-click="repeat(order)">
+								<td class="uk-text-center" ng-if="!(user.Permissions.contains('HidePricing'))">
+									<button ng-disabled="currentOrder" type="button" class="uk-button uk-button-default uk-button-small" ng-click="repeat(order)">
 										<i ng-show="currentOrder" class="fa fa-warning"></i>
 										{{'Repeat' | r}} {{'Order' | r}}
 									</button>
@@ -77,13 +69,13 @@
 					</div>
 				</div>
 				
-				<div class="panel-footer text-center">
+				<div class="uk-text-center">
 					<div ng-show="settings.listCount > settings.pageSize">
 						<pagination page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="settings.listCount"
 									items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
 					</div>
-					<button type="button" class="btn btn-small btn-danger" ng-click="deleteSelected($event)" ng-disabled="(favoriteorders | filter:{Selected:true}).length == 0">{{('Delete' | r) + ' ' + ('Selected' | r) | xlat}}</button>
-					<span class="alert alert-success" ng-show="error" ng-bind-html="error | r"></span>
+					<button type="button" class="uk-button uk-button-danger uk-button-small" ng-click="deleteSelected($event)" ng-disabled="(favoriteorders | filter:{Selected:true}).length == 0">{{('Delete' | r) + ' ' + ('Selected' | r) | xlat}}</button>
+					<span class="" ng-show="error" ng-bind-html="error | r"></span>
 				</div>
 			</div>
 		</section>
