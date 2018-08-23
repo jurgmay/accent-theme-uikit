@@ -80,7 +80,7 @@
 									<div class="has-feedback">
 										<label for="inputName" class="uk-form-label">{{'Order ID' | r | xlat}}</label>
 										<div class="uk-inline">
-											<span class="uk-form-icon" uk-icon="icon: user"></span>
+											<span class="uk-form-icon" uk-icon="icon: pencil"></span>
 											<input type="text" class="uk-input" ng-model="criteria.OrderID" placeholder="{{('Order' | r) + ' ' + ('ID' | r) | xlat}}" autocomplete="off">
 										</div>
 									</div>
@@ -88,7 +88,7 @@
 									<div class="has-feedback">
 										<label for="inputName" class="uk-form-label">{{('Ship' | r) + ' ' + ('Address' | r) | xlat}}</label>
 										<div class="uk-inline">
-											<span class="uk-form-icon" uk-icon="icon: user"></span>
+											<span class="uk-form-icon" uk-icon="icon: location"></span>
 											<input type="text" class="uk-input" ng-model="criteria.ShippingAddress" placeholder="{{('Shipping' | r) + ' ' + ('Address' | r) | xlat}}" autocomplete="off">
 										</div>
 									</div>
@@ -104,7 +104,7 @@
 											<span class="text-info">{{criteria.DateRangeFrom | date:user.Culture.DateFormat.short}}</span>
 										</div>
 										<div class="uk-inline">
-											<span class="uk-form-icon" uk-icon="icon: user"></span>
+											<span class="uk-form-icon" uk-icon="icon: calendar"></span>
 											<input name="daterangefrom" placeholder="{{('Start' | r) + ' ' + ('Date' | r) | xlat}}" ng-model="criteria.DateRangeFrom"
 												   type="text"
 												   class="uk-input"
@@ -121,7 +121,7 @@
 											<span class="text-info">{{criteria.DateRangeTo | date:user.Culture.DateFormat.short}}</span>
 										</div>
 										<div class="uk-inline">
-											<span class="uk-form-icon" uk-icon="icon: user"></span>
+											<span class="uk-form-icon" uk-icon="icon: calendar"></span>
 											<input name="daterangeto" placeholder="{{('End' | r) + ' ' + ('Date' | r) | xlat}}" ng-model="criteria.DateRangeTo"
 												   type="text"
 												   class="uk-input"
@@ -183,7 +183,7 @@
 			</div> <!-- col -->
 		</div> <!-- row -->
 
-		<div>
+		<div class="uk-margin-medium">
 			<div class="">
 				<div class="uk-card uk-card-small uk-card-default" ng-show="orders">
 					<div class="uk-card-header">
@@ -199,13 +199,38 @@
 					</div>
 
 					<div class="uk-card-body">
-						<div class="">
+						<div uk-grid>
 							<loadingindicator ng-show="pagedIndicator" />
 
 							<div ng-show="settings.listCount > settings.pageSize && !pagedIndicator">
 								<pagination page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="settings.listCount"
 											items-per-page="settings.pageSize" direction-links="true"></pagination>
 							</div>
+
+							<table class="uk-table">
+								<thead>
+									<tr>
+										<th>Order {{'ID' | r | xlat}}</th>
+										<th>{{'Type' | r | xlat}}</th>
+										<th>{{'Status' | r | xlat}}</th>
+										<th>{{'Submitted' | r | xlat}} By</th>
+										<th>{{('Submitted' | r) + ' ' + ('Date' | r) | xlat}}</th>
+										<th ng-if="!(user.Permissions.contains('HidePricing'))">{{'Total' | r | xlat}}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="order in orders | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
+										<td><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.ExternalID || ('(unspecified)' | xlat)}}</a></td>
+										<td>{{order.Type}}</td>
+										<td>{{order.StatusText}}</td>
+										<td>{{order.FromUserFirstName + ' ' + order.FromUserLastName}}</td>
+										<td>{{order.DateSubmitted || order.DateCreated | date:user.Culture.DateFormat.long}}</td>
+										<td ng-if="!(user.Permissions.contains('HidePricing'))">{{order.Total | culturecurrency}}</td>
+									</tr>
+								</tbody>
+							</table>
+
+
 							<div class="row hidden-xs text-info" ng-show="!pagedIndicator">
 								<div class="col-xs-12 col-sm-2">{{'ID' | r | xlat}}</div>
 								<div class="col-xs-12 col-sm-2">{{'Type' | r | xlat}}</div>
