@@ -1,6 +1,6 @@
 <!-- *** UserView *** -->
 
-<section class="uk-section">
+<section uk-height-viewport="expand: true" class="uk-section uk-background-muted">
 
 	<!-- main-container start -->
 	<!-- ==================== -->
@@ -94,8 +94,8 @@
 		
 		<form class="uk-form-horizontal" role="form" ng-show="user.Permissions.contains('ViewSelfAdmin')" name="user_form" ng-submit="save()">
 			<div class="uk-card uk-card-default" id="user_form">
-				<div class="uk-card-body">
-					<div class="uk-width-1-2">
+				<div class="uk-card-body uk-flex uk-flex-center">
+					<div class="uk-width-1-2@m">
 						<form role="form">
 							<div class="uk-margin-small">
 								<label for="inputName" class="uk-form-label">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
@@ -176,7 +176,7 @@
 						</span>
 					</div>
 				</div>
-				<div class="uk-card-body" >
+				<div class="uk-card-body uk-flex uk-flex-center" >
 					<div ng-if="user.CustomFields" class="uk-width-1-3">
 						<div ng-repeat="field in user.CustomFields">
 							<customfilefield customfield="field" ng-if="field.ControlType == 'File' && field.DisplayToUser"></customfilefield>
@@ -185,7 +185,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="uk-card-footer text-center">
+				<div class="uk-card-footer uk-flex uk-flex-center">
 					<input class="uk-button uk-button-default" type="submit" ng-disabled="user_form.$invalid" id="451_btn_user" value="{{(user.Type == 'TempCustomer' ? 'Create Account' : 'Save') | xlat}}" />
 					<span class="alert alert-success" ng-show="actionMessage" ng-bind-html="actionMessage | r | xlat"></span>
 				</div>
