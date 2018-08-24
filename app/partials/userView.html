@@ -97,49 +97,49 @@
 				<div class="uk-card-body">
 					<div class="uk-width-1-2">
 						<form role="form">
-							<div>
+							<div class="uk-margin-small">
 								<label for="inputName" class="uk-form-label">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
 								<div class= "uk-inline uk-flex">
 									<span class="uk-form-icon" uk-icon="icon: user"></span>
 									<input name="firstname" type="text" class="uk-input" id="inputName" required ng-model="user.FirstName" placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" >
 								</div>
 							</div>
-							<div>
+							<div class="uk-margin-small">
 								<label for="inputName" class="uk-form-label">{{('Last' | r) + ' ' + ('Name' | r) | xlat}}</label>
 								<div class= "uk-inline uk-flex">
 									<span class="uk-form-icon" uk-icon="icon: user"></span>
 									<input name="lastname" type="text" class="uk-input" id="inputName" required ng-model="user.LastName" placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" >
 								</div>
 							</div>
-							<div>
+							<div class="uk-margin-small">
 								<label for="inputName" class="uk-form-label">{{'Phone' | r | xlat}}</label>
 								<div class= "uk-inline uk-flex">
 									<span class="uk-form-icon" uk-icon="icon: receiver"></span>
 									<input name="lastname" type="text" class="uk-input" id="inputName" required ng-model="user.Phone" placeholder="{{('Telephone' | r) | xlat}}" autocomplete="off" >
 								</div>
 							</div>
-							<div>
+							<div class="uk-margin-small">
 								<label for="inputName" class="uk-form-label">{{'Email' | r | xlat}}</label>
 								<div class= "uk-inline uk-flex">
 									<span class="uk-form-icon" uk-icon="icon: mail"></span>
 									<input name="email" type="text" class="uk-input" id="inputName" required ng-model="user.Email" placeholder="{{('Email' | r) | xlat}}" autocomplete="off" >
 								</div>
 							</div>
-							<div>
+							<div class="uk-margin-small">
 								<label for="inputName" class="uk-form-label">{{'Username' | r | xlat}}</label>
 								<div class= "uk-inline uk-flex">
 									<span class="uk-form-icon" uk-icon="icon: user"></span>
 									<input name="username" type="text" class="uk-input" id="inputName" required ng-model="user.TempUsername" placeholder="{{'Username' | r | xlat}}" autocomplete="off" >
 								</div>
 							</div>
-							<div>
+							<div class="uk-margin-small">
 								<label for="inputName" class="uk-form-label">{{'Password' | r | xlat}}</label>
 								<div class= "uk-inline uk-flex">
 									<span class="uk-form-icon" uk-icon="icon: pencil"></span>
 									<input name="password" type="password" class="uk-input" id="inputName" ng-required="user.Type == 'TempCustomer'" ng-model="user.Password" placeholder="{{'Password' | r | xlat}}" autocomplete="off" >
 								</div>
 							</div>
-							<div>
+							<div class="uk-margin-small">
 								<label for="inputName" class="uk-form-label">{{('Confirm' | r) + ' ' + ('Password' | r) | xlat}}</label>
 								<div class= "uk-inline uk-flex">
 									<span class="uk-form-icon" uk-icon="icon: pencil"></span>
