@@ -15,16 +15,16 @@
 			</div>	
 			<!-- page-title end -->
 
-			<div uk-grid class="uk-margin-remove"> <!-- GRID -->
-				
-				<loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we save your order' | r | xlat}}"/>
-
-				<div>
-					<cartmessage />
-				</div>
+			<div uk-grid> <!-- GRID -->
 			
 				<div class="uk-width-1-1 uk-width-expand@m"> <!-- WIDTH -->
-			
+
+					<loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we save your order' | r | xlat}}"/>
+
+					<div>
+						<cartmessage />
+					</div>
+				
 					<div class="uk-card uk-card-default uk-card-small"> <!-- CARD -->
 						
 						<div ng-hide="displayLoadingIndicator">
