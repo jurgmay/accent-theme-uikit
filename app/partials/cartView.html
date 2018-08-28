@@ -31,13 +31,13 @@
 
 								<div>
 									<div uk-grid class="uk-grid-small uk-child-width-expand">
-										<div class="uk-width-1-6" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
+										<div ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
 											<div class="uk-width-auto@m">
 												Date Needed
 											</div>
 										</div>
 
-										<div class="uk-width-1-6" ng-if="(user.Permissions.contains('HidePricing'))">
+										<div ng-if="(user.Permissions.contains('HidePricing'))">
 											<div class="uk-width-auto@m" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
 												<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
 													<div class="row view-form-icon">
@@ -49,20 +49,20 @@
 											</div>
 										</div>
 
-										<div class="uk-width-1-6 uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
+										<div ng-if="!(user.Permissions.contains('HidePricing'))">
 											Unit Price
 										</div>
 
-										<div class="uk-width-1-6">
+										<div>
 											Quantity
 										</div>
 
-										<div class="uk-width-1-6 uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
+										<div ng-if="!(user.Permissions.contains('HidePricing'))">
 											Total	
 										</div>
 										
-										<div class="">
-											&nbsp;
+										<div class="uk-width-auto">
+											<div style="width: 20px;"></div>
 										</div>
 									</div>
 								</div>
@@ -77,7 +77,9 @@
 
 						<!-- line items -->
 						<!-- ========== -->
-						<div class="uk-card-body" ng-repeat="item in currentOrder.LineItems" > <!-- CARD BODY -->
+
+						<!-- CARD BODY -->
+						<div class="uk-card-body" ng-repeat="item in currentOrder.LineItems" >
 						
 							 <!-- GRID -->
 							 <div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@m">
@@ -127,15 +129,15 @@
 												<!-- ======================== -->
 												<span ng-if="item.Variant.IsMpowerVariant">
 
+													<button type="button" title="{{'Download' | r | xlat}}" class="uk-button uk-button-small uk-button-default" ng-click="downloadProof(item)">
+														<span><i class="fa fa-download"></i> {{'Download Proof' | r | xlat}}</span>
+													</button>
+
 													<button type="button" class="uk-button uk-button-small uk-button-default" ng-if="item.Product.SpecCount > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
 														<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> Show Specs</span>
 														<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> Hide Specs</span>
 													</button>
-													
-													<button type="button" title="{{'Download' | r | xlat}}" class="uk-button uk-button-small uk-button-default" ng-click="downloadProof(item)">
-														<span><i class="fa fa-download"></i> {{'Download Proof' | r | xlat}}</span>
-													</button>
-													
+
 													<!-- specs -->
 													<!-- =========================== -->
 													<ul ng-show="item.toggleSpecs == true" class="uk-list uk-list-divider">
