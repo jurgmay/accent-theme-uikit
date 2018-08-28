@@ -15,9 +15,6 @@
 			</div>	
 			<!-- page-title end -->
 
-
-
-			
 			<div uk-grid class="uk-margin-remove"> <!-- GRID -->
 				
 				<loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we save your order' | r | xlat}}"/>
@@ -26,261 +23,264 @@
 					<cartmessage />
 				</div>
 			
-				<div class="uk-width-1-1 uk-width-expand@m" ng-hide="displayLoadingIndicator"> <!-- WIDTH -->
+				<div class="uk-width-1-1 uk-width-expand@m"> <!-- WIDTH -->
 			
 					<div class="uk-card uk-card-default uk-card-small"> <!-- CARD -->
+						
+						<div ng-hide="displayLoadingIndicator">
+						
+						
+							<!-- table header start -->
+							<!-- ============ -->
 
-						<!-- table header start -->
-						<!-- ============ -->
+							<header class="uk-card-header uk-text-uppercase uk-text-muted uk-text-small uk-visible@m">
+								<div uk-grid class="uk-grid-small uk-child-width-1-2">
+									<div>
+										Product
+									</div>
 
-						<header class="uk-card-header uk-text-uppercase uk-text-muted uk-text-small uk-visible@m">
-							<div uk-grid class="uk-grid-small uk-child-width-1-2">
-								<div>
-									Product
-								</div>
-
-								<div>
-									<div uk-grid class="uk-grid-small uk-child-width-expand">
-										<div ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
-											<div class="uk-width-auto@m">
-												Date Needed
+									<div>
+										<div uk-grid class="uk-grid-small uk-child-width-expand">
+											<div ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
+												<div class="uk-width-auto@m">
+													Date Needed
+												</div>
 											</div>
-										</div>
 
-										<div ng-if="(user.Permissions.contains('HidePricing'))">
-											<div class="uk-width-auto@m" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
-												<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
-													<div class="row view-form-icon">
-														<div class="">
-															{{'Cost Center' | r | xlat}}
+											<div ng-if="(user.Permissions.contains('HidePricing'))">
+												<div class="uk-width-auto@m" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
+													<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
+														<div class="row view-form-icon">
+															<div class="">
+																{{'Cost Center' | r | xlat}}
+															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<div ng-if="!(user.Permissions.contains('HidePricing'))">
-											Unit Price
-										</div>
-
-										<div>
-											Quantity
-										</div>
-
-										<div ng-if="!(user.Permissions.contains('HidePricing'))">
-											Total	
-										</div>
-										
-										<div class="uk-width-auto">
-											<div style="width: 20px;"></div>
-										</div>
-									</div>
-								</div>
-							</div> <!-- row end -->
-						</header>
-
-						<!-- line items -->
-						<!-- ========== -->
-
-						<!-- CARD BODY -->
-						<div class="uk-card-body" ng-repeat="item in currentOrder.LineItems" >
-						
-							 <!-- GRID -->
-							 <div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@m">
-							
-								 <!-- PRODUCT CELL -->
-								<div>
-
-									<!-- GRID -->
-									<div uk-grid>
-										<!-- thumbnail -->
-										<!-- ========= -->
-										<div class="uk-width-1-3">
-											<figure>
-												<a class="line-item-link" ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
-													<img ng-src="{{item.Variant.PreviewUrl || item.Variant.SmallImageUrl || item.Product.SmallImageUrl}}" />
-												</a>
-											</figure>
-										</div>
-									
-										<!-- product description -->
-										<!-- =================== -->
-										<div class="uk-width-expand">
-											<div ng-if="currentOrder.Status != 'AwaitingApproval' || isEditforApproval">
-												<a ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
-													<p>
-														 <i ng-show="item.KitIsInvalid" class="fa fa-exclamation-triangle"></i>
-														 {{item.Product.Name}}<span ng-if="item.Variant.ExternalID"> - {{item.Variant.ExternalID}}</span>
-													</p>
-												</a>
-												<p>
-													<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
-												</p>
-											</div>
-											<div ng-if="currentOrder.Status == 'AwaitingApproval' && !isEditforApproval">
-												<p>
-													{{item.Product.Name}}
-												</p><br />
-												<p>
-													<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
-												</p>
+											<div ng-if="!(user.Permissions.contains('HidePricing'))">
+												Unit Price
 											</div>
 
-											<!-- show/hide specifications -->
-											<!-- ======================== -->
 											<div>
-												<!-- is variable spec product -->
-												<!-- ======================== -->
-												<span ng-if="item.Variant.IsMpowerVariant">
+												Quantity
+											</div>
 
-													<button type="button" title="{{'Download' | r | xlat}}" class="uk-button uk-button-small uk-button-default" ng-click="downloadProof(item)">
-														<span><i class="fa fa-download"></i> {{'Download Proof' | r | xlat}}</span>
-													</button>
-
-													<button type="button" class="uk-button uk-button-small uk-button-default" ng-if="item.Product.SpecCount > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
-														<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> Show Specs</span>
-														<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> Hide Specs</span>
-													</button>
-
-													<!-- specs -->
-													<!-- =========================== -->
-													<ul ng-show="item.toggleSpecs == true" class="uk-list uk-list-divider">
-														<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified) || spec.Value == ''" ng-repeat="spec in item.Variant.Specs | orderBy : 'ListOrder' | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
-															<span class="uk-text-small uk-text-muted">{{spec.Label || spec.Name}}: </span>
-															<span class="uk-text-small" ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span></span>
-															<span class="uk-text-small" ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
-														</li>
-													</ul>
-												</span>
-
-												<!-- not a variable spec product -->
-												<!-- =========================== -->
-												<span ng-if="!item.Variant.IsMpowerVariant">
-
-													<button type="button" class="uk-button uk-button-small uk-button-default" ng-show="item.SpecsLength > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
-														<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> {{('Show' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
-														<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> {{('Hide' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
-													</button>
-
-													<!-- spec grid -->
-													<!-- =========================== -->
-													<ul ng-show="item.toggleSpecs == true" class="list-group">
-														<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified)' || spec.Value == ''" ng-repeat="spec in item.Specs | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
-															<span class="text-info">{{spec.Label || spec.Name}}: </span>
-															<span ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span></span>
-															<span ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
-														</li>
-													</ul>
-												</span>
+											<div ng-if="!(user.Permissions.contains('HidePricing'))">
+												Total	
+											</div>
+											
+											<div class="uk-width-auto">
+												<div style="width: 20px;"></div>
 											</div>
 										</div>
 									</div>
-								</div> <!-- PRODUCT CELL -->
+								</div> <!-- row end -->
+							</header>
 
-								<!-- PRODUCT DETAILS CELLS -->
-								<div>
-									<div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-expand@s">
-										<!-- date needed -->
-										<!-- =========== -->
-										<div class="" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
-											<div class="">
-												<div class="" style="">
-													<!--Default Datepicker -->
-													<div class="uk-hidden@m uk-button uk-button-default"
-														 ng-click="$event.preventDefault();$event.stopPropagation();opened = !opened;"
-														 style="margin:0; height:40px; padding-top:8px;">
-														{{item.DateNeeded ? '' : ('Tap to set a date' | xlat)}}
-														<span class="">{{item.DateNeeded | date:user.Culture.DateFormat.short}}</span>
-													</div>
-													<input name="dateneeded" placeholder="{{'Date' | xlat}}" ng-model="item.DateNeeded" ng-required="user.Permissions.contains('DateNeededRequired')"
-														   type="text"
-														   class=""
-														   datepicker-popup="{{user.Culture.DateFormat.short}}"
-														   is-open="opened"
-														   min="currentDate"/>
+							<!-- line items -->
+							<!-- ========== -->
 
-													<p><input class=flatpickr type="text" placeholder="Select Date.." data-id="datetime"></p>
+							<!-- CARD BODY -->
+							<div class="uk-card-body" ng-repeat="item in currentOrder.LineItems" >
+							
+								 <!-- GRID -->
+								 <div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@m">
+								
+									 <!-- PRODUCT CELL -->
+									<div>
 
-												</div>
+										<!-- GRID -->
+										<div uk-grid>
+											<!-- thumbnail -->
+											<!-- ========= -->
+											<div class="uk-width-1-3">
+												<figure>
+													<a class="line-item-link" ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
+														<img ng-src="{{item.Variant.PreviewUrl || item.Variant.SmallImageUrl || item.Product.SmallImageUrl}}" />
+													</a>
+												</figure>
 											</div>
-											<div class="">
-												<div class="">
-													<button type="button" title="{{'copy to all' | r | xlat}}" class="uk-button uk-button-small uk-button-default uk-float-left" value="{{'copy to all' | r | xlat}}" ng-click="copyAddressToAll()" ng-show="item.DateNeeded" ng-if="$index == 0 && currentOrder.LineItems.length > 1 && user.CostCenters.length != 1" >
-														Copy date to all items
-													</button>
+										
+											<!-- product description -->
+											<!-- =================== -->
+											<div class="uk-width-expand">
+												<div ng-if="currentOrder.Status != 'AwaitingApproval' || isEditforApproval">
+													<a ng-href="{{(item.Product.Type == 'Kit' ? 'kit' : 'cart') + '/' + (item.Product.InteropID) + '/' + (isEditforApproval ? (currentOrder.ID + '/') : '') + ($index)}}">
+														<p>
+															 <i ng-show="item.KitIsInvalid" class="fa fa-exclamation-triangle"></i>
+															 {{item.Product.Name}}<span ng-if="item.Variant.ExternalID"> - {{item.Variant.ExternalID}}</span>
+														</p>
+													</a>
+													<p>
+														<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
+													</p>
+												</div>
+												<div ng-if="currentOrder.Status == 'AwaitingApproval' && !isEditforApproval">
+													<p>
+														{{item.Product.Name}}
+													</p><br />
+													<p>
+														<small>{{item.Specs['Upload A File'].File.OriginalName}}</small>
+													</p>
+												</div>
+
+												<!-- show/hide specifications -->
+												<!-- ======================== -->
+												<div>
+													<!-- is variable spec product -->
+													<!-- ======================== -->
+													<span ng-if="item.Variant.IsMpowerVariant">
+
+														<button type="button" title="{{'Download' | r | xlat}}" class="uk-button uk-button-small uk-button-default" ng-click="downloadProof(item)">
+															<span><i class="fa fa-download"></i> {{'Download Proof' | r | xlat}}</span>
+														</button>
+
+														<button type="button" class="uk-button uk-button-small uk-button-default" ng-if="item.Product.SpecCount > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
+															<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> Show Specs</span>
+															<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> Hide Specs</span>
+														</button>
+
+														<!-- specs -->
+														<!-- =========================== -->
+														<ul ng-show="item.toggleSpecs == true" class="uk-list uk-list-divider">
+															<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified) || spec.Value == ''" ng-repeat="spec in item.Variant.Specs | orderBy : 'ListOrder' | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
+																<span class="uk-text-small uk-text-muted">{{spec.Label || spec.Name}}: </span>
+																<span class="uk-text-small" ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span>
+																<span class="uk-text-small" ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
+															</li>
+														</ul>
+													</span>
+
+													<!-- not a variable spec product -->
+													<!-- =========================== -->
+													<span ng-if="!item.Variant.IsMpowerVariant">
+
+														<button type="button" class="uk-button uk-button-small uk-button-default" ng-show="item.SpecsLength > 0" ng-click="item.toggleSpecs = !item.toggleSpecs">
+															<span ng-show="!item.toggleSpecs"><i class="fa fa-plus-circle"></i> {{('Show' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
+															<span ng-show="item.toggleSpecs"><i class="fa fa-minus-circle"></i> {{('Hide' | r) + ' ' + ('Specification' | r) + 's'  | xlat}}</span>
+														</button>
+
+														<!-- spec grid -->
+														<!-- =========================== -->
+														<ul ng-show="item.toggleSpecs == true" class="list-group">
+															<li ng-show="spec.Value" ng-hide="spec.Name.charAt(0) == '@' || spec.Value == '(unspecified)' || spec.Value == ''" ng-repeat="spec in item.Specs | filter:{'CanSetForLineItem':true} " class="list-group-item cart-spec-item">
+																<span class="text-info">{{spec.Label || spec.Name}}: </span>
+																<span ng-if="spec.ControlType == 'File'"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span>
+																<span ng-if="spec.ControlType != 'File'">{{spec.Value || ('(unspecified)' | xlat)}}</span>
+															</li>
+														</ul>
+													</span>
 												</div>
 											</div>
 										</div>
+									</div> <!-- PRODUCT CELL -->
 
-										<!-- cost centre -->
-										<!-- =========== -->
-										<div class="" ng-if="(user.Permissions.contains('HidePricing'))">
-											<div class="row">
-												<div class="col-md-6">
-													<div class="row" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
-														<div class="col-xs-12 col-sm-6" ng-if="user.Permissions.contains('CostCenterPerLine')">
-															<div class="row view-form-icon">
-																<div class="col-xs-9">
-																	<label class="required">{{'Cost Center' | r | xlat}}</label>
-																	<select name="costcenter" class="form-control " style="padding-left: 25px;" required ng-if="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')" ng-options="center.Name as center.Name for center in user.CostCenters" ng-model="item.CostCenter">
-																		<option value=""></option>
-																	</select>
-																	<input name="costcenter" class="form-control" ng-if="user.Permissions.contains('FreeFormCostCenter')" ng-model="item.CostCenter" type='text' required placeholder="{{'Cost Center' | r | xlat}}" />
-																	<span ng-if="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')">{{item.CostCenter}}</span>
-																	<i ng-if="user.CostCenters.length != 1" class="fa fa-money"></i>
-																</div>
-																<div class="col-xs-3">
-																	<button type="button" title="{{'copy to all' | r | xlat}}" class="btn btn-default pull-right" value="{{'copy to all' | r | xlat}}" ng-click="copyCostCenterToAll()" ng-show="item.CostCenter" ng-hide="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')" ng-if="$index == 0 && currentOrder.LineItems.length > 1">
-																		<span class="fa fa-copy text-info"></span>
-																	</button>
+									<!-- PRODUCT DETAILS CELLS -->
+									<div>
+										<div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-expand@s">
+											<!-- date needed -->
+											<!-- =========== -->
+											<div class="" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
+												<div class="">
+													<div class="" style="">
+														<!--Default Datepicker -->
+														<div class="uk-hidden@m uk-button uk-button-default"
+															 ng-click="$event.preventDefault();$event.stopPropagation();opened = !opened;"
+															 style="margin:0; height:40px; padding-top:8px;">
+															{{item.DateNeeded ? '' : ('Tap to set a date' | xlat)}}
+															<span class="">{{item.DateNeeded | date:user.Culture.DateFormat.short}}</span>
+														</div>
+														<input name="dateneeded" placeholder="{{'Date' | xlat}}" ng-model="item.DateNeeded" ng-required="user.Permissions.contains('DateNeededRequired')"
+															   type="text"
+															   class=""
+															   datepicker-popup="{{user.Culture.DateFormat.short}}"
+															   is-open="opened"
+															   min="currentDate"/>
+
+														<p><input class=flatpickr type="text" placeholder="Select Date.." data-id="datetime"></p>
+
+													</div>
+												</div>
+												<div class="">
+													<div class="">
+														<button type="button" title="{{'copy to all' | r | xlat}}" class="uk-button uk-button-small uk-button-default uk-float-left" value="{{'copy to all' | r | xlat}}" ng-click="copyAddressToAll()" ng-show="item.DateNeeded" ng-if="$index == 0 && currentOrder.LineItems.length > 1 && user.CostCenters.length != 1" >
+															Copy date to all items
+														</button>
+													</div>
+												</div>
+											</div>
+
+											<!-- cost centre -->
+											<!-- =========== -->
+											<div class="" ng-if="(user.Permissions.contains('HidePricing'))">
+												<div class="row">
+													<div class="col-md-6">
+														<div class="row" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
+															<div class="col-xs-12 col-sm-6" ng-if="user.Permissions.contains('CostCenterPerLine')">
+																<div class="row view-form-icon">
+																	<div class="col-xs-9">
+																		<label class="required">{{'Cost Center' | r | xlat}}</label>
+																		<select name="costcenter" class="form-control " style="padding-left: 25px;" required ng-if="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')" ng-options="center.Name as center.Name for center in user.CostCenters" ng-model="item.CostCenter">
+																			<option value=""></option>
+																		</select>
+																		<input name="costcenter" class="form-control" ng-if="user.Permissions.contains('FreeFormCostCenter')" ng-model="item.CostCenter" type='text' required placeholder="{{'Cost Center' | r | xlat}}" />
+																		<span ng-if="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')">{{item.CostCenter}}</span>
+																		<i ng-if="user.CostCenters.length != 1" class="fa fa-money"></i>
+																	</div>
+																	<div class="col-xs-3">
+																		<button type="button" title="{{'copy to all' | r | xlat}}" class="btn btn-default pull-right" value="{{'copy to all' | r | xlat}}" ng-click="copyCostCenterToAll()" ng-show="item.CostCenter" ng-hide="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')" ng-if="$index == 0 && currentOrder.LineItems.length > 1">
+																			<span class="fa fa-copy text-info"></span>
+																		</button>
+																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<!-- unit price -->
-										<!-- ========== -->
-										<div class="" ng-if="!(user.Permissions.contains('HidePricing'))">
-											<p>
-												{{item.UnitPrice | culturecurrency}}
-											</p>
-										</div>
-
-										<!-- quantity -->
-										<!-- ======== -->
-										<div class="" style="margin-top: -3px;">
-											<p>
-												<quantityfield required="true" lineitem="item" class="quantity"/>
-											</p>
-										</div>
-
-										
-										<!-- line total -->
-										<!-- ========== -->
-										<div class="">
+											<!-- unit price -->
+											<!-- ========== -->
 											<div class="" ng-if="!(user.Permissions.contains('HidePricing'))">
 												<p>
-													{{item.LineTotal | culturecurrency}}
+													{{item.UnitPrice | culturecurrency}}
 												</p>
 											</div>
+
+											<!-- quantity -->
+											<!-- ======== -->
+											<div class="" style="margin-top: -3px;">
+												<p>
+													<quantityfield required="true" lineitem="item" class="quantity"/>
+												</p>
+											</div>
+
+											
+											<!-- line total -->
+											<!-- ========== -->
+											<div class="">
+												<div class="" ng-if="!(user.Permissions.contains('HidePricing'))">
+													<p>
+														{{item.LineTotal | culturecurrency}}
+													</p>
+												</div>
+											</div>
+											
+
+											<!-- remove -->
+											<!-- ====== -->
+											<div class="uk-width-auto@s">
+												<a class="uk-text-danger" uk-tooltip="Remove" title="Remove item" aria-expanded="false" ng-click="removeItem(item)">
+													<span uk-icon="close" class="uk-icon"></span>
+												</a>
+											</div>
+
 										</div>
-										
 
-										<!-- remove -->
-										<!-- ====== -->
-										<div class="uk-width-auto@s">
-											<a class="uk-text-danger" uk-tooltip="Remove" title="Remove item" aria-expanded="false" ng-click="removeItem(item)">
-												<span uk-icon="close" class="uk-icon"></span>
-											</a>
-										</div>
-
-									</div>
-
-								</div> <!-- WIDTH END -->
-							</div> <!-- GRID END -->
+									</div> <!-- Product details cells end -->
+								</div> <!-- Grid END -->
 						</div> <!-- CARD BODY END -->
 
 						<!-- grand total footer -->
@@ -338,8 +338,8 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						
+						</div> <!-- Footer end -->
+						</div> <!-- ng-hide="displayLoadingIndicator" end -->
 					</div> <!-- card end -->
 				</div> <!-- width end -->
 			</div> <!-- grid end -->
