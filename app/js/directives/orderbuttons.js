@@ -1,7 +1,7 @@
 four51.app.directive('orderbuttons', [function() {
     var obj = {
         restrict: 'E',
-        template: '<ul ng-include="view"></ul>',
+        template: '<ul ng-include="view" class="uk-list"></ul>',
         link: function(scope, element, attrs) {
             attrs.$observe('continue', function(val) {
                scope.continue = val == 'true' ? true : false;
