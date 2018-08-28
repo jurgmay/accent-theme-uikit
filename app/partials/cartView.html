@@ -240,7 +240,7 @@
 										<!-- unit price -->
 										<!-- ========== -->
 										<div class="" ng-if="!(user.Permissions.contains('HidePricing'))">
-											<p class="uk-text-right">
+											<p>
 												{{item.UnitPrice | culturecurrency}}
 											</p>
 										</div>
@@ -258,7 +258,7 @@
 										<!-- ========== -->
 										<div class="">
 											<div class="" ng-if="!(user.Permissions.contains('HidePricing'))">
-												<p class="text-right">
+												<p>
 													{{item.LineTotal | culturecurrency}}
 												</p>
 											</div>
@@ -279,24 +279,18 @@
 							</div> <!-- GRID END -->
 						</div> <!-- CARD BODY END -->
 
-						<!-- line item separator -->
-						<!-- =================== -->
-						<div class="">
-							<div class="uk-width-1-1">
-								<div class="uk-divider"></div>
-							</div>
-						</div> <!-- row end -->
-
 						<!-- grand total footer -->
 						<!-- ================== -->
-						<div class="">
-							<div class="col-md-4 col-lg-3">
+						<div class="uk-card-footer">
+							<div>
 								<strong>{{currentOrder.LineItems.length}} {{'item' + (currentOrder.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in your' | rl | xlat:(currentOrder.LineItems.length)}} {{'cart' | rl | xlat}}</strong>
 							</div>
-							<div class="col-md-4 col-md-offset-8 col-lg-3 col-lg-offset-9 text-right">
+
+							<div>
 								<giftcardredemption ng-if="user.Permissions.contains('ViewPromotions')" />
 							</div>
-							<div class="col-md-3 col-md-offset-9 text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
+
+							<div ng-if="!(user.Permissions.contains('HidePricing'))">
 								<p>
 									<strong>{{currentOrder.Subtotal | culturecurrency}}</strong>
 								</p>
@@ -306,10 +300,6 @@
 								</button>
 							</div>
 						</div>
-
-						<!-- end of line items -->
-						<!-- ================= -->
-						<div class="uk-divider uk-margin-small"></div>
 
 						<!-- cancel button -->
 						<!-- ================ -->
