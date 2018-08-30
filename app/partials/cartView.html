@@ -1,8 +1,14 @@
 <!-- *** cartView *** -->
 <div ng-hide="currentOrder" class="hidden-print">
-	<h2 class="uk-text-center">This order has no items.</h2>
-    <!-- Show the Back button. -->
-    <a href="" back-step="" class="uk-button uk-button-default"><span class="uk-icon" uk-icon="icon: arrow-left"></span>Home</a>
+	<section uk-height-viewport="expand: true" class="uk-section uk-background-muted">
+		<div class="uk-container">
+			<div class="uk-text-center">
+				<h2>This order has no items.</h2>
+				<!-- Show the Back button. -->
+				<a href="" back-step="" class="uk-button uk-button-default"><span class="uk-icon" uk-icon="icon: arrow-left"></span>Home</a>
+			</div>
+		</div>
+	</section>
 </div>
 
 <div ng-show="currentOrder" class="hidden-print">
