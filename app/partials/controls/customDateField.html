@@ -1,11 +1,11 @@
 <!-- *** customDateField *** -->
 
-<div class="view-form-icon">
-    <label ng-class="{required: customfield.Required}">{{customfield.Label || customfield.Name | r}}</label>
-    <div ng-class="{'input-group':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">
-        <span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix | r) == '')">{{customfield.Prefix | r}}</span>
-        <input datepicker-popup="{{$parent.user.Culture.DateFormat.short}}" class="form-control" placeholder="{{customfield.Label || customfield.Name | r}}" type="date" ng-required="customfield.Required" ng-model="customfield.Value"/>
-        <span class="input-group-addon" ng-if="customfield.Suffix && !hidesuffix && !((customfield.Suffix | r) == '')">{{customfield.Suffix | r}}</span>
+<div class="uk-margin-small">
+    <label class="uk-form-label" ng-class="{required: customfield.Required}">{{customfield.Label || customfield.Name | r}}</label>
+    <div>
+        <span class="uk-margin-small-right" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix | r) == '')">{{customfield.Prefix | r}}</span>
+        <input datepicker-popup="{{$parent.user.Culture.DateFormat.short}}" class="uk-form-controls" placeholder="{{customfield.Label || customfield.Name | r}}" type="date" ng-required="customfield.Required" ng-model="customfield.Value"/>
+        <span class="uk-margin-small-left" ng-if="customfield.Suffix && !hidesuffix && !((customfield.Suffix | r) == '')">{{customfield.Suffix | r}}</span>
         <i class="fa fa-calendar"></i>
     </div>
 </div>
