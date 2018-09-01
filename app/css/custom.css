@@ -12,7 +12,7 @@ a:hover, .uk-link:hover { text-decoration: none; }
 
 .uk-card-body+.uk-card-body { border-top: 1px solid #e5e5e5; }
 
-.uk-h1, .uk-h2, h1, h2 { font-weight: 100; }
+body { font-weight: 300; }
 
 .uk-button-xsmall {
     padding: 0 8px;
