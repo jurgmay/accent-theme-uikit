@@ -20,7 +20,7 @@
             <div uk-grid>
               <!-- PRODUCT IMAGE -->
               <div>
-                <img class="uk-card uk-card-default uk-width-medium" id="451_img_prod_lg" ng-src="{{Kit.KitParent.LargeImageUrl}}" imageonload />
+                <img class="uk-cover-container" id="451_img_prod_lg" ng-src="{{Kit.KitParent.LargeImageUrl}}" imageonload />
                 <div class="empty" ng-hide="Kit.KitParent.LargeImageUrl">
                   <span class="fa empty"><i class="fa fa-camera"></i></span>
                 </div>
@@ -29,9 +29,28 @@
 
               <div class="uk-card-body">
                 <h3>{{Kit.KitParent.Name + ' contains the following items' | r}}</h3>
+
+                <table class="uk-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in Kit.KitItems" ng-click="setItemAsCurrent(item)">
+                            <td>{{item.Variant.ExternalID}}</td>
+                            <td><span class="uk-visible@m">Quantity: </span>{{item.Quantity}}</td>
+                            <td>
+                              <span ng-show="item.LineItem.IsConfigurable"><i class="fa {{item.LineItem.IsConfigured ? 'fa-edit' : 'fa-warning'}}"></i> {{item.LineItem.IsConfigured ? 'Edit' : 'Configure'}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <ul>
                   <li class="">
-                    <div class=""><b>Kit Item</b></div>
+                    <div class=""><b>Item</b></div>
                     <div class=""><b>Quantity</b></div>
                   </li>
                   <li class="" ng-repeat="item in Kit.KitItems" ng-click="setItemAsCurrent(item)">
