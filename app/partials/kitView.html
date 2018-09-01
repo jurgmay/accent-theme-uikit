@@ -152,7 +152,7 @@
                             <quantityfield required="true" lineitem="LineItem" class="" />
                           </div>
                         </div>
-                        <button ng-show="LineItem.IsKitParent" class="btn btn-success btn-block btn-lg" type="button" ng-click="saveOrder()">
+                        <button ng-show="LineItem.IsKitParent" class="uk-button uk-button-primary" type="button" ng-click="saveOrder()">
                           <loadingindicator ng-show="addToOrderIndicator" />
                           <i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
                           {{addToOrderText | r | xlat}}
@@ -160,9 +160,9 @@
                             {{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}
                           </span>
                         </button>
-                        <div class="btn-group" role="group" ng-show="LineItem.IsKitChild">
+                        <div class="" role="group" ng-show="LineItem.IsKitChild">
                           <loadingindicator ng-show="addToOrderIndicator" />
-                          <button class="uk-button uk-button-success" type="button" ng-click="saveKitItem()" ng-disabled="(ActiveKitItem.RequiresVariantSelection && !LineItem.Variant)">
+                          <button class="uk-button uk-button-primary" type="button" ng-click="saveKitItem()" ng-disabled="(ActiveKitItem.RequiresVariantSelection && !LineItem.Variant)">
                             <i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
                             {{updateKitLineItemText | r | xlat}}
                           </button>
