@@ -30,7 +30,7 @@
               <div class="uk-card-body">
                 <h3>{{Kit.KitParent.Name + ' contains the following items' | r}}</h3>
 
-                <table class="uk-table uk-table-small">
+                <table class="uk-table uk-table-small uk-table-divider">
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -40,7 +40,7 @@
                     <tbody>
                         <tr ng-repeat="item in Kit.KitItems" ng-click="setItemAsCurrent(item)">
                             <td>{{item.Variant.ExternalID}}</td>
-                            <td><span class="uk-visible@m">Quantity: </span>{{item.Quantity}}</td>
+                            <td>{{item.Quantity}}</td>
                             <td>
                               <span ng-show="item.LineItem.IsConfigurable"><i class="fa {{item.LineItem.IsConfigured ? 'fa-edit' : 'fa-warning'}}"></i> {{item.LineItem.IsConfigured ? 'Edit' : 'Configure'}}</span>
                             </td>
