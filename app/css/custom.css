@@ -4,18 +4,36 @@ Version: 1.0
 Template: Accent
 */
 
+/*
+UIkit Overrides
+*/
 
-.product-image-large {
-    border: 1px solid #dddddd;
+a:hover, .uk-link:hover { text-decoration: none; }
+
+.uk-card-body+.uk-card-body { border-top: 1px solid #e5e5e5; }
+
+.uk-h1, .uk-h2, h1, h2 { font-weight: 100; }
+
+.uk-button-xsmall {
+    padding: 0 8px;
+    line-height: 24px;
+    font-size: .7rem;
 }
 
-.product-variants {
-    margin-top: 10px;
+.uk-button-success {
+    background-color: #32d296;
+    color: #fff;
+    border: 1px solid transparent;
 }
 
-.panel-default > .panel-heading {
-    color: #ffffff;
-    background-color: #666699;
+/*
+Other
+*/
+
+.nav-border {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #e2e2e2;
 }
 
 #cartDropdownList {
@@ -24,90 +42,24 @@ Template: Accent
     overflow-y: auto;
 }
 
-p.view-inline-error {
-    color: #c9302c;
+.cart-icon {
+    border-radius: 100%;
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+    line-height: 38px;
 }
 
-
-.background-home-img {
-    background: url("http://www.accent.uk.com/images/assets/background-1.jpg") no-repeat center/100%;
-}
-
-.header-dropdown-buttons .btn-group .dropdown-menu {
-    border: solid 1px #666699;
-    background-color: #666699;
-}
-
-.header-dropdown-buttons .btn-group .dropdown-menu.cart {
-    min-width: 420px;
-}
-
-.table > thead > tr > th {
-    background-color: #666699;
-    color: #ffffff;
-}
-
-.form-control {
-    height: 36px;
-}
-
-.form-group {
-    margin-bottom: 10px;
-}
-
-.label {
-    color: #575a5c;
-    font-size: 13px;
-}
-
-label {
-    color: #777777;
-    font-weight: 400;
-    padding-left: 7px;
-    padding-right: 0px;
-}
-
-.cart-spec-item {
-    padding: 3px 10px;
-    font-size: 13px;
-}
-
-.alert-info {
-    font-size: 13px;
-}
-
-.alert-order-total {
-    font-size: 20px;
-    text-align: center;
-}
-
-.alert-warning {
-    list-style: none;
-}
-
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #aaaaaa;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #aaaaaa;
-   opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #aaaaaa;
-   opacity:  1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #aaaaaa;
-}
-:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
-  color:    #aaaaaa;
-}
-
-.text-info {
-    color: #333333;
-}
-
-.badge {
-    font-size: 16px;
-}
+.cart-count {
+    position: absolute;
+    top: 15px;
+    right: 12px;
+    background-color: #333;
+    color: #fff;
+    line-height: 14px;
+    width: 14px;
+    height: 14px;
+    border-radius: 30%;
+    font-size: 11px;
+    padding: 2px 2px;
 }
