@@ -30,7 +30,7 @@
               <div class="uk-card-body">
                 <h3>{{Kit.KitParent.Name + ' contains the following items' | r}}</h3>
 
-                <table class="uk-table">
+                <table class="uk-table uk-table-small">
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -47,23 +47,6 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <ul>
-                  <li class="">
-                    <div class=""><b>Item</b></div>
-                    <div class=""><b>Quantity</b></div>
-                  </li>
-                  <li class="" ng-repeat="item in Kit.KitItems" ng-click="setItemAsCurrent(item)">
-                    <div ng-class="{active: item.ID == ActiveKitItem.ID}">
-                      <div class="">{{item.Variant.ExternalID}}</div>
-                      <div class=""><span class="hidden-md hidden-lg hidden-sm">Quantity: </span>{{item.Quantity}}</div>
-                      <div class="">
-                        <span ng-hide="item.LineItem.IsConfigurable"><i class="fa fa-ban"></i></span>
-                        <span ng-show="item.LineItem.IsConfigurable"><i class="fa {{item.LineItem.IsConfigured ? 'fa-edit' : 'fa-warning'}}"></i> {{item.LineItem.IsConfigured ? 'Edit' : 'Configure'}}</span>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
 
                 <!-- PRODUCT INFO!-->
                 <div class="">
