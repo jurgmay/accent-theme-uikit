@@ -4,15 +4,15 @@
 
 	<!-- main-container start -->
 	<!-- ==================== -->
-	<div class="uk-container">   
+	<div class="uk-container">
 		<!-- page-title start -->
 		<!-- ================ -->
 		<div class="uk-text-center">
 			<h1 class="uk-heading uk-text-uppercase">User Account</h1>
 			<div class="uk-divider-small"></div>
-		</div>	
+		</div>
 		<!-- page-title end -->
-		
+
 		<loadingindicator title="{{'Please wait while we save your changes' | r | xlat}}" ng-show="displayLoadingIndicator"/>
 
 		<identifyusermessage ng-show="user.Type == 'TempCustomer'" />
@@ -91,7 +91,7 @@
 				</div>
 			</form>
 		</div>
-		
+
 		<form class="uk-form-horizontal" role="form" ng-show="user.Permissions.contains('ViewSelfAdmin')" name="user_form" ng-submit="save()">
 			<div class="uk-card uk-card-default" id="user_form">
 				<div class="uk-card-body uk-flex uk-flex-center">
@@ -146,12 +146,12 @@
 									<input name="confirm_password" type="password" class="uk-input" ng-required="user.Type == 'TempCustomer' || user.Password" id="inputName" required ng-model="user.ConfirmPassword" placeholder="{{('Confirm' | r) + ' ' + ('Password' | r) | xlat}}" autocomplete="off" >
 								</div>
 							</div>
-						
+
 							<inlineerror ng-show="user_form.email.$invalid" title="{{'Please enter a valid' + ' ' +  ('Email' | rl) + ' ' + ('Address' | rl) | xlat}}" />
 						</form>
 					</div>
 					<div class="">
-						
+
 						<!--TODO username input shouldn't default to temporary usernames, if the user is temp, make the placeholder show instead !-->
 						<span class="alert-warning" ng-show="securityWarning">
 							<ul>
@@ -176,8 +176,8 @@
 						</span>
 					</div>
 				</div>
-				<div class="uk-card-body uk-flex uk-flex-center" >
-					<div ng-if="user.CustomFields" class="uk-width-1-3">
+				<div class="uk-card-body uk-flex uk-flex-center" ng-if="user.CustomFields">
+					<div class="uk-width-1-3">
 						<div ng-repeat="field in user.CustomFields">
 							<customfilefield customfield="field" ng-if="field.ControlType == 'File' && field.DisplayToUser"></customfilefield>
 							<customtextfield customfield="field" ng-if="field.ControlType == 'Text' && field.DisplayToUser"></customtextfield>
