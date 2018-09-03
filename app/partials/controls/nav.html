@@ -1,12 +1,12 @@
 <!-- *** nav *** -->
 
-<div class="nav-border">
+<div class="nav-border uk-navbar-sticky">
 	<div class="uk-container">
 		<div uk-navbar>
 			<div class="uk-navbar-left">
 				<a class="uk-navbar-item uk-logo" id="logo" href="index.html"><img alt="Accent logo" id="logo_img" src="https://www.four51.com/Themes/Custom/9837598c-9484-4abd-96bb-67077caec569/accent/images/accent_logo.png"></a>
 			</div>
-			
+
 			<div class="uk-navbar-right">
 				<!-- main-menu -->
 				<ul class="uk-navbar-nav">
@@ -38,7 +38,7 @@
 						<a id="451qa_acct_link2" class="dropdown-toggle" data-toggle="dropdown">
 							<span class="uk-visible@m">{{'Account' | r | xlat}}</span>
 						</a>
-		
+
 						<div class="uk-navbar-dropdown">
 							<ul class="uk-nav uk-navbar-dropdown-nav">
 								<li id="451qa_user_link" ng-show="user.Permissions.contains('ViewSelfAdmin')">
@@ -94,7 +94,7 @@
 								<span class="cart-count default-bg" ng-bind="cartCount" ng-show="cartCount > 0"></span>
 							</div>
 						</a>
-					</li>				
+					</li>
 				</ul>
 				<!-- main-menu end -->
 			</div>
