@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="uk-margin-small">
-          <label class="uk-form-label"</label>
+          <label class="uk-form-label">{{('Company' | r) + ' ' + ('Name' | r) | xlat}}</label>
           <div class="uk-form-controls">
             <input name="companyname" class="uk-input" type="text" ng-model="address.CompanyName" autocomplete="off" placeholder="{{('Company' | r) + ' ' + ('Name' | r) | xlat}}" ng-disabled="address.IsCustEditable == false" />
           </div>
