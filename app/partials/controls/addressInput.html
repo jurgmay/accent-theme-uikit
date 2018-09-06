@@ -1,9 +1,9 @@
 <!-- *** addressInput *** -->
 
 <div id="address_edit" class="uk-card uk-card-small uk-card-default">
-  <div class="uk-card-body">
+  <div>
     <form class="uk-form-horizontal" name="addressEdit" ng-submit="save()">
-      <div>
+      <div class="uk-card-body">
         <div>
           <div class="uk-text-center">
             <h2>New Address</h2>
@@ -89,33 +89,41 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="create-address-type">
-        <div class="checkbox" ng-show="user.Permissions.contains('CreateShipToAddress')">
-          <label class="uk-form-label">
-            <input name="isShipping" type="checkbox" ng-model="address.IsShipping" ng-required="!address.IsBilling" ng-disabled="address.IsCustEditable == false" />
-            {{'Save to Delivery Address Book' | r | xlat}}
-          </label>
+
+        <!-- Don't show if we're on the Checkout view and creating a new delivery address -->
+        <!-- In that scenario the Delivery address is the only option anyway so we may as well just hide it -->
+        <div class="create-address-type" ng-hide="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
+          <div class="checkbox" ng-show="user.Permissions.contains('CreateShipToAddress')">
+            <label class="uk-form-label">
+              <input name="isShipping" type="checkbox" ng-model="address.IsShipping" ng-required="!address.IsBilling" ng-disabled="address.IsCustEditable == false" />
+              {{'Save to Delivery Address Book' | r | xlat}}
+            </label>
+          </div>
+          <div class="checkbox" ng-show="user.Permissions.contains('CreateBillToAddress')">
+            <label class="uk-form-label">
+              <input name="isBilling" type="checkbox" ng-model="address.IsBilling" ng-required="!address.IsShipping" ng-disabled="address.IsCustEditable == false" />
+              {{'Save to Billing Address Book' | r | xlat}}
+            </label>
+          </div>
         </div>
-        <div class="checkbox" ng-show="user.Permissions.contains('CreateBillToAddress')">
-          <label class="uk-form-label">
-            <input name="isBilling" type="checkbox" ng-model="address.IsBilling" ng-required="!address.IsShipping" ng-disabled="address.IsCustEditable == false" />
-            {{'Save to Billing Address Book' | r | xlat}}
-          </label>
+        <div ng-show="addressEdit.isShipping.$invalid || addressEdit.isBilling.$invalid">
+          <p class="uk-alert uk-alert-warning uk-text-center">
+            {{'An address must be saved to the delivery, billing or both address books.' | r | xlat}}
+          </p>
         </div>
-      </div>
-      <p class="alert alert-warning text-center" ng-show="addressEdit.isShipping.$invalid || addressEdit.isBilling.$invalid">
-        {{'An address must be saved to the delivery, billing or both address books.' | r | xlat}}
-      </p>
+      </div> <!-- Card body end -->
+
+      <div class="uk-card-footer">
+        <span class="uk-alert uk-alert-warning" ng-show="objectExists">{{'An address with that name already exists. Please specify another name' | r | xlat}}</span>
+        <button ng-if="(user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')) && address.IsCustEditable" class="uk-button uk-button-danger" ng-click="delete()" type="button">{{'Delete' | r | xlat}}</button>
+        <button class="uk-button uk-button-danger" type="button" ng-click="cancel()">{{'Cancel' | r | xlat}}</button>
+        <button ng-if="(user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')) && address.IsCustEditable != false" class="uk-button uk-button-primary pull-right" type="submit" ng-disabled="addressEdit.$invalid" id="451_uk-button_user">
+          <i ng-show="addressEdit.$invalid" class="fa fa-warning"></i>
+          {{'Save' | r | xlat}} {{address.AddressName}}
+        </button>
+      </div> <!-- Card footer end -->
+
     </form>
   </div>
-  <div class="uk-card-footer">
-    <span class="uk-alert uk-alert-warning" ng-show="objectExists">{{'An address with that name already exists. Please specify another name' | r | xlat}}</span>
-    <button ng-if="(user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')) && address.IsCustEditable" class="uk-button uk-button-danger" ng-click="delete()" type="button">{{'Delete' | r | xlat}}</button>
-    <button class="uk-button uk-button-danger" type="button" ng-click="cancel()">{{'Cancel' | r | xlat}}</button>
-    <button ng-if="(user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')) && address.IsCustEditable != false" class="uk-button uk-button-primary pull-right" type="submit" ng-disabled="addressEdit.$invalid" id="451_uk-button_user">
-      <i ng-show="addressEdit.$invalid" class="fa fa-warning"></i>
-      {{'Save' | r | xlat}} {{address.AddressName}}
-    </button>
-  </div>
+
 </div>
