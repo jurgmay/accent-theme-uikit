@@ -11,13 +11,13 @@
           </div>
         </div>
         <div class="uk-margin-small">
-          <label class="uk-form-label" ng-class="{required: address.IsBilling && address.IsCustEditable != false}">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
+          <label class="uk-form-label uk-width-medium" ng-class="{required: address.IsBilling && address.IsCustEditable != false}">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
           <div class="uk-form-controls">
             <input name="firstname" class="uk-input" type="text" ng-model="address.FirstName" placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" ng-required="address.IsBilling && address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
           </div>
         </div>
         <div class="uk-margin-small">
-          <label class="uk-form-label" ng-class="{required: address.IsBilling && address.IsCustEditable != false}">{{('Last' | r) + ' ' + ('Name' | r) | xlat}}</label>
+          <label class="uk-form-label uk-width-medium" ng-class="{required: address.IsBilling && address.IsCustEditable != false}">{{('Last' | r) + ' ' + ('Name' | r) | xlat}}</label>
           <div class="uk-form-controls">
             <input name="lastname" class="uk-input" type="text" ng-model="address.LastName" placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" ng-required="address.IsBilling && address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
           </div>
@@ -48,13 +48,13 @@
             <input name="street2" class="uk-input" type="text" ng-model="address.Street2" placeholder="{{'Address Line 2' | r | xlat}}" autocomplete="off" ng-disabled="address.IsCustEditable == false" />
           </div>
         </div>
-        <div class="uk-margin-small">
+        <div class="uk-margin-small uk-width-medium">
           <label class="uk-form-label" ng-class="{'required': address.IsCustEditable != false}">{{'City' | r | xlat}}</label>
           <div class="uk-form-controls">
             <input name="city" class="uk-input" type="text" ng-model="address.City" placeholder="{{'City' | r | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
           </div>
         </div>
-        <div class="uk-margin-small">
+        <div class="uk-margin-small uk-width-medium">
           <div ng-show="!hasStates()">
             <label class="uk-form-label" ng-class="{required: !hasStates && address.IsCustEditable != false}">{{'State' | r | xlat}}</label>
             <div class="uk-form-controls">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="uk-margin-small">
-          <label class="uk-form-label" ng-class="{required: hasStates() && address.IsCustEditable != false}">{{'Postcode' | r | xlat}}</label>
+          <label class="uk-form-label uk-width-small" ng-class="{required: hasStates() && address.IsCustEditable != false}">{{'Postcode' | r | xlat}}</label>
           <div class="uk-form-controls">
             <input name="zip" class="uk-input" type="text" ng-model="address.Zip" placeholder="{{'Postcode' | r | xlat}}" autocomplete="off" ng-required="hasStates() && address.IsCustEditable != false"
             ng-disabled="address.IsCustEditable == false" />
