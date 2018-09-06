@@ -69,9 +69,13 @@
 							</div>
 
 							<div class="uk-margin-small" ng-show="!currentOrder.IsMultipleShip() && orderShipAddress.ID">
-								<p class="uk-text-small uk-margin-remove" ng-show="orderShipAddress.AddressName">
-									{{orderShipAddress.AddressName}}
-								</p>
+
+                <div class="row" ng-show="!currentOrder.IsMultipleShip() && user.Permissions.contains('EditShipToName') && (orderShipAddress && !orderShipAddress.IsCustEditable)">
+									<div>
+										<input class="uk-input uk-form-width-medium uk-margin-right" type="text" ng-model="currentOrder.LineItems[0].ShipFirstName" placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" />
+										<input class="uk-input uk-form-width-medium" type="text" ng-model="currentOrder.LineItems[0].ShipLastName" placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}" />
+									</div>
+								</div>
 
 								<p class="uk-text-small uk-margin-remove" ng-show="orderShipAddress.CompanyName">
 									{{orderShipAddress.CompanyName}}
@@ -81,22 +85,11 @@
 									{{orderShipAddress.FirstName + ' ' + orderShipAddress.LastName}}
 								</p>
 
-								<div class="row" ng-show="!currentOrder.IsMultipleShip() && user.Permissions.contains('EditShipToName') && (orderShipAddress && !orderShipAddress.IsCustEditable)">
-									<div class="col-sm-2 col-md-4">
-										<input class="form-control" type="text" ng-model="currentOrder.LineItems[0].ShipFirstName" placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" />
-									</div>
-
-									<div class="col-sm-2 col-md-4">
-										<input class="form-control" type="text" ng-model="currentOrder.LineItems[0].ShipLastName" placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}" />
-									</div>
-								</div>
-
 								<p class="uk-text-small uk-margin-remove" ng-show="orderShipAddress.Street1">{{orderShipAddress.Street1}}</p>
 								<p class="uk-text-small uk-margin-remove" ng-show="orderShipAddress.Street2">{{orderShipAddress.Street2}}</p>
-								<p class="uk-text-small uk-margin-remove" ng-show="orderShipAddress.City || orderShipAddress.State || order.ShipAddress.Zip">
-            {{orderShipAddress.City}}
-									<span ng-if="orderShipAddress.City && currentOrderShipAddress.State">, </span> {{orderShipAddress.State}} {{orderShipAddress.Zip}}
-								</p>
+                <p class="uk-text-small uk-margin-remove" ng-show="orderShipAddress.City">{{orderShipAddress.City}}</p>
+                <p class="uk-text-small uk-margin-remove" ng-show="orderShipAddress.State">{{orderShipAddress.State}}</p>
+                <p class="uk-text-small uk-margin-remove" ng-show="orderShipAddress.Zip">{{orderShipAddress.Zip}}</p>
 								<p class="uk-text-small uk-margin-small" ng-show="orderShipAddress.Phone">Telephone: {{orderShipAddress.Phone}}</p>
 							</div>
 
