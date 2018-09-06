@@ -21,7 +21,7 @@
 
 				<div class="col col-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
 
-					<div uk-grid>
+					<div uk-grid class="uk-flex-center">
 						<div class="uk-width-1-2">
 							<orderdetails ng-show="hasOrderConfig" />
 						</div>
@@ -32,11 +32,13 @@
 						</div>
 					</div>
 
-					<div class="uk-alert-warning">
+					<!-- Hide if the New Address block is being displayed -->
+					<div class="uk-alert-warning" ng-hide="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
 						<strong>Order Total: {{currentOrder.Total | culturecurrency}}</strong>
 					</div>
 
-					<div>
+					<!-- Hide if the New Address block is being displayed -->
+					<div ng-hide="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
 						<div class="view-response-message alert-success text-center" alert-show="actionMessage">
 							<p>{{actionMessage | r | xlat}}</p>
 						</div>

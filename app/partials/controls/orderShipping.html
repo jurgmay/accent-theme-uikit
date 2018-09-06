@@ -4,11 +4,10 @@
 		<h3 ng-hide="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
       {{('Shipping' | r) + ' Details' | xlat}}
     </h3>
-
 	</div>
 
-	<div class="">
-		<div>
+	<div>
+		<div ng-hide="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
 			<shippingmessage />
 		</div>
 
