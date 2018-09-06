@@ -1,103 +1,91 @@
 <!-- *** addressInput *** -->
 
 <div id="address_edit">
-    <form name="addressEdit" ng-submit="save()">
+    <form class="uk-form-stacked" name="addressEdit" ng-submit="save()">
         <div>
-            <div class="">
-                <div class="form-group">
-                    <label ng-class="{'required': address.IsCustEditable != false}">{{('Address' | r) + ' ' + ('Name' | r) | xlat}}</label>
-                    <input name="addressname" class="form-control" type="text" ng-model="address.AddressName" placeholder="{{('Address' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
-                    <!-- <i class="fa fa-edit"></i> -->
+            <div>
+                <div class="uk-margin">
+                    <label class="uk-form-label" ng-class="{'required': address.IsCustEditable != false}">{{('Address' | r) + ' ' + ('Name' | r) | xlat}}</label>
+                    <input name="addressname" class="uk-form-controls" type="text" ng-model="address.AddressName" placeholder="(Example: Head Office, Work, Home)" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
                 </div>
-                <div class="form-group">
-                    <label ng-show="address.FirstName || address.IsBilling" ng-class="{required: address.IsBilling && address.IsCustEditable != false}">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
-                    <input name="firstname" class="form-control" type="text" ng-model="address.FirstName" placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" ng-required="address.IsBilling && address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
-                    <!-- <i class="fa fa-user"></i> -->
+                <div class="uk-margin">
+                    <label class="uk-form-label" ng-show="address.FirstName || address.IsBilling" ng-class="{required: address.IsBilling && address.IsCustEditable != false}">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
+                    <input name="firstname" class="uk-form-controls" type="text" ng-model="address.FirstName" placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" ng-required="address.IsBilling && address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
                 </div>
-                <div class="form-group">
-                    <label ng-show="address.LastName || address.IsBilling" ng-class="{required: address.IsBilling && address.IsCustEditable != false}">{{('Last' | r) + ' ' + ('Name' | r) | xlat}}</label>
-                    <input name="lastname" class="form-control" type="text" ng-model="address.LastName" placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" ng-required="address.IsBilling && address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
-                    <!-- <i class="fa fa-user"></i> -->
+                <div class="uk-margin">
+                    <label class="uk-form-label" ng-show="address.LastName || address.IsBilling" ng-class="{required: address.IsBilling && address.IsCustEditable != false}">{{('Last' | r) + ' ' + ('Name' | r) | xlat}}</label>
+                    <input name="lastname" class="uk-form-controls" type="text" ng-model="address.LastName" placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" ng-required="address.IsBilling && address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
                 </div>
-                <div class="form-group">
-                    <label ng-show="address.CompanyName">{{('Company' | r) + ' ' + ('Name' | r) | xlat}}</label>
-                    <input name="companyname" class="form-control" type="text" ng-model="address.CompanyName" autocomplete="off" placeholder="{{('Company' | r) + ' ' + ('Name' | r) | xlat}}" ng-disabled="address.IsCustEditable == false" />
-                    <!-- <i class="fa fa-user"></i> -->
+                <div class="uk-margin">
+                    <label class="uk-form-label" ng-show="address.CompanyName">{{('Company' | r) + ' ' + ('Name' | r) | xlat}}</label>
+                    <input name="companyname" class="uk-form-controls" type="text" ng-model="address.CompanyName" autocomplete="off" placeholder="{{('Company' | r) + ' ' + ('Name' | r) | xlat}}" ng-disabled="address.IsCustEditable == false" />
                 </div>
-                <div class="form-group">
-                    <label ng-show="isPhoneRequired()" ng-class="{required: isPhoneRequired()}">{{'Phone' | r | xlat}}</label>
-                    <input name="phone" class="form-control" type="text" ng-model="address.Phone" placeholder="{{'Phone' | r | xlat}}" autocomplete="off" ng-required="isPhoneRequired() && address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
-                    <!-- <i class="fa fa-phone"></i> -->
+                <div class="uk-margin">
+                    <label class="uk-form-label" ng-show="isPhoneRequired()" ng-class="{required: isPhoneRequired()}">{{'Phone' | r | xlat}}</label>
+                    <input name="phone" class="uk-form-controls" type="text" ng-model="address.Phone" placeholder="{{'Phone' | r | xlat}}" autocomplete="off" ng-required="isPhoneRequired() && address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
                 </div>
             </div>
             <div class="">
-                <div class="form-group">
-                    <label ng-class="{'required': address.IsCustEditable != false}">{{'Address Line 1' | r | xlat}}</label>
-                    <input name="street1" class="form-control" type="text" ng-model="address.Street1" placeholder="{{'Address Line 1' | r | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
-                    <!-- <i class="fa fa-map-marker"></i> -->
+              <div class="uk-margin">
+                    <label class="uk-form-label" ng-class="{'required': address.IsCustEditable != false}">{{'Address Line 1' | r | xlat}}</label>
+                    <input name="street1" class="uk-form-controls" type="text" ng-model="address.Street1" placeholder="{{'Address Line 1' | r | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
                 </div>
-                <div class="form-group">
-                    <label ng-show="address.Street2">{{'Address Line 2' | r | xlat}}</label>
-                    <input name="street2" class="form-control" type="text" ng-model="address.Street2" placeholder="{{'Address Line 2' | r | xlat}}" autocomplete="off" ng-disabled="address.IsCustEditable == false" />
-                    <!-- <i class="fa fa-map-marker"></i> -->
+                <div class="uk-margin">
+                    <label class="uk-form-label" ng-show="address.Street2">{{'Address Line 2' | r | xlat}}</label>
+                    <input name="street2" class="uk-form-controls" type="text" ng-model="address.Street2" placeholder="{{'Address Line 2' | r | xlat}}" autocomplete="off" ng-disabled="address.IsCustEditable == false" />
                 </div>
-                <div class="form-group">
-                    <label ng-class="{'required': address.IsCustEditable != false}">{{'City' | r | xlat}}</label>
-                    <input name="city" class="form-control" type="text" ng-model="address.City" placeholder="{{'City' | r | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
-                    <!-- <i class="fa fa-map-marker"></i> -->
+                <div class="uk-margin">
+                    <label class="uk-form-label" ng-class="{'required': address.IsCustEditable != false}">{{'City' | r | xlat}}</label>
+                    <input name="city" class="uk-form-controls" type="text" ng-model="address.City" placeholder="{{'City' | r | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
                 </div>
-                <div class="form-group">
+                <div class="uk-margin">
 					<div ng-show="!hasStates()">
-						<label ng-class="{required: !hasStates && address.IsCustEditable != false}">{{'State' | r | xlat}}</label>
-						<input ng-show="!hasStates()" class="form-control" type="text" ng-model="address.State" placeholder="{{'State' | r | xlat}}" autocomplete="off" ng-required="!hasStates() && address.IsCustEditable == false" ng-disabled="address.IsCustEditable == false" />
-						<!-- <i class="fa fa-map-marker"></i> -->
+						<label class="uk-form-label" ng-class="{required: !hasStates && address.IsCustEditable != false}">{{'State' | r | xlat}}</label>
+						<input ng-show="!hasStates()" class="uk-form-controls" type="text" ng-model="address.State" placeholder="{{'State' | r | xlat}}" autocomplete="off" ng-required="!hasStates() && address.IsCustEditable == false" ng-disabled="address.IsCustEditable == false" />
 					</div>
 				</div>
-                <div class="form-group">
+        <div class="uk-margin">
 					<div ng-show="hasStates()" ng-class="{'view-form-select': !address.State, '': address.State }">
-						<label ng-class="{required: hasStates && address.IsCustEditable != false}">{{'State' | r | xlat}}</label>
-						<select ng-show="hasStates()" class="form-control" ng-options="state.value as state.label for state in states | filter:country" ng-model="address.State" placeholder="{{'State' | r | xlat}}" ng-required="hasStates() && address.IsCustEditable == false" ng-disabled="address.IsCustEditable == false">
+						<label class="uk-form-label" ng-class="{required: hasStates && address.IsCustEditable != false}">{{'State' | r | xlat}}</label>
+						<select ng-show="hasStates()" class="uk-form-controls" ng-options="state.value as state.label for state in states | filter:country" ng-model="address.State" placeholder="{{'State' | r | xlat}}" ng-required="hasStates() && address.IsCustEditable == false" ng-disabled="address.IsCustEditable == false">
 						</select>
-						<!-- <i class="fa fa-map-marker"></i> -->
 					</div>
 				</div>
-                <div class="form-group">
-                    <label ng-class="{required: hasStates() && address.IsCustEditable != false}">{{'Postcode' | r | xlat}}</label>
-                    <input name="zip" class="form-control" type="text" ng-model="address.Zip" placeholder="{{'Postcode' | r | xlat}}" autocomplete="off" ng-required="hasStates() && address.IsCustEditable != false"
+        <div class="uk-margin">
+                    <label class="uk-form-label" ng-class="{required: hasStates() && address.IsCustEditable != false}">{{'Postcode' | r | xlat}}</label>
+                    <input name="zip" class="uk-form-controls" type="text" ng-model="address.Zip" placeholder="{{'Postcode' | r | xlat}}" autocomplete="off" ng-required="hasStates() && address.IsCustEditable != false"
                            ng-disabled="address.IsCustEditable == false" />
-                    <!-- <i class="fa fa-map-marker"></i> -->
                 </div>
-                <div class="form-group">
+                <div class="uk-margin">
 					<div ng-class="{'view-form-select': !address.Country, '': address.Country }">
-						<label ng-class="{'required': address.IsCustEditable != false}">{{'Country' | r | xlat}}</label>
-						<select name="country" class="form-control" ng-options="country.value as country.label for country in countries" ng-model="address.Country" placeholder="{{'Country' | r | xlat}}" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
-						<!-- <i class="fa fa-globe"></i> -->
+						<label class="uk-form-label" ng-class="{'required': address.IsCustEditable != false}">{{'Country' | r | xlat}}</label>
+						<select name="country" class="uk-form-controls" ng-options="country.value as country.label for country in countries" ng-model="address.Country" placeholder="{{'Country' | r | xlat}}" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
 					</div>
 				</div>
             </div>
         </div>
         <div class="create-address-type">
             <div class="checkbox">
-                <label ng-show="user.Permissions.contains('CreateShipToAddress')">
+                <label class="uk-form-label" ng-show="user.Permissions.contains('CreateShipToAddress')">
                     <input name="isShipping" type="checkbox" ng-model="address.IsShipping" ng-required="!address.IsBilling" ng-disabled="address.IsCustEditable == false" />
-                    {{'Save to Shipping Address Book' | r | xlat}}
+                    {{'Save to Delivery Address Book' | r | xlat}}
                 </label>
             </div>
             <div class="checkbox">
-                <label ng-show="user.Permissions.contains('CreateBillToAddress')">
+                <label class="uk-form-label" ng-show="user.Permissions.contains('CreateBillToAddress')">
                     <input name="isBilling" type="checkbox" ng-model="address.IsBilling" ng-required="!address.IsShipping" ng-disabled="address.IsCustEditable == false" />
                     {{'Save to Billing Address Book' | r | xlat}}
                 </label>
             </div>
         </div>
         <p class="alert alert-warning text-center" ng-show="addressEdit.isShipping.$invalid || addressEdit.isBilling.$invalid">
-            {{'An address must be saved to the shipping, billing or both address books.' | r | xlat}}
+            {{'An address must be saved to the delivery, billing or both address books.' | r | xlat}}
         </p>
         <div class="panel-footer">
             <span class="alert alert-warning" ng-show="objectExists">{{'An address with that name already exists. Please specify another name' | r | xlat}}</span><br />
-            <button ng-if="(user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')) && address.IsCustEditable" class="btn btn-danger" ng-click="delete()" type="button">{{'Delete' | r | xlat}}</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">{{'Cancel' | r | xlat}}</button>
-            <button ng-if="(user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')) && address.IsCustEditable != false" class="btn btn-primary pull-right" type="submit" ng-disabled="addressEdit.$invalid" id="451_btn_user">
+            <button ng-if="(user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')) && address.IsCustEditable" class="uk-button uk-button-danger" ng-click="delete()" type="button">{{'Delete' | r | xlat}}</button>
+            <button class="uk-button uk-button-warning" type="button" ng-click="cancel()">{{'Cancel' | r | xlat}}</button>
+            <button ng-if="(user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')) && address.IsCustEditable != false" class="uk-button uk-button-primary pull-right" type="submit" ng-disabled="addressEdit.$invalid" id="451_uk-button_user">
                 <i ng-show="addressEdit.$invalid" class="fa fa-warning"></i>
                 {{'Save' | r | xlat}} {{address.AddressName}}
             </button>
