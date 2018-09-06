@@ -48,32 +48,30 @@
             <input name="street2" class="uk-input" type="text" ng-model="address.Street2" placeholder="{{'Address Line 2' | r | xlat}}" autocomplete="off" ng-disabled="address.IsCustEditable == false" />
           </div>
         </div>
-        <div class="uk-margin-small uk-width-medium">
+        <div class="uk-margin-small">
           <label class="uk-form-label" ng-class="{'required': address.IsCustEditable != false}">{{'City' | r | xlat}}</label>
-          <div class="uk-form-controls">
+          <div class="uk-form-controls uk-width-medium">
             <input name="city" class="uk-input" type="text" ng-model="address.City" placeholder="{{'City' | r | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
           </div>
         </div>
-        <div class="uk-margin-small uk-width-medium">
-          <div ng-show="!hasStates()">
-            <label class="uk-form-label" ng-class="{required: !hasStates && address.IsCustEditable != false}">{{'State' | r | xlat}}</label>
-            <div class="uk-form-controls">
-              <input ng-show="!hasStates()" class="uk-input" type="text" ng-model="address.State" placeholder="{{'State' | r | xlat}}" autocomplete="off" ng-required="!hasStates() && address.IsCustEditable == false" ng-disabled="address.IsCustEditable == false" />
-            </div>
+        <div class="uk-margin-small" ng-show="!hasStates()">
+          <label class="uk-form-label" ng-class="{required: !hasStates && address.IsCustEditable != false}">{{'State' | r | xlat}}</label>
+          <div class="uk-form-controls uk-width-medium">
+            <input ng-show="!hasStates()" class="uk-input" type="text" ng-model="address.State" placeholder="{{'State' | r | xlat}}" autocomplete="off" ng-required="!hasStates() && address.IsCustEditable == false" ng-disabled="address.IsCustEditable == false" />
           </div>
         </div>
         <div class="uk-margin-small">
           <div ng-show="hasStates()" ng-class="{'view-form-select': !address.State, '': address.State }">
             <label class="uk-form-label" ng-class="{required: hasStates && address.IsCustEditable != false}">{{'State' | r | xlat}}</label>
-            <div class="uk-form-controls">
+            <div class="uk-form-controls uk-width-medium">
               <select ng-show="hasStates()" class="uk-input" ng-options="state.value as state.label for state in states | filter:country" ng-model="address.State" placeholder="{{'State' | r | xlat}}" ng-required="hasStates() && address.IsCustEditable == false" ng-disabled="address.IsCustEditable == false">
               </select>
             </div>
           </div>
         </div>
         <div class="uk-margin-small">
-          <label class="uk-form-label uk-width-small" ng-class="{required: hasStates() && address.IsCustEditable != false}">{{'Postcode' | r | xlat}}</label>
-          <div class="uk-form-controls">
+          <label class="uk-form-label" ng-class="{required: hasStates() && address.IsCustEditable != false}">{{'Postcode' | r | xlat}}</label>
+          <div class="uk-form-controls uk-width-small">
             <input name="zip" class="uk-input" type="text" ng-model="address.Zip" placeholder="{{'Postcode' | r | xlat}}" autocomplete="off" ng-required="hasStates() && address.IsCustEditable != false"
             ng-disabled="address.IsCustEditable == false" />
           </div>
@@ -81,7 +79,7 @@
         <div class="uk-margin-small">
           <div ng-class="{'view-form-select': !address.Country, '': address.Country }">
             <label class="uk-form-label" ng-class="{'required': address.IsCustEditable != false}">{{'Country' | r | xlat}}</label>
-            <div class="uk-form-controls">
+            <div class="uk-form-controls uk-width-medium">
               <select name="country" class="uk-input" ng-options="country.value as country.label for country in countries" ng-model="address.Country" placeholder="{{'Country' | r | xlat}}" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
             </div>
           </div>
