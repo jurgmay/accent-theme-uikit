@@ -23,7 +23,7 @@
 					<ul class="uk-list uk-alert-warning">
 						<li class="uk-text-center">
 							<span class="uk-badge">
-								<i class="fa fa-exclamation-circle fa-inverse"></i>
+								<span uk-icon="icon: warning"></span>
 								{{cart_order.$error.required.length + cart_billing.$error.required.length + cart_shipping.$error.required.length + cart_billing.$error.paymentMethod.length}}
 							</span>
 						</li>
