@@ -3,7 +3,7 @@
 <div>
     <div ng-class="{'no': cart_order.$invalid, 'yes': !cart_order.$invalid, 'open': checkOutSection == 'order' }">
         <h3>
-            {{('Shipping' | r) + ' Details' | xlat}}
+            {{('Order' | r) + ' Details' | xlat}}
         </h3>
 	</div>
 
@@ -26,7 +26,7 @@
     <fieldset class="uk-fieldset">
 			<div class="uk-margin-small" ng-show="user.Permissions.contains('CostCenterPerOrder') && !user.Permissions.contains('CostCenterPerLine') && user.CostCenters.length > 0 || user.Permissions.contains('CostCenterPerOrder') && user.Permissions.contains('FreeFormCostCenter')">
 				<div ng-class="{'view-form-select': !currentOrder.CostCenter && user.CostCenters.length > 1, '': currentOrder.CostCenter }">
-					<label class="required">{{'Cost Center' | r | xlat}}</label>
+					<label class="uk-form-label required">{{'Cost Center' | r | xlat}}</label>
 					<select class="uk-form-controls" ng-required="user.Permissions.contains('CostCenterPerOrder') && !user.Permissions.contains('CostCenterPerLine') && !user.Permissions.contains('FreeFormCostCenter')"
 							ng-change="updateCostCenter()" ng-if="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')"
 							ng-options="center.Name as center.Name for center in user.CostCenters" ng-model="currentOrder.CostCenter"><option value=""></option></select>
