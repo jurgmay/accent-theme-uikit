@@ -20,7 +20,7 @@
 				<loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we update your order' | r | xlat}}" />
 
 				<div ng-show="(cart_order.$error.required.length + cart_billing.$error.required.length + cart_shipping.$error.required.length + cart_billing.$error.paymentMethod.length) > 0">
-					<ul class="uk-alert-warning">
+					<ul class="uk-list uk-alert-warning">
 						<li class="uk-text-center">
 							<span class="uk-badge">
 								<i class="fa fa-exclamation-circle fa-inverse"></i>
