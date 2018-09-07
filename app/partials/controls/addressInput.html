@@ -92,20 +92,20 @@
 
         <!-- Don't show if we're on the Checkout view and creating a new delivery address -->
         <!-- In that scenario the Delivery address is the only option anyway so we may as well just hide it -->
-        <div class="create-address-type" ng-hide="shipaddressform">
-          <div class="checkbox" ng-show="user.Permissions.contains('CreateShipToAddress')">
-            <label class="uk-form-label">
-              <input name="isShipping" type="checkbox" ng-model="address.IsShipping" ng-required="!address.IsBilling" ng-disabled="address.IsCustEditable == false" />
-              {{'Save to Delivery Address Book' | r | xlat}}
-            </label>
-          </div>
-          <div class="checkbox" ng-show="user.Permissions.contains('CreateBillToAddress')">
-            <label class="uk-form-label">
-              <input name="isBilling" type="checkbox" ng-model="address.IsBilling" ng-required="!address.IsShipping" ng-disabled="address.IsCustEditable == false" />
-              {{'Save to Billing Address Book' | r | xlat}}
-            </label>
-          </div>
+        <div class="checkbox" ng-show="!shipaddressform && user.Permissions.contains('CreateShipToAddress')">
+          <label class="uk-form-label">
+            <input name="isShipping" type="checkbox" ng-model="address.IsShipping" ng-required="!address.IsBilling" ng-disabled="address.IsCustEditable == false" />
+            {{'Save to Delivery Address Book' | r | xlat}}
+          </label>
         </div>
+        
+        <div class="checkbox" ng-show="!shipaddressform && user.Permissions.contains('CreateBillToAddress')">
+          <label class="uk-form-label">
+            <input name="isBilling" type="checkbox" ng-model="address.IsBilling" ng-required="!address.IsShipping" ng-disabled="address.IsCustEditable == false" />
+            {{'Save to Billing Address Book' | r | xlat}}
+          </label>
+        </div>
+
         <div ng-show="addressEdit.isShipping.$invalid || addressEdit.isBilling.$invalid">
           <p class="uk-alert uk-alert-warning uk-text-center">
             An address must be saved to the delivery, billing or both address books.
