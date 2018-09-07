@@ -90,27 +90,17 @@
           </div>
         </div>
 
-        <div ng-show="shipaddressform">
-          {{shipaddressform}}
-        </div>
-
-        <div ng-hide="shipaddressform">
-          X
-        </div>
-
         <!-- Don't show if we're on the Checkout view and creating a new delivery address -->
         <!-- In that scenario the Delivery address is the only option anyway so we may as well just hide it -->
-
-        <div class="checkbox" ng-show="!shipaddressform && user.Permissions.contains('CreateShipToAddress')">
-          O
-        </div>
+        <!--         <div class="checkbox" ng-show="user.Permissions.contains('CreateShipToAddress')"> -->
+        <div class="checkbox" ng-show="0">
           <label class="uk-form-label">
             <input name="isShipping" type="checkbox" ng-model="address.IsShipping" ng-required="!address.IsBilling" ng-disabled="address.IsCustEditable == false" />
             {{'Save to Delivery Address Book' | r | xlat}}
           </label>
         </div>
 
-        <div class="checkbox" ng-show="!shipaddressform && user.Permissions.contains('CreateBillToAddress')">
+        <div class="checkbox" ng-show="user.Permissions.contains('CreateBillToAddress')">
           <label class="uk-form-label">
             <input name="isBilling" type="checkbox" ng-model="address.IsBilling" ng-required="!address.IsShipping" ng-disabled="address.IsCustEditable == false" />
             {{'Save to Billing Address Book' | r | xlat}}
