@@ -14,19 +14,20 @@
 		</div>
 		<!-- page-title end -->
 
-		<section class="uk-margin-medium">
+		<div class="uk-card uk-card-small uk-card-default">
 			<div>
 
 				<loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we update your order' | r | xlat}}" />
 
 				<div ng-show="(cart_order.$error.required.length + cart_billing.$error.required.length + cart_shipping.$error.required.length + cart_billing.$error.paymentMethod.length) > 0">
-					<ul class="uk-list uk-alert-warning">
+					<ul class="uk-list uk-alert uk-alert-warning">
 						<li class="uk-text-center">
-							<span class="uk-badge">
-								<span uk-icon="icon: warning"></span>
+							<span class="uk-badge uk-padding-small">
+								<span class="uk-padding-small uk-padding-remove-left" uk-icon="icon: warning"></span>
 								{{cart_order.$error.required.length + cart_billing.$error.required.length + cart_shipping.$error.required.length + cart_billing.$error.paymentMethod.length}}
 							</span>
 						</li>
+
 						<li class="uk-text-center">
 							<ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
 								<li ng-if="cart_order.orderid.$invalid">{{'Please enter an ' + ('order' | r) + ' ' + ('ID' | r) | xlat}}</li>
@@ -48,12 +49,14 @@
 									{{'You have not been granted permission to create a ' + ('Shipping' | r) + ' ' + ('Address' | r) + ', and no ' + ('Shipping' | r) + ' ' + ('Addresses' | r) + ' have been assigned to you. Therefore, you are not allowed to place this ' + ('Order' | r) + ' at this time' | xlat}}
 							</ul>
 						</li>
-						<li class="uk-text-center">
-							<a href ng-show="(cart_order.$error.required.length + cart_billing.$error.required.length + cart_shipping.$error.required.length + cart_billing.$error.paymentMethod.length) > 1">
+
+						<li class="uk-text-center" ng-show="(cart_order.$error.required.length + cart_billing.$error.required.length + cart_shipping.$error.required.length + cart_billing.$error.paymentMethod.length) > 1">
+							<a href>
 								<i class="fa fa-caret-down" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
 								<i class="fa fa-caret-up" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
 							</a>
 						</li>
+
 					</ul>
 				</div>
 
@@ -89,6 +92,6 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	</div>
-</div>
+</section>
