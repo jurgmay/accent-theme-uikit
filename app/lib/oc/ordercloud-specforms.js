@@ -350,8 +350,8 @@ function ocfilefield($parse, $resource, $451, fileReader, Security) {
             '<span>Filename: </span><a ng-href="{{customfield.File.Url}}">{{customfield.File.OriginalName}}</a>',
             '</div>',
             '<div class="uk-margin uk-grid-small uk-child-width-auto uk-grid" ng-show="customfield.File">',
-			'<label><input name="replace" class="uk-checkbox" type="checkbox" Replace</label>'
-			'<label><input name="delete" class="uk-checkbox" type="checkbox"> Delete</label>'
+			'<label><input name="replace" class="uk-checkbox" type="checkbox" Replace</label>',
+			'<label><input name="delete" class="uk-checkbox" type="checkbox"> Delete</label>',
             '</div>',
             '<div class="uk-text-small" ng-show="replace || !customfield.File">',
             '{{customfield.UploadInstructions}}',
