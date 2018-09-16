@@ -342,7 +342,7 @@ function ocfilefield($parse, $resource, $451, fileReader, Security) {
             '<div class="fileInput">',
             '<loadingindicator ng-show="uploadFileIndicator" title="Uploading"/>',
             '<label class="uk-form-label" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
-            '<div class="uk-panel">',
+            '<div class="uk-card uk-card-default uk-card-body uk-margin-small uk-margin-remove-top">',
 			'<div class="uk-width-medium">',
             '<img ng-show="customfield.File.IsImage && customfield.FileType == \'Image\'" ng-src="{{customfield.File.Url}}">',
             '</div>',			
