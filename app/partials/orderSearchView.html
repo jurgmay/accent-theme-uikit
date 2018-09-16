@@ -1,12 +1,12 @@
 <!-- *** orderSearchView *** -->
 
-<div id="page-start"></div>	
+<div id="page-start"></div>
 
 <section uk-height-viewport="expand: true" class="uk-section uk-background-muted">
 
 	<!-- main-container start -->
 	<!-- ==================== -->
-	<div class="uk-container">   
+	<div class="uk-container">
 		<!-- page-title start -->
 		<!-- ================ -->
 		<div class="uk-text-center">
@@ -14,7 +14,7 @@
 			<div class="uk-divider-small"></div>
 		</div>	
 		<!-- page-title end -->
-		
+
 		<div class="uk-text-center" ng-if="!hasStandardTypes && !hasReplenishmentTypes && !hasPriceRequestTypes">
 			<div>
 				<p>{{'Your search resulted in no records. Please refine your search.' | r | xlat}}</p>
@@ -66,8 +66,8 @@
 					</div>
 				</div>
 			</div>
-						
-			<div class="uk-width-3-4">	
+
+			<div class="uk-width-3-4">
 				<div class="uk-card uk-card-small uk-card-default" ng-show="hasStandardTypes || hasReplenishmentTypes || hasPriceRequestTypes">
 					<div class="uk-card-header">
 						<h3 class="uk-card-title">{{('Search' | r) + ' ' + ('Orders' | r) | xlat}}</h3>
@@ -131,7 +131,7 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="uk-width-1-3 uk-alert-primary" uk-alert>
 									<div class="uk-alert-default">
 										<p><i class="fa fa-info-circle"></i> {{'Only display last n orders' | r | xlat}}</p>
@@ -230,7 +230,7 @@
 									</tr>
 								</tbody>
 							</table>
-							
+
 							<div ng-show="settings.listCount > settings.pageSize && !pagedIndicator">
 								<pagination page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="settings.listCount"
 											items-per-page="settings.pageSize" direction-links="true"></pagination>
