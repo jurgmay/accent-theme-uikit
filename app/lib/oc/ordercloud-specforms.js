@@ -338,6 +338,10 @@ function ocfilefield($parse, $resource, $451, fileReader, Security) {
 
     function template() {
         return [
+            '<div class="uk-form-custom">',
+            '<input type="file">',
+            '<input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled>',
+            '</div>',
             '<div class="view-form-icon">',
             '<div class="fileInput">',
             '<loadingindicator ng-show="uploadFileIndicator" title="Uploading"/>',
