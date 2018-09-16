@@ -348,7 +348,7 @@ function ocfilefield($parse, $resource, $451, fileReader, Security) {
             '<input name="replace" class="uk-input uk-form-small" type="checkbox" ng-model="replace"> Replace',
             '<input name="delete" class="uk-input uk-form-small" type="checkbox"> Delete',
             '</div>',
-            '<div ng-show="replace || !customfield.File" ng-class="{\'file-upload-required text-danger\': customfield.Required }" class="uk-button uk-button-default">',
+            '<div ng-show="replace || !customfield.File" ng-class="{\'file-upload-required text-danger\': customfield.Required }">',
             '<input name="upload" class="upload" type="file">',
             '<div class="uk-text-small">',
             '{{customfield.UploadInstructions}}',
