@@ -359,7 +359,6 @@ function ocfilefield($parse, $resource, $451, fileReader, Security) {
             '<input type="hidden" ng-required="customfield.Required" ng-model="customfield.File.ID">',
             '<div class="error ui-state-error-text uk-text-danger"></div>',
             '<div class="uk-alert uk-alert-primary" ng-show="replace || !customfield.File">',
-            '{{customfield.UploadInstructions}}',
             '<div ng-show="replace || !customfield.File">',
             '<p class="uk-text-small uk-margin-remove">Allowed file types: {{customfield.AllowedExt}}</p>',
             '<p class="uk-text-small uk-margin-remove" ng-if="customfield.MinSize > 0">Minimum File Size: {{customfield.MinSize}}</p>',
