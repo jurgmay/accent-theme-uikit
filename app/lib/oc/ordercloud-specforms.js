@@ -117,12 +117,12 @@ function octitlefield() {
                 return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
               });
 
-              // Certain minor words should be left lowercase unless 
+              // Certain minor words should be left lowercase unless
               // they are the first or last words in the string
-              lowers = ['A', 'An', 'The', 'And', 'But', 'Or', 'For', 'Nor', 'As', 'At', 
+              lowers = ['A', 'An', 'The', 'And', 'But', 'Or', 'For', 'Nor', 'As', 'At',
               'By', 'For', 'From', 'In', 'Into', 'Near', 'Of', 'On', 'Onto', 'To', 'With'];
               for (i = 0, j = lowers.length; i < j; i++)
-                str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'), 
+                str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'),
                   function(txt) {
                     return txt.toLowerCase();
                   });
@@ -130,7 +130,7 @@ function octitlefield() {
               // Certain words such as initialisms or acronyms should be left uppercase
               uppers = ['Id', 'Tv'];
               for (i = 0, j = uppers.length; i < j; i++)
-                str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'), 
+                str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'),
                   uppers[i].toUpperCase());
 
               return str;
@@ -345,19 +345,19 @@ function ocfilefield($parse, $resource, $451, fileReader, Security) {
             '<img ng-show="customfield.File.IsImage && customfield.FileType == \'Image\'" ng-src="{{customfield.File.Url}}">',
             '<a ng-href="{{customfield.File.Url}}">{{customfield.File.OriginalName}}</a>',
             '<div ng-show="customfield.File">',
-            '<input name="replace" class="replace" type="checkbox" ng-model="replace"> Replace',
-            '<input name="delete" class="delete" type="checkbox"> Delete',
+            '<input name="replace" class="uk-input uk-form-small" type="checkbox" ng-model="replace"> Replace',
+            '<input name="delete" class="uk-input uk-form-small" type="checkbox"> Delete',
             '</div>',
             '<div ng-show="replace || !customfield.File" ng-class="{\'file-upload-required text-danger\': customfield.Required }" class="btn btn-default">',
-            '<i class="fa fa-upload"></i> Upload File',
+            '<span uk-icon="heart"></span> Upload File',
             '<input name="upload" class="upload" type="file">',
             '</div>',
             '<hr />',
             '<input type="hidden" ng-required="customfield.Required" ng-model="customfield.File.ID">',
-            '<div class="error ui-state-error-text text-danger"></div>',
-            '<div class="alert alert-info" ng-show="replace || !customfield.File">',
+            '<div class="error ui-state-error-text uk-text-danger"></div>',
+            '<div class="uk-alert uk-alert-warning" ng-show="replace || !customfield.File">',
             '{{customfield.UploadInstructions}}',
-            '<ul ng-show="replace || !customfield.File">',
+            '<ul class="uk-list" ng-show="replace || !customfield.File">',
             '<li>Allowed File Types: {{customfield.AllowedExt}}</li>',
             '<li ng-if="customfield.MinSize > 0">Minimum File Size: {{customfield.MinSize}}</li>',
             '<li ng-if="customfield.MaxSize > 0">Maximum File Size: {{customfield.MaxSize}}</li>',
