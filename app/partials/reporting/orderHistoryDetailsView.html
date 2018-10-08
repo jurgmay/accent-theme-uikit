@@ -2,8 +2,8 @@
 
 <div>
     <p ng-show="order.DateSubmitted">
-        <span class="text-info">{{('Date' | r) + ' ' + ('Submitted' | r) | xlat}}</span>
-        <span class="pull-right">{{order.DateSubmitted | date:user.Culture.DateFormat.short}}</span>
+        <span class="uk-text-bold">{{('Date' | r) + ' ' + ('Submitted' | r) | xlat}}</span>
+        <span class="">{{order.DateSubmitted | date:user.Culture.DateFormat.short}}</span>
     </p>
     <p>
         <span class="text-info">{{'Status' | r | xlat}}</span>

@@ -1,15 +1,15 @@
 <!-- *** orderHistoryView *** -->
 
-<div id="page-start"></div>	
+<div id="page-start"></div>
 
 <section class="uk-section uk-padding-remove uk-margin-large">
-	<div class="uk-container">   
+	<div class="uk-container">
 		<!-- page-title start -->
 		<!-- ================ -->
 		<div class="uk-text-center">
 			<h1 class="uk-heading uk-text-uppercase">{{(order.Type) + ' ' + ('Order' | r) | xlat}} {{order.ExternalID}}</h1>
 			<div class="uk-divider-small"></div>
-		</div>	
+		</div>
 		<!-- page-title end -->
 
 		<loadingindicator ng-show="loadingIndicator" title="{{'Please wait while we fetch your order' | r | xlat}}"></loadingindicator>
@@ -17,19 +17,9 @@
 			<div>
 				<orderacknowledgemessage ng-show="order.recent" />
 			</div>
-			<nav class="nav">
-				<ul>
-					<li class="pull-right" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}"></i></span></li>
-				</ul>
-			</nav>
-			<div class="col">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							{{('Order' | r) + ' ' + ('Details' | r) | xlat}}
-						</h3>
-					</div>
-					<div class="panel-body">
+			<div class="">
+				<div class="">
+					<div class="">
 						<orderhistorydetails></orderhistorydetails>
 						<orderhistorysummary ng-if="!(user.Permissions.contains('HidePricing'))"></orderhistorysummary>
 					</div>
@@ -70,7 +60,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="panel-footer" ng-if="order.FromUserID == user.ID && order.Status == 'Unsubmitted'">
 						<loadingindicator ng-show="displayLoadingIndicator" />
 						<div class="form-group view-form-icon">
