@@ -117,12 +117,12 @@ function octitlefield() {
                 return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
               });
 
-              // Certain minor words should be left lowercase unless 
+              // Certain minor words should be left lowercase unless
               // they are the first or last words in the string
-              lowers = ['A', 'An', 'The', 'And', 'But', 'Or', 'For', 'Nor', 'As', 'At', 
+              lowers = ['A', 'An', 'The', 'And', 'But', 'Or', 'For', 'Nor', 'As', 'At',
               'By', 'For', 'From', 'In', 'Into', 'Near', 'Of', 'On', 'Onto', 'To', 'With'];
               for (i = 0, j = lowers.length; i < j; i++)
-                str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'), 
+                str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'),
                   function(txt) {
                     return txt.toLowerCase();
                   });
@@ -130,7 +130,7 @@ function octitlefield() {
               // Certain words such as initialisms or acronyms should be left uppercase
               uppers = ['Id', 'Tv'];
               for (i = 0, j = uppers.length; i < j; i++)
-                str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'), 
+                str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'),
                   uppers[i].toUpperCase());
 
               return str;
@@ -340,34 +340,41 @@ function ocfilefield($parse, $resource, $451, fileReader, Security) {
         return [
             '<div class="view-form-icon">',
             '<div class="fileInput">',
+            '<label class="uk-form-label" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<div class="uk-card uk-card-default uk-card-body uk-margin-small uk-margin-remove-top">',
             '<loadingindicator ng-show="uploadFileIndicator" title="Uploading"/>',
-            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
-            '<img ng-show="customfield.File.IsImage && customfield.FileType == \'Image\'" ng-src="{{customfield.File.Url}}">',
-            '<a ng-href="{{customfield.File.Url}}">{{customfield.File.OriginalName}}</a>',
-            '<div ng-show="customfield.File">',
-            '<input name="replace" class="replace" type="checkbox" ng-model="replace"> Replace',
-            '<input name="delete" class="delete" type="checkbox"> Delete',
+			'<div ng-show="customfield.File.IsImage && customfield.FileType == \'Image\'">',
+			'<div class="uk-width-medium">',
+            '<img ng-src="{{customfield.File.Url}}">',
             '</div>',
-            '<div ng-show="replace || !customfield.File" ng-class="{\'file-upload-required text-danger\': customfield.Required }" class="btn btn-default">',
-            '<i class="fa fa-upload"></i> Upload File',
+            '<div>',
+            '<span>Filename: {{customfield.File.OriginalName}}</span>',
+            '</div>',
+            '</div>',
+            '<div class="uk-margin-small uk-margin-remove-bottom uk-grid-small uk-child-width-auto uk-grid" ng-show="customfield.File">',
+			'<label><input name="replace" class="uk-checkbox" type="checkbox" ng-model="replace"> Replace</label>',
+            '</div>',
+            '<div class="uk-text-small" ng-show="replace || !customfield.File">',
+            '{{customfield.UploadInstructions}}',
+            '</div>',			
+            '<div ng-show="replace || !customfield.File" ng-class="{\'file-upload-required text-danger\': customfield.Required }">',
             '<input name="upload" class="upload" type="file">',
             '</div>',
-            '<hr />',
             '<input type="hidden" ng-required="customfield.Required" ng-model="customfield.File.ID">',
-            '<div class="error ui-state-error-text text-danger"></div>',
-            '<div class="alert alert-info" ng-show="replace || !customfield.File">',
-            '{{customfield.UploadInstructions}}',
-            '<ul ng-show="replace || !customfield.File">',
-            '<li>Allowed File Types: {{customfield.AllowedExt}}</li>',
-            '<li ng-if="customfield.MinSize > 0">Minimum File Size: {{customfield.MinSize}}</li>',
-            '<li ng-if="customfield.MaxSize > 0">Maximum File Size: {{customfield.MaxSize}}</li>',
-            '<li ng-if="customfield.MinHeight > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Minimum Height: {{customfield.MinHeight + \' px\'}}</li>',
-            '<li ng-if="customfield.MaxHeight > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Maximum Height: {{customfield.MaxHeight + \' px\'}}</li>',
-            '<li ng-if="customfield.MinWidth > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Minimum Width: {{customfield.MinWidth + \' px\'}}</li>',
-            '<li ng-if="customfield.MaxWidth > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Maximum Width: {{customfield.MaxWidth + \' px\'}}</li>',
-            '<li ng-if="customfield.MinDPI > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Minimum DPI: {{(customfield.MinDPI) + \' dpi\'}}</li>',
-            '<li ng-if="customfield.MaxDPI > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Maximum DPI: {{(customfield.MaxDPI) + \' dpi\'}}</li>',
-            '</ul>',
+            '<div class="error ui-state-error-text uk-text-danger"></div>',
+            '<div class="uk-alert uk-alert-primary" ng-show="replace || !customfield.File">',
+            '<div ng-show="replace || !customfield.File">',
+            '<p class="uk-text-small uk-margin-remove">Allowed file types: {{customfield.AllowedExt}}</p>',
+            '<p class="uk-text-small uk-margin-remove" ng-if="customfield.MinSize > 0">Minimum File Size: {{customfield.MinSize}}</p>',
+            '<p class="uk-text-small uk-margin-remove" ng-if="customfield.MaxSize > 0">Maximum File Size: {{customfield.MaxSize}}</p>',
+            '<p class="uk-text-small uk-margin-remove" ng-if="customfield.MinHeight > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Minimum Height: {{customfield.MinHeight + \' px\'}}</p>',
+            '<p class="uk-text-small uk-margin-remove" ng-if="customfield.MaxHeight > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Maximum Height: {{customfield.MaxHeight + \' px\'}}</p>',
+            '<p class="uk-text-small uk-margin-remove" ng-if="customfield.MinWidth > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Minimum Width: {{customfield.MinWidth + \' px\'}}</p>',
+            '<p class="uk-text-small uk-margin-remove" ng-if="customfield.MaxWidth > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Maximum Width: {{customfield.MaxWidth + \' px\'}}</p>',
+            '<p class="uk-text-small uk-margin-remove" ng-if="customfield.MinDPI > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Minimum resolution: {{(customfield.MinDPI) + \' dpi\'}}</p>',
+            '<p class="uk-text-small uk-margin-remove" ng-if="customfield.MaxDPI > 0 && (customfield.File.IsImage || customfield.FileType == \'Image\')">Maximum resolution: {{(customfield.MaxDPI) + \' dpi\'}}</p>',
+            '</div>',
+            '</div>',
             '</div>',
             '</div>',
             '</div>'
