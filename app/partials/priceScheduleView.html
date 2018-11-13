@@ -8,11 +8,30 @@
             <i class="fa fa-caret-down" ng-show="!showPS"></i>
         </button>
     </div>
+
+
+    <table class="uk-table">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>{{'Quantity' | r | xlat}}</th>
+                <th>{{'Price' | r | xlat}}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>{{'Quantity' | r | xlat}}</td>
+              <td>{{pb.Price * (ps.RestrictedQuantity ? pb.Quantity : 1)| culturecurrency}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
     <div id="451qa_list_pric_schd" class="panel-table" ng-show="ps && p && showPS || ps.PriceBreaks.length <= 5">
         <div class="row" ng-hide="ps.PriceBreaks.length > 5">
             <div class="col-xs-12">
                 <h4>
-                    {{'Price Schedule' | r | xlat}}
+                    {{'Prices' | r | xlat}}
                 </h4>
             </div>
         </div>
