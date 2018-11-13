@@ -10,7 +10,7 @@
         </button>
     </div>
 
-    <table class="uk-table">
+    <table class="uk-table-small">
         <thead>
             <tr>
                 <th class="uk-text-center">{{'Quantity' | r | xlat}}</th>
@@ -19,7 +19,7 @@
         </thead>
         <tbody>
             <tr>
-              <td>{{'Quantity' | r | xlat}}</td>
+              <td>{{pb.Quantity * (ps.RestrictedQuantity ? p.QuantityMultiplier : 1)}}</td>
               <td>{{pb.Price * (ps.RestrictedQuantity ? pb.Quantity : 1)| culturecurrency}}</td>
             </tr>
         </tbody>
