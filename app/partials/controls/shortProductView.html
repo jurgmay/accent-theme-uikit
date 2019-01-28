@@ -1,18 +1,18 @@
 <!-- *** shortProductView *** -->
 <div class="uk-card uk-card-default uk-grid-collapse uk-margin" uk-grid>
 	<div class="uk-card-media-left uk-cover-container uk-width-1-4">
-        <a class="uk-link-reset" href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">
-	        <img src="{{LineItem.Product.LargeImageUrl}}" alt="">
-        </a>
+  	<a class="uk-link-reset" href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">
+	  	<img src="{{LineItem.Product.LargeImageUrl}}" alt="">
+    </a>
 	</div>
-	
-    <div>
-        <div class="uk-card-body">
+
+	<div class="uk-width-3-4">
+    <div class="uk-card-body uk-padding-product-description">
 			<h3><a class="uk-link-reset" href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">{{LineItem.Product.Name}}</a></h3>
 			<p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
 
 			<a class="uk-button uk-button-primary uk-margin-small" href="{{LineItem.Product.Type == 'Kit' ? 'kit' : 'product'}}/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</a>
-			
+
 			<section class="hidden-xs hidden-sm">
 				<p ng-show="LineItem.Product.UnitOfMeasure">
 					{{'Unit of Measure' | r | xlat}}: {{LineItem.Product.UnitOfMeasure}}
@@ -23,5 +23,5 @@
 				</p>
 			</section>
 		</div>
-    </div>
+  </div>
 </div>

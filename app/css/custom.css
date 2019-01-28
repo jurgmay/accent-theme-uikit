@@ -8,12 +8,20 @@ Template: AccentUIkit
 UIkit Overrides
 */
 
+p {
+  margin-bottom: 10px;
+}
+
 a:hover, .uk-link:hover {
   text-decoration: none;
 }
 
 .uk-card-body+.uk-card-body {
   border-top: 1px solid #e5e5e5;
+}
+
+.uk-padding-product-description {
+  padding: 20px 40px;
 }
 
 body {
