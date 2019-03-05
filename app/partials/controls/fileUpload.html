@@ -1,9 +1,5 @@
 <div>
-  <div>
-    <label>{{customfield.Label | r}}</label>
-  </div>
-
-  <div>Text</div>
+  <label class="">{{customfield.Label | r}}</label>
 
   <loadingindicator ng-show="uploadFileIndicator" title="{{'Uploading' | r | xlat}}"/>
 
@@ -13,7 +9,7 @@
     <input name="replace" class="replace" type="checkbox" ng-model="replace"></input> {{'Replace' | r | xlat}}
     <input name="delete" class="delete" type="checkbox"></input> {{'Delete' | r | xlat}}
   </div>
-  <div ng-show="replace || !customfield.File" ng-class="{'file-upload-required text-danger': customfield.Required }">
+  <div ng-show="replace || !customfield.File" ng-class="{'file-upload-required uk-text-danger': customfield.Required }">
     <input name="upload" class="upload uk-button uk-button-default" type="file"></input>
   </div>
   <input type="hidden" ng-required="customfield.Required" ng-model="customfield.File.ID"></input>
