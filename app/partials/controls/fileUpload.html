@@ -3,7 +3,6 @@
 
 	<loadingindicator ng-show="uploadFileIndicator" title="{{'Uploading' | r | xlat}}"/>
 
-	<div>
 		<img ng-show="customfield.File.IsImage && customfield.FileType == 'Image'" ng-src="{{customfield.File.Url}}"></img>
 		<a ng-href="{{customfield.File.Url}}">{{customfield.File.OriginalName}}</a>
 		<div class="uk-button uk-button-default" ng-show="customfield.File">
@@ -27,5 +26,4 @@
 				<li ng-if="customfield.MaxDPI > 0 && (customfield.File.IsImage || customfield.FileType == 'Image')">{{'Maximum DPI' | xlat}}: {{(customfield.MaxDPI) + ' ' + ('dpi' | r | xlat)}}</li>
 			</ul>
 		</div>
-	</div>
 </div>
