@@ -18,7 +18,7 @@
     <input class="uk-width-1-1" name="upload" class="upload uk-button uk-button-default" type="file"></input>
   </div>
   <input type="hidden" ng-required="customfield.Required" ng-model="customfield.File.ID"></input>
-  <div class="error ui-state-error-text"></div>
+  <div class="error ui-state-error-text"></div> 
   <div class="uk-text-danger" ng-show="replace || !customfield.File">
     <ul ng-show="replace || !customfield.File">
       <li ng-if="customfield.MinSize > 0">{{'Minimum File Size' | r | xlat}}: {{(customfield.MinSize | kb) + ' kb'}}</li>
