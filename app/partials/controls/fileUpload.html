@@ -6,11 +6,9 @@
   <loadingindicator ng-show="uploadFileIndicator" title="{{'Uploading' | r | xlat}}"/>
 
   <img ng-show="customfield.File.IsImage && customfield.FileType == 'Image'" ng-src="{{customfield.File.Url}}"></img>
-  <div>
-    <a ng-href="{{customfield.File.Url}}">{{customfield.File.OriginalName}}</a>
-	</div>
 
   <div class="uk-button uk-button-default" ng-show="customfield.File">
+    <a ng-href="{{customfield.File.Url}}">{{customfield.File.OriginalName}}</a>
     <input name="replace" class="replace" type="checkbox" ng-model="replace"></input> {{'Replace' | r | xlat}}
     <input name="delete" class="delete" type="checkbox"></input> {{'Delete' | r | xlat}}
   </div>
