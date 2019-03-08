@@ -45,6 +45,11 @@ body {
     font-weight: 400;
 }
 
+.uk-legend {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
 /*
 Other
 */
