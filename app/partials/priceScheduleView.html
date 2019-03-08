@@ -4,8 +4,8 @@
 
     <div ng-show="ps.PriceBreaks.length > 8">
       <button uk-toggle="target: #priceTable" id="451qa_btn_showhide_psched" class="uk-button uk-button-default" type="button" ng-click="showPS = !showPS">
-        <span ng-show="!showPS" class="ng-binding"><i class="fa fa-plus-circle"></i> Show {{'Price Schedule' | r | xlat}}</span>
-        <span ng-show="showPS" class="ng-binding ng-hide"><i class="fa fa-minus-circle"></i> Hide {{'Price Schedule' | r | xlat}}</span>
+        <span ng-show="!showPS" class="ng-binding">Hide {{'Price Schedule' | r | xlat}} <i class="fa fa-minus-circle"></i></span>
+        <span ng-show="showPS" class="ng-binding ng-hide">Show {{'Price Schedule' | r | xlat}} <i class="fa fa-plus-circle"></i></span>
       </button>
     </div>
 
