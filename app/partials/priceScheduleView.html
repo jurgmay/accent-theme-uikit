@@ -3,14 +3,14 @@
 <section>
 
     <div class="panel-body" ng-show="ps.PriceBreaks.length > 5">
-        <button id="451qa_btn_showhide_psched" class="btn btn-default btn-block" type="button"  ng-init="showPS = false" ng-click="showPS = !showPS">
+        <button uk-toggle="target: #priceTable" id="451qa_btn_showhide_psched" class="uk-button uk-button-default" type="button">
             {{'Price Schedule' | r | xlat}}
             <i class="fa fa-caret-up" ng-show="showPS"></i>
             <i class="fa fa-caret-down" ng-show="!showPS"></i>
         </button>
     </div>
 
-    <table class="uk-table uk-table-small uk-table-divider">
+    <table id="priceTable" class="uk-table uk-table-small uk-table-divider">
         <thead>
             <tr>
                 <th class="uk-text-center">{{'Quantity' | r | xlat}}</th>
