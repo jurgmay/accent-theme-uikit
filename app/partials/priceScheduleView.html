@@ -2,12 +2,11 @@
 
 <section>
 
-    <div class="panel-body" ng-show="ps.PriceBreaks.length > 5">
-        <button uk-toggle="target: #priceTable" id="451qa_btn_showhide_psched" class="uk-button uk-button-default" type="button">
-            {{'Price Schedule' | r | xlat}}
-            <i class="fa fa-caret-up" ng-show="showPS"></i>
-            <i class="fa fa-caret-down" ng-show="!showPS"></i>
-        </button>
+    <div ng-show="ps.PriceBreaks.length > 8">
+      <button uk-toggle="target: #priceTable" id="451qa_btn_showhide_psched" class="uk-button uk-button-default" type="button" ng-click="showPS = !showPS">
+        <span ng-show="!showPS" class="ng-binding"><i class="fa fa-plus-circle"></i> Show {{'Price Schedule' | r | xlat}}</span>
+        <span ng-show="showPS" class="ng-binding ng-hide"><i class="fa fa-minus-circle"></i> Hide {{'Price Schedule' | r | xlat}}</span>
+      </button>
     </div>
 
     <table id="priceTable" class="uk-table uk-table-small uk-table-divider">
