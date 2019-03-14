@@ -58,7 +58,7 @@
 												</div>
 											</div>
 
-											<div class="uk-width-auto@m" ng-if="user.Permissions.contains('CostCenterPerLine')">
+											<div class="uk-width-1-3" ng-if="user.Permissions.contains('CostCenterPerLine')">
 												<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
 													<div class="row view-form-icon">
 														<div class="">
@@ -223,7 +223,7 @@
 
 											<!-- cost centre -->
 											<!-- =========== -->
-											<div class="uk-width-auto@m" ng-if="user.Permissions.contains('CostCenterPerLine')">
+											<div class="uk-width-1-3" ng-if="user.Permissions.contains('CostCenterPerLine')">
 												<div class="">
 													<select name="costcenter" class="uk-select" style="padding-left: 25px;" required ng-if="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')" ng-options="center.Name as center.Name for center in user.CostCenters" ng-model="item.CostCenter">
 														<option value=""></option>
