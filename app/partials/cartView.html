@@ -23,11 +23,11 @@
 			<div class="uk-text-center">
 				<h1 class="uk-heading uk-text-uppercase">Your {{'Cart' | r | xlat}}</h1>
 				<div class="uk-divider-small"></div>
-			</div>	
+			</div>
 			<!-- page-title end -->
 
 			<div uk-grid> <!-- GRID -->
-			
+
 				<div class="uk-width-1-1 uk-width-expand@m"> <!-- WIDTH -->
 
 					<loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we save your order' | r | xlat}}"/>
@@ -35,12 +35,12 @@
 					<div>
 						<cartmessage />
 					</div>
-				
+
 					<div class="uk-card uk-card-default uk-card-small"> <!-- CARD -->
-						
+
 						<div ng-hide="displayLoadingIndicator">
-						
-						
+
+
 							<!-- table header start -->
 							<!-- ============ -->
 
@@ -79,9 +79,9 @@
 											</div>
 
 											<div ng-if="!(user.Permissions.contains('HidePricing'))">
-												Total	
+												Total
 											</div>
-											
+
 											<div class="uk-width-auto">
 												<div style="width: 20px;"></div>
 											</div>
@@ -95,10 +95,10 @@
 
 							<!-- CARD BODY -->
 							<div class="uk-card-body" ng-repeat="item in currentOrder.LineItems" >
-							
+
 								 <!-- GRID -->
 								 <div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@m">
-								
+
 									 <!-- PRODUCT CELL -->
 									<div>
 
@@ -113,7 +113,7 @@
 													</a>
 												</figure>
 											</div>
-										
+
 											<!-- product description -->
 											<!-- =================== -->
 											<div class="uk-width-expand">
@@ -225,11 +225,10 @@
 
 											<!-- cost centre -->
 											<!-- =========== -->
-											<div class="" ng-if="(user.Permissions.contains('HidePricing'))">
 												<div class="row">
 													<div class="col-md-6">
-														<div class="row" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
-															<div class="col-xs-12 col-sm-6" ng-if="user.Permissions.contains('CostCenterPerLine')">
+														<div class="row" ng-if="user.Permissions.contains('CostCenterPerLine')">
+															<div class="col-xs-12 col-sm-6>
 																<div class="row view-form-icon">
 																	<div class="col-xs-9">
 																		<label class="required">{{'Cost Center' | r | xlat}}</label>
@@ -250,7 +249,6 @@
 														</div>
 													</div>
 												</div>
-											</div>
 
 											<!-- unit price -->
 											<!-- ========== -->
@@ -268,7 +266,7 @@
 												</p>
 											</div>
 
-											
+
 											<!-- line total -->
 											<!-- ========== -->
 											<div class="">
@@ -278,7 +276,7 @@
 													</p>
 												</div>
 											</div>
-											
+
 
 											<!-- remove -->
 											<!-- ====== -->
@@ -307,13 +305,13 @@
 
 								<div class="uk-width-1-1 uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
 									<strong>{{currentOrder.Subtotal | culturecurrency}}</strong>
-									
+
 									<button type="button" neworder ng-if="user.Permissions.contains('MultipleShoppingCart') && currentOrder" class="uk-button uk-button-default" ng-click="newOrderLoadingIndicator = true;startNewOrder()">
 										<loadingindicator  ng-show="newOrderLoadingIndicator" />
 										<small>{{"Start" | r | xlat}} {{"New" | r | xlat}} {{"Order" | r | xlat}}</small>
 									</button>
 								</div>
-								
+
 								<!-- cancel button -->
 								<!-- ================ -->
 								<div class="uk-margin-small">
