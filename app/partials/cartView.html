@@ -58,13 +58,11 @@
 												</div>
 											</div>
 
-											<div ng-if="(user.Permissions.contains('HidePricing'))">
-												<div class="uk-width-auto@m" ng-if="(user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')) || user.Permissions.contains('CostCenterPerLine')">
-													<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
-														<div class="row view-form-icon">
-															<div class="">
-																{{'Cost Center' | r | xlat}}
-															</div>
+											<div class="uk-width-auto@m" ng-if="user.Permissions.contains('CostCenterPerLine')">
+												<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
+													<div class="row view-form-icon">
+														<div class="">
+															{{'Cost Center' | r | xlat}}
 														</div>
 													</div>
 												</div>
