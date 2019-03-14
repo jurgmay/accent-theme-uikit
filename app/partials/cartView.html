@@ -223,12 +223,12 @@
 
 											<!-- cost centre -->
 											<!-- =========== -->
-											<div class="" ng-if="user.Permissions.contains('CostCenterPerLine')">
+											<div class="uk-width-auto@m" ng-if="user.Permissions.contains('CostCenterPerLine')">
 												<div class="">
 													<select name="costcenter" class="uk-select" style="padding-left: 25px;" required ng-if="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')" ng-options="center.Name as center.Name for center in user.CostCenters" ng-model="item.CostCenter">
 														<option value=""></option>
 													</select>
-													<input name="costcenter" class="uk-input" ng-if="user.Permissions.contains('FreeFormCostCenter')" ng-model="item.CostCenter" type="text" required placeholder="{{'Cost Center' | r | xlat}}" />
+													<input name="costcenter" class="uk-input" ng-if="user.Permissions.contains('FreeFormCostCenter')" ng-model="item.CostCenter" type="text" required />
 													<span ng-if="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')">{{item.CostCenter}}</span>
 												</div>
 											</div>
