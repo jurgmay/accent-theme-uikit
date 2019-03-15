@@ -224,6 +224,7 @@
 													<option value=""></option>
 												</select>
 												<input name="costcenter" class="uk-input uk-form-small" ng-if="user.Permissions.contains('FreeFormCostCenter')" ng-model="item.CostCenter" type="text" required />
+												<span ng-if="user.Permissions.contains('FreeFormCostCenter')" class="uk-text-small uk-text-danger uk-margin-remove">This field requires a value</span>
 												<span ng-if="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')">{{item.CostCenter}}</span>
 											</div>
 
