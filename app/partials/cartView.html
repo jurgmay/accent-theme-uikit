@@ -191,33 +191,29 @@
 										<div uk-grid class="uk-grid-small uk-child-width-1-1 uk-child-width-expand@s">
 											<!-- date needed -->
 											<!-- =========== -->
-											<div class="" ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
-												<div class="">
-													<div class="" style="">
-														<!--Default Datepicker -->
-														<div class="uk-hidden@m uk-button uk-button-default"
-															 ng-click="$event.preventDefault();$event.stopPropagation();opened = !opened;"
-															 style="margin:0; height:40px; padding-top:8px;">
-															{{item.DateNeeded ? '' : ('Tap to set a date' | xlat)}}
-															<span class="">{{item.DateNeeded | date:user.Culture.DateFormat.short}}</span>
-														</div>
-														<input name="dateneeded" placeholder="{{'Date' | xlat}}" ng-model="item.DateNeeded" ng-required="user.Permissions.contains('DateNeededRequired')"
-															   type="text"
-															   class=""
-															   datepicker-popup="{{user.Culture.DateFormat.short}}"
-															   is-open="opened"
-															   min="currentDate"/>
-
-														<p><input class=flatpickr type="text" placeholder="Select Date.." data-id="datetime"></p>
-
+											<div ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">
+												<div>
+													<!--Default Datepicker -->
+													<div class="uk-hidden@m uk-button uk-button-default"
+														 ng-click="$event.preventDefault();$event.stopPropagation();opened = !opened;"
+														 style="margin:0; height:40px; padding-top:8px;">
+														{{item.DateNeeded ? '' : ('Tap to set a date' | xlat)}}
+														<span class="">{{item.DateNeeded | date:user.Culture.DateFormat.short}}</span>
 													</div>
+													<input name="dateneeded" placeholder="{{'Date' | xlat}}" ng-model="item.DateNeeded" ng-required="user.Permissions.contains('DateNeededRequired')"
+														   type="text"
+														   class=""
+														   datepicker-popup="{{user.Culture.DateFormat.short}}"
+														   is-open="opened"
+														   min="currentDate"/>
+
+													<p><input class=flatpickr type="text" placeholder="Select Date.." data-id="datetime"></p>
+
 												</div>
-												<div class="">
-													<div class="">
-														<button type="button" title="{{'copy to all' | r | xlat}}" class="uk-button uk-button-small uk-button-default uk-float-left" value="{{'copy to all' | r | xlat}}" ng-click="copyAddressToAll()" ng-show="item.DateNeeded" ng-if="$index == 0 && currentOrder.LineItems.length > 1 && user.CostCenters.length != 1" >
-															Copy date to all items
-														</button>
-													</div>
+												<div>
+													<button type="button" title="{{'copy to all' | r | xlat}}" class="uk-button uk-button-small uk-button-default uk-float-left" value="{{'copy to all' | r | xlat}}" ng-click="copyAddressToAll()" ng-show="item.DateNeeded" ng-if="$index == 0 && currentOrder.LineItems.length > 1 && user.CostCenters.length != 1" >
+														Copy date to all items
+													</button>
 												</div>
 											</div>
 
@@ -233,7 +229,7 @@
 
 											<!-- unit price -->
 											<!-- ========== -->
-											<div class="" ng-if="!(user.Permissions.contains('HidePricing'))">
+											<div ng-if="!(user.Permissions.contains('HidePricing'))">
 												<p>
 													{{item.UnitPrice | culturecurrency}}
 												</p>
@@ -241,7 +237,7 @@
 
 											<!-- quantity -->
 											<!-- ======== -->
-											<div style="margin-top: -5px;">
+											<div>
 												<p>
 													<quantityfield required="true" lineitem="item" class="quantity"/>
 												</p>
@@ -250,14 +246,11 @@
 
 											<!-- line total -->
 											<!-- ========== -->
-											<div class="">
-												<div class="" ng-if="!(user.Permissions.contains('HidePricing'))">
-													<p>
-														{{item.LineTotal | culturecurrency}}
-													</p>
-												</div>
+											<div ng-if="!(user.Permissions.contains('HidePricing'))">
+												<p>
+													{{item.LineTotal | culturecurrency}}
+												</p>
 											</div>
-
 
 											<!-- remove -->
 											<!-- ====== -->
