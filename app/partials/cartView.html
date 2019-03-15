@@ -227,7 +227,7 @@
 												<select name="costcenter" class="uk-select uk-form-small" style="padding-left: 25px;" required ng-if="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')" ng-options="center.Name as center.Name for center in user.CostCenters" ng-model="item.CostCenter">
 													<option value=""></option>
 												</select>
-												<input name="costcenter" class="uk-input uk-form-small" ng-if="user.Permissions.contains('FreeFormCostCenter')" ng-model="item.CostCenter" type="text" value="" required />
+												<input name="costcenter" class="uk-input uk-form-small" ng-if="user.Permissions.contains('FreeFormCostCenter')" ng-model="item.CostCenter" type="text" value="cc" required />
 												<span ng-if="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')">{{item.CostCenter}}</span>
 											</div>
 
