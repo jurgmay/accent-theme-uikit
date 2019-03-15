@@ -1,39 +1,39 @@
-angular.module('module-name', []);
+angular.module('flatpickr', []);
 
-angular.module('module-name')
-    .directive('directivename', directivename)
-    .controller('ModuleCtrl', ModuleCtrl)
-    .factory('ServiceName', ServiceName)
+angular.module('flatpickr')
+    .directive('flatpickrdate', flatpickrdate)
+    .controller('FlatpickrCtrl', FlatpickrCtrl)
+    .factory('FlatpickrService', FlatpickrService)
     .run(run)
     .config(config)
 ;
 
-function directivename() {
+function flatpickrdate() {
     var directive = {
         restrict: 'E',
         template: template,
-        controller: ModuleCtrl
+        controller: FlatpickrCtrl
     };
     return directive;
 
     function template() {
         return [
             '<div>',
-                '<input type="text" ng-model="moduleTest" />',
+                '<input type="text" ng-model="flatpickrmodel" />',
             '</div>'
         ].join('');
     }
 }
 
-ModuleCtrl.$inject = ['$scope', 'ServiceName'];
-function ModuleCtrl($scope, ServiceName) {
-    $scope.moduleTest = "Hello World!";
+FlatpickrCtrl.$inject = ['$scope', 'FlatpickrService'];
+function FlatpickrCtrl($scope, FlatpickrService) {
+    $scope.flatpickrmodel = "Hello World!";
 
-    ServiceName.method();
+    FlatpickrService.method();
 }
 
-ServiceName.$inject = ['User'];
-function ServiceName(User) {
+FlatpickrService.$inject = ['User'];
+function FlatpickrService(User) {
     var service = {
         method: method
     };
@@ -46,13 +46,13 @@ function ServiceName(User) {
 
 run.$inject = ['$templateCache'];
 function run($templateCache) {
-    $templateCache.put('moduleView.html',
-        '<div>{{moduleTest}}</div>'
+    $templateCache.put('flatpickrView.html',
+        '<div>{{flatpickrmodel}}</div>'
     );
 }
 
 config.$inject = ['$routeProvider'];
 function config($routeProvider) {
     $routeProvider.
-        when('/pathname', { templateUrl: 'moduleView.html', controller: 'ModuleCtrl' })
+        when('/pathname', { templateUrl: 'flatpickrView.html', controller: 'FlatpickrCtrl' })
 }
