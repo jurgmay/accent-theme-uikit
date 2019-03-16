@@ -11,9 +11,9 @@ function ($scope, $location, $route, $routeParams, $window, ProductDisplayServic
     }
     else {init()}
 
-	flatpickr("#testme");
-
     function init() {
+    	flatpickr("#testme");
+
         $scope.variantErrors = [];
         var varID = $routeParams.variantInteropID == 'new' ? null :  $routeParams.variantInteropID;
         $scope.loadingImage = true;
