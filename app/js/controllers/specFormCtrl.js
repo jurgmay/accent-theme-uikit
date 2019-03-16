@@ -17,6 +17,8 @@ function ($scope, $location, $route, $routeParams, $window, ProductDisplayServic
 
 >>>>>>> parent of 0561ab0... UIkit changes
     function init() {
+    	flatpickr("#testme");
+
         $scope.variantErrors = [];
         var varID = $routeParams.variantInteropID == 'new' ? null :  $routeParams.variantInteropID;
         $scope.loadingImage = true;
