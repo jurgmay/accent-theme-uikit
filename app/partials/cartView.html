@@ -200,13 +200,15 @@
 														{{item.DateNeeded ? '' : ('Tap to set a date' | xlat)}}
 														<span class="">{{item.DateNeeded | date:user.Culture.DateFormat.short}}</span>
 													</div>
+													<!--
 													<input name="dateneeded" placeholder="{{'Date' | xlat}}" ng-model="item.DateNeeded" ng-required="user.Permissions.contains('DateNeededRequired')"
 														   type="text"
 														   class=""
 														   datepicker-popup="{{user.Culture.DateFormat.short}}"
 														   is-open="opened"
 														   min="currentDate"/>
-
+													-->
+													
 													<p><input id="testme" class="flatpickr flatpickr-input" ng-model="item.DateNeeded" type="text" placeholder="{{'Date' | xlat}}" readonly="readonly"></p>
 
 													<p><input class=flatpickr type="text" placeholder="Select Date.." data-id="datetime"></p>
