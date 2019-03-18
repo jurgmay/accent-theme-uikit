@@ -118,11 +118,11 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	};
 
 	$scope.$watch('currentOrder.LineItems', function(newval) {
-		flatpickr("#flatpickr");
-
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;
 		angular.forEach($scope.currentOrder.LineItems, function(item){
+  			flatpickr("#flatpickr");
+
 		    if(!item.Product.SmallImageUrl){
     		    angular.forEach($scope.currentOrder.LineItems,function(li){
     		        if(item.Product.InteropID == li.Product.InteropID && (li.Product.SmallImageUrl)){
