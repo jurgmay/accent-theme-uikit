@@ -118,7 +118,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	};
 
 	$scope.$watch('currentOrder.LineItems', function(newval) {
-		flatpickr(".flatpickr-input", {}).formatDate(new Date(), "d/m/Y");
+		flatpickr(".flatpickr-input", {});
 
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;
