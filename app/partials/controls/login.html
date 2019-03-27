@@ -5,7 +5,7 @@
 	<!-- ==================== -->
 
 
-					<div class="uk-card uk-card-body uk-card-default">
+					<div class="uk-flex uk-flex-center uk-card uk-card-body uk-card-default">
 
 						<div id="login_box">
 							<div id="login_form" class="animated bounceIn">
@@ -17,17 +17,21 @@
 
 									<h3 class="uk-card-title">Logon</h3>
 
-								<form class="form-signin" ng-submit="login()" name="login_form">
+								<form class="uk-form-stacked" ng-submit="login()" name="login_form">
 
 									<p id="451qa_msg_login" ng-show="loginMessage" ng-bind-html="loginMessage" class="alert alert-info"></p>
 													<div class="has-feedback">
-														<label ng-show="credentials.Username">{{'Username' | r}}</label>
+														<label class="uk-form-label" ng-show="credentials.Username">{{'Username' | r}}</label>
+<div class="uk-form-controls"
 														<input autofocus class="uk-input" type="text" ng-model="credentials.Username" placeholder="{{'Username' | r}}" />
 													</div>
+												</div>
 													<div class="has-feedback">
+														<div class="uk-form-controls"
 														<label ng-show="credentials.Password">{{'Password' | r}}</label>
 														<input class="uk-input" type="password" ng-model="credentials.Password" placeholder="{{'Password' | r}}" />
 													</div>
+												</div>
 
 										<input ng-disabled="login_form.$invalid" class="uk-button uk-button-primary" id="451_btn_login" type="submit" value="{{buttonText}}" />
 
