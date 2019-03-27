@@ -3,36 +3,22 @@
 <section>
 	<!-- main-container start -->
 	<!-- ==================== -->
-	<div class="main-container"> <!-- main container start -->
-		<div class="container"> <!-- container start -->
-			<div class="row"> <!-- row start -->
-			
-				<div class="col-md-6 offset-md-3">	
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Logon</h3>
-						</div>
+
+
+					<div class="uk-card uk-card-body">
+						<h3 class="uk-card-title">Logon</h3>
 
 						<div id="login_box">
 							<div id="login_form" class="animated bounceIn">
-								
-								<!-- header-left start -->
-								<!-- ================ -->
-								<div class="header-left clearfix">
+
 									<!-- logo -->
-									<div class="logo" id="logo" style="height: 64px; margin-top: -6px;">
-									  <a href="index.html"><img style="height: 100%;" alt="Accent logo" id="logo_img" src="https://www.four51.com/Themes/Custom/9837598c-9484-4abd-96bb-67077caec569/assets/accent/accent-logo.png"></a>
+									<div class="" id="logo" style="height: 64px; margin-top: -6px;">
+									  <a href="index.html"><img style="height: 100%;" alt="Accent logo" id="logo_img" src="https://www.four51.com/Themes/Custom/9837598c-9484-4abd-96bb-67077caec569/assets/accent/logo.png"></a>
 									</div>
-								</div><!-- header-left end -->
 
 								<form class="form-signin" ng-submit="login()" name="login_form">
 
 									<p id="451qa_msg_login" ng-show="loginMessage" ng-bind-html="loginMessage" class="alert alert-info"></p>
-
-
-										<div class="panel-body">
-											<div class="row">
-												<div class="col-sm-4 view-form-icon">
 													<div class="form-group has-feedback">
 														<label ng-show="credentials.Username">{{'Username' | r}}</label>
 														<input autofocus class="form-control" type="text" ng-model="credentials.Username" placeholder="{{'Username' | r}}" />
@@ -41,11 +27,8 @@
 														<label ng-show="credentials.Password">{{'Password' | r}}</label>
 														<input class="form-control" type="password" ng-model="credentials.Password" placeholder="{{'Password' | r}}" />
 													</div>
-												</div>
-											</div>
-										</div>
-									
-										<input ng-disabled="login_form.$invalid" class="btn btn-large btn-primary btn-block" id="451_btn_login" type="submit" value="{{buttonText}}" />
+
+										<input ng-disabled="login_form.$invalid" class="uk-button uk-button-primary" id="451_btn_login" type="submit" value="{{buttonText}}" />
 
 										<div>
 											<p class="alert alert-info" ng-show="showEmailHelp && (!EmailNotFoundException || !PasswordSecurityException)">
@@ -101,13 +84,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+
 </section>
-
-
-
-
-
