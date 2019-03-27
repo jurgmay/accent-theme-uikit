@@ -5,8 +5,7 @@
 	<!-- ==================== -->
 
 
-					<div class="uk-card uk-card-body">
-						<h3 class="uk-card-title">Logon</h3>
+					<div class="uk-card uk-card-body uk-card-default">
 
 						<div id="login_box">
 							<div id="login_form" class="animated bounceIn">
@@ -16,16 +15,18 @@
 									  <a href="index.html"><img style="height: 100%;" alt="Accent logo" id="logo_img" src="https://www.four51.com/Themes/Custom/9837598c-9484-4abd-96bb-67077caec569/assets/accent/logo.png"></a>
 									</div>
 
+									<h3 class="uk-card-title">Logon</h3>
+
 								<form class="form-signin" ng-submit="login()" name="login_form">
 
 									<p id="451qa_msg_login" ng-show="loginMessage" ng-bind-html="loginMessage" class="alert alert-info"></p>
-													<div class="form-group has-feedback">
+													<div class="has-feedback">
 														<label ng-show="credentials.Username">{{'Username' | r}}</label>
-														<input autofocus class="form-control" type="text" ng-model="credentials.Username" placeholder="{{'Username' | r}}" />
+														<input autofocus class="uk-input" type="text" ng-model="credentials.Username" placeholder="{{'Username' | r}}" />
 													</div>
-													<div class="form-group has-feedback">
+													<div class="has-feedback">
 														<label ng-show="credentials.Password">{{'Password' | r}}</label>
-														<input class="form-control" type="password" ng-model="credentials.Password" placeholder="{{'Password' | r}}" />
+														<input class="uk-input" type="password" ng-model="credentials.Password" placeholder="{{'Password' | r}}" />
 													</div>
 
 										<input ng-disabled="login_form.$invalid" class="uk-button uk-button-primary" id="451_btn_login" type="submit" value="{{buttonText}}" />
