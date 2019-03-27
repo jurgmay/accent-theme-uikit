@@ -11,20 +11,23 @@
 				<h3 class="uk-card-title">Logon</h3>
 				<form class="uk-form-stacked" id="login_form" name="login_form">
 					<p class="alert alert-info" id="451qa_msg_login"></p>
-					<div>
+					<div class="uk-margin">
 						<label ng-show="credentials.Username">{{'Username' | r}}</label>
 						<div class="uk-form-controls">
 							<input autofocus class="uk-form-input" type="text" ng-model="credentials.Username" placeholder="{{'Username' | r}}" />
 						</div>
 					</div>
-					<div>
+					<div class="uk-margin">
 						<label ng-show="credentials.Password">{{'Password' | r}}</label>
 						<div class="uk-form-controls">
 							<input class="uk-form-input" type="password" ng-model="credentials.Password" placeholder="{{'Password' | r}}" />
 						</div>
 					</div>
 
-					<input ng-disabled="login_form.$invalid" class="uk-button uk-button-primary" id="451_btn_login" type="submit" value="{{buttonText}}" />
+					<div class="uk-margin">
+						<input ng-disabled="login_form.$invalid" class="uk-button uk-button-primary" id="451_btn_login" type="submit" value="{{buttonText}}" />
+					</div>
+
 					<div>
 						<p class="alert alert-info" ng-show="showEmailHelp && (!EmailNotFoundException || !PasswordSecurityException)">
 							If you would like to be reminded of your {{'Username' | r}} or have the option to reset your {{'Password' | r}}, please provide your email address and your log on information will be emailed to you immediately.
