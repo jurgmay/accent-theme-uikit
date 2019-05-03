@@ -19,7 +19,7 @@
         <tbody>
             <tr ng-repeat="pb in ps.PriceBreaks">
               <td>{{pb.Quantity * (ps.RestrictedQuantity ? p.QuantityMultiplier : 1)}}</td>
-              <td>{{pb.Price * (ps.RestrictedQuantity ? pb.Quantity : 1)| culturecurrency}}</td>
+              <td class="uk-text-right">{{pb.Price * (ps.RestrictedQuantity ? pb.Quantity : 1)| culturecurrency}}</td>
             </tr>
         </tbody>
     </table>
