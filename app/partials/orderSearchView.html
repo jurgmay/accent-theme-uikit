@@ -12,7 +12,7 @@
 		<div class="uk-text-center">
 			<h1 class="uk-heading uk-text-uppercase">Orders</h1>
 			<div class="uk-divider-small"></div>
-		</div>	
+		</div>
 		<!-- page-title end -->
 
 		<div class="uk-text-center" ng-if="!hasStandardTypes && !hasReplenishmentTypes && !hasPriceRequestTypes">
@@ -215,7 +215,7 @@
 										<th class="uk-padding-remove-top ng-binding">{{'Status' | r | xlat}}</th>
 										<th class="uk-padding-remove-top ng-binding">{{'Submitted' | r | xlat}} By</th>
 										<th class="uk-padding-remove-top ng-binding">{{('Submitted' | r) + ' ' + ('Date' | r) | xlat}}</th>
-										<th  class="uk-padding-remove-top ng-binding" ng-if="!(user.Permissions.contains('HidePricing'))">{{'Total' | r | xlat}}</th>
+										<th class="uk-padding-remove-top ng-binding" ng-if="!(user.Permissions.contains('HidePricing'))">{{'Total' | r | xlat}}</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -226,7 +226,7 @@
 										<td class="uk-padding-remove-top"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.StatusText}}</a></td>
 										<td class="uk-padding-remove-top"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.FromUserFirstName + ' ' + order.FromUserLastName}}</a></td>
 										<td class="uk-padding-remove-top"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.DateSubmitted || order.DateCreated | date:user.Culture.DateFormat.long}}</a></td>
-										<td  class="uk-padding-remove-top" ng-if="!(user.Permissions.contains('HidePricing'))"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.Total | culturecurrency}}</a></td>
+										<td class="uk-padding-remove-top" ng-if="!(user.Permissions.contains('HidePricing'))"><a ng-href="{{currentOrder.ID == order.ID ? 'cart' : 'order/' + order.ID}}">{{order.Total | culturecurrency}}</a></td>
 									</tr>
 								</tbody>
 							</table>

@@ -21,65 +21,67 @@
 			</div>
 
 			<div class="uk-card-body">
-				<ul>
-					<li ng-repeat="criteria in OrderSearchCriteria | filter:{Type:'PriceRequest'}" ng-show="criteria.Count">
-						<a ng-href="#" ng-click="OrderSearch($event,{{criteria}})">{{criteria.DisplayName | r | xlat}} <span class="uk-badge">{{criteria.Count}}</span></a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="panel-body">
-				<div class="view-form-icon">
-					<form name="searchForm" ng-submit="search()">
-						<div class="input-group">
-							<input type="text" ng-model="searchTerm"  class="form-control" placeholder="{{('Search' | r) + ' ' + ('Addresses' | r) | xlat}}" />
-							<i class="fa fa-search"></i>
-							<div class="input-group-btn">
-								<button type="submit" class="btn btn-default">{{'Search' | r | xlat}}</button>
-							</div>
+				<div class="uk-margin uk-text-center">
+					<form name="searchForm" class="uk-margin-small" ng-submit="search()">
+						<div class="uk-inline uk-width-1-3">
+							<span class="uk-form-icon" uk-icon="icon: search"></span>
+							<input class="uk-input" type="search" placeholder="{{('Search' | r) + ' ' + ('Addresses' | r) | xlat}}" ng-model="searchTerm">
+						</div>
+						<div class="uk-margin-small">
+							<button type="submit" class="uk-button uk-button-primary">{{'Search' | r | xlat}}</button>
 						</div>
 					</form>
 				</div>
 
 				<div ng-show="!addresses.length > 0">
 					<hr/>
-					<p class="alert alert-warning">{{'No' + ' ' + ('addresses' | rc) + ' ' + 'available' | xlat}}</p>
-					<div class="panel-footer">
-						<button type="button" class="btn btn-primary" ng-click="newAddress($event)">{{'Add an' + ' ' + ('address' | rc) + ' ' + 'now' | xlat}}</button>
+					<div class="uk-text-center">
+						<h3>{{'Your search resulted in no records. Please refine your search.' | r | xlat}}</h3>
+						<button type="button" class="uk-button uk-button-primary uk-margin" ng-click="newAddress($event)">{{'Add an' + ' ' + ('address' | rc) + ' ' + 'now' | xlat}}</button>
 					</div>
 				</div>
+
 				<div ng-show="addresses.length > 0">
 					<hr/>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<tbody>
+					<div class="uk-container">
+						<table class="uk-table uk-margin-remove">
+							<thead>
 								<tr>
-									<th><input type='checkbox' ng-click="checkAll($event)" /></th>
-									<th>{{'Name' | r}}</th>
-									<th>{{'City' | r}}</th>
-									<th>{{'State' | r}}</th>
-									<th>{{'Shipping' | r}}</th>
-									<th>{{'Billing' | r}}</th>
+									<th class="uk-padding-remove-top"><input class="uk-checkbox" type='checkbox' ng-click="checkAll($event)" /></th>
+									<th class="uk-padding-remove-top">{{'Name' | r}}</th>
+									<th class="uk-padding-remove-top">{{'Street1' | r}}</th>
+									<th class="uk-padding-remove-top">{{'Street2' | r}}</th>
+									<th class="uk-padding-remove-top">{{'City' | r}}</th>
+									<th class="uk-padding-remove-top">{{'State' | r}}</th>
+									<th class="uk-padding-remove-top">Postcode</th>
+									<th class="uk-padding-remove-top">{{'Shipping' | r}}</th>
+									<th class="uk-padding-remove-top">{{'Billing' | r}}</th>
 								</tr>
+							</thead>
+							<tbody>
 								<tr ng-repeat="address in addresses | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
-									<td><input type='checkbox' ng-model="address.Selected" ng-show="address.IsCustEditable" /></td>
-									<td><a ng-href="address/{{address.ID}}">{{address.AddressName}}</a></td>
-									<td>{{address.City}}</td>
-									<td>{{address.State}}</td>
-									<td><i ng-class="{'fa fa-check': address.IsShipping }"></i></td>
-									<td><i ng-class="{'fa fa-check': address.IsBilling }"></i></td>
+									<td class="uk-padding-remove-top"><input class="uk-checkbox" type='checkbox' ng-model="address.Selected" ng-show="address.IsCustEditable" /></td>
+									<td class="uk-padding-remove-top"><a ng-href="address/{{address.ID}}" ng-if="address.IsCustEditable">{{address.AddressName}}</a><span ng-if="!address.IsCustEditable">{{address.AddressName}}</span></td>
+									<td class="uk-padding-remove-top">{{address.Street1}}</td>
+									<td class="uk-padding-remove-top">{{address.Street2}}</td>
+									<td class="uk-padding-remove-top">{{address.City}}</td>
+									<td class="uk-padding-remove-top">{{address.State}}</td>
+									<td class="uk-padding-remove-top">{{address.Zip}}</td>
+									<td class="uk-padding-remove-top"><i ng-class="{'fa fa-check': address.IsShipping }"></i></td>
+									<td class="uk-padding-remove-top"><i ng-class="{'fa fa-check': address.IsBilling }"></i></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<div class="panel-footer" ng-show="addresses.length > 0">
+
+				<div ng-show="addresses.length > 0">
 					<div ng-show="settings.listCount > settings.pageSize">
 						<pagination page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="settings.listCount"
 						items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
 					</div>
-					<button type="button" class="btn btn-danger" ng-click="deleteSelected($event)" ng-disabled="(addresses | filter:{Selected:true}).length == 0">{{('Delete' | r) + ' ' + ('Selected' | r) | xlat}}</button>
-					<button ng-if="user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')" type="button" class="btn btn-primary pull-right" ng-click="newAddress($event)">{{('New' | r) + ' ' + ('Address' | r) | xlat}}</button>
+					<button type="button" class="uk-button uk-button-danger" ng-click="deleteSelected($event)" ng-disabled="(addresses | filter:{Selected:true}).length == 0">{{('Delete' | r) + ' ' + ('Selected' | r) | xlat}}</button>
+					<button ng-if="user.Permissions.contains('CreateShipToAddress') || user.Permissions.contains('CreateBillToAddress')" type="button" class="uk-button uk-button-primary uk-float-right" ng-click="newAddress($event)">{{('New' | r) + ' ' + ('Address' | r) | xlat}}</button>
 				</div>
 			</div> <!-- Panel body -->
 
@@ -90,4 +92,4 @@
 			<div class="view-action-message alert-success" ng-show="actionMessage">{{actionMessage | r | xlat}}</div>
 		</div>
 	</div> <!-- container -->
-</div> <!-- section -->
+</section> <!-- section -->
