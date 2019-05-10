@@ -49,7 +49,7 @@
 								<thead>
 									<tr>
 										<th >Product</th>
-										<th ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')>">Date Needed</th>
+										<th ng-if="user.Permissions.contains('DateNeededRequired') || user.Permissions.contains('DateNeededOptional')">Date Needed</th>
 										<th ng-if="user.Permissions.contains('CostCenterPerLine')">{{'Cost Center' | r | xlat}}</th>
 										<th ng-if="!(user.Permissions.contains('HidePricing'))">Unit Price</th>
 										<th>Quantity</th>
