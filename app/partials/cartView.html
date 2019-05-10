@@ -60,7 +60,8 @@
 								<tbody>
 									<tr ng-repeat="item in currentOrder.LineItems">
 										<td class="uk-table-expand">
-																					<!-- GRID -->
+
+											<!-- GRID -->
 											<div uk-grid>
 												<!-- thumbnail -->
 												<!-- ========= -->
@@ -160,6 +161,7 @@
 													class="uk-input uk-form-small flatpickr flatpickr-input"
 												/>
 											</div>
+											<span ng-hide="item.DateNeeded && user.Permissions.contains('DateNeededRequired')" class="uk-text-small uk-text-danger uk-margin-remove">This field requires a value</span>
 											<div>
 												<button type="button" title="{{'copy to all' | r | xlat}}" class="uk-button uk-button-small uk-button-default uk-float-left" value="{{'copy to all' | r | xlat}}" ng-click="copyAddressToAll()" ng-show="item.DateNeeded" ng-if="$index == 0 && currentOrder.LineItems.length > 1 && user.CostCenters.length != 1" >
 													Copy date to all items
@@ -171,8 +173,8 @@
 												<option value=""></option>
 											</select>
 											<input name="costcenter" class="uk-input uk-form-small" ng-if="user.Permissions.contains('FreeFormCostCenter')" ng-model="item.CostCenter" type="text" required />
-											<span ng-hide="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')" class="uk-text-small uk-text-danger uk-margin-remove">This field requires a value</span>
-											<span ng-if="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')">{{item.CostCenter}}</span>
+											<span ng-hide="item.CostCenter && user.Permissions.contains('FreeFormCostCenter')" class="uk-text-small uk-text-danger uk-margin-remove">This field requires a value</span>
+											<span ng-if="item.CostCenter.length > 0 && !user.Permissions.contains('FreeFormCostCenter')">{{item.CostCenter}}</span>
 										</td>
 										<td class="uk-table-shrink" ng-if="!(user.Permissions.contains('HidePricing'))">
 											<p>{{item.UnitPrice | culturecurrency}}</p>
