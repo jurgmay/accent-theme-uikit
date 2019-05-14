@@ -34,7 +34,6 @@
 						   ng-required="user.Permissions.contains('CostCenterPerOrder') && !user.Permissions.contains('CostCenterPerLine') && user.Permissions.contains('FreeFormCostCenter')"
 						   placeholder="{{'Cost Center' | r | xlat}}" />
 					<span ng-if="user.CostCenters.length == 1 && !user.Permissions.contains('FreeFormCostCenter')">{{currentOrder.CostCenter}}</span>
-					<i class="fa fa-arrow-down" ng-show="user.CostCenters.length > 1 && !user.Permissions.contains('FreeFormCostCenter')"></i>
 				</div>
 			</div>
 		</fieldset>
