@@ -1,5 +1,5 @@
-four51.app.controller('CartViewCtrl', ['$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
-function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
+four51.app.controller('CartViewCtrl', ['$scope', '$routeParams', '$location', '$451', '$timeout', 'Order', 'OrderConfig', 'User',
+function ($scope, $routeParams, $location, $451, $timeout, Order, OrderConfig, User) {
 	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if ($scope.isEditforApproval) {
 		Order.get($routeParams.id, function(order) {
@@ -21,7 +21,9 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	}
 
 	$scope.currentDate = new Date();
+
 	$scope.errorMessage = null;
+
 	$scope.continueShopping = function() {
 		if (!$scope.cart.$invalid) {
 			if (confirm('Do you want to save changes to your order before continuing?') == true)
@@ -43,7 +45,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 						$location.path('catalog');
 					});
 					$scope.displayLoadingIndicator = false;
-					$scope.actionMessage = 'Your Changes Have Been Saved';
+					$scope.actionMessage = 'Your changes have been saved';
 				},
 				function(ex) {
 					$scope.actionMessage = 'An error occurred: ' + ex.Message;
@@ -68,13 +70,17 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 					$scope.displayLoadingIndicator = false;
 					if (callback) callback();
 					$scope.actionMessage = 'Your Changes Have Been Saved';
+
 				},
 				function(ex) {
 					$scope.errorMessage = ex.Message;
 					$scope.displayLoadingIndicator = false;
 				}
-			);
+			)
+
 		}
+
+alert('@');
 	};
 
 	$scope.removeItem = function(item) {
@@ -120,10 +126,8 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	$scope.$watch('currentOrder.LineItems', function(newval) {
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;
-		angular.forEach($scope.currentOrder.LineItems, function(item){
-  			flatpickr("#flatpickr");
-
-		    if(!item.Product.SmallImageUrl){
+		angular.forEach($scope.currentOrder.LineItems, function(item, index){
+	        if(!item.Product.SmallImageUrl){
     		    angular.forEach($scope.currentOrder.LineItems,function(li){
     		        if(item.Product.InteropID == li.Product.InteropID && (li.Product.SmallImageUrl)){
     		            item.Product.SmallImageUrl = li.Product.SmallImageUrl;
@@ -137,9 +141,37 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 		$scope.currentOrder.Subtotal = newTotal;
 	}, true);
 
-	$scope.copyAddressToAll = function() {
-		angular.forEach($scope.currentOrder.LineItems, function(n) {
+    $scope.callUpdate = function(){
+        if(!$scope.setPickr){
+            $scope.setPickr = true;
+            $timeout(function(){
+                angular.forEach($scope.currentOrder.LineItems, function(item, index){
+                    var flatID = '#flatpickr-' + index;
+                    var pickerID = flatpickr(flatID,{minDate:"today",altInput:true,altFormat:"D, d M Y",dateFormat:"Y-m-dTH:i:S"});
+
+        			var valueID = document.querySelector(flatID);
+        			valueID.value=flatpickr.formatDate(new Date(flatpickr.parseDate(item.DateNeeded,"Y-m-dTH:i:S")), "D, d M Y");
+            	});
+            },10);
+        }
+    };
+
+    $scope.refreshDates = function(){
+        if($scope.setPickr){
+            $scope.setPickr = false;
+            $scope.callUpdate();
+        }
+    };
+
+	$scope.copyDateToAll = function() {
+		angular.forEach($scope.currentOrder.LineItems, function(n,index) {
 			n.DateNeeded = $scope.currentOrder.LineItems[0].DateNeeded;
+
+			var valueID = document.querySelector("#flatpickr-" + index);
+			var pickerID = flatpickr(valueID);
+			pickerID.setDate(n.DateNeeded,"Y-m-dTH:i:S");
+			valueID.value=flatpickr.formatDate(new Date(flatpickr.parseDate(n.DateNeeded,"Y-m-dTH:i:S")), "D, d M Y");
+
 		});
 	};
 
