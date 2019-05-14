@@ -156,13 +156,6 @@ alert('@');
         }
     };
 
-    $scope.refreshDates = function(){
-        if($scope.setPickr){
-            $scope.setPickr = false;
-            $scope.callUpdate();
-        }
-    };
-
 	$scope.copyDateToAll = function() {
 		angular.forEach($scope.currentOrder.LineItems, function(n,index) {
 			n.DateNeeded = $scope.currentOrder.LineItems[0].DateNeeded;
