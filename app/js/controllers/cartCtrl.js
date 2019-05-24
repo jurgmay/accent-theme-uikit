@@ -147,7 +147,20 @@ alert('@');
             $timeout(function(){
                 angular.forEach($scope.currentOrder.LineItems, function(item, index){
                     var flatID = '#flatpickr-' + index;
-                    var pickerID = flatpickr(flatID,{minDate:"today",altInput:true,altFormat:"D, d M Y",dateFormat:"Y-m-dTH:i:S"});
+                    var pickerID = flatpickr(flatID,{
+						minDate:"today",
+						altInput:true,
+						altFormat:"D, d M Y",
+						dateFormat:"Y-m-dTH:i:S",
+						locale: {"firstDayOfWeek": 1}, // start week on Monday
+						disable: [
+							function(date) {
+								// return true to disable
+								return (date.getDay() === 0 || date.getDay() === 6);
+
+							}
+						]
+					});
 
         			var valueID = document.querySelector(flatID);
         			valueID.value=flatpickr.formatDate(new Date(flatpickr.parseDate(item.DateNeeded,"Y-m-dTH:i:S")), "D, d M Y");
@@ -155,6 +168,9 @@ alert('@');
             },10);
         }
     };
+
+
+
 
 	$scope.copyDateToAll = function() {
 		angular.forEach($scope.currentOrder.LineItems, function(n,index) {
