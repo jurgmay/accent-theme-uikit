@@ -14,7 +14,7 @@
       <input name="delete" class="delete" type="checkbox"></input> {{'Delete' | r | xlat}}
     </div>
   </div>
-  <div class="uk-form-controls uk-width-1-1" ng-show="replace || !customfield.File" ng-class="{'file-upload-required uk-text-danger': customfield.Required }">
+  <div class="uk-form-controls" ng-show="replace || !customfield.File" ng-class="{'file-upload-required uk-text-danger': customfield.Required }">
     <input name="upload" class="upload uk-button uk-button-default" type="file"></input>
   </div>
   <input type="hidden" ng-required="customfield.Required" ng-model="customfield.File.ID"></input>
