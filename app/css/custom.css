@@ -87,3 +87,13 @@ Other
 .uk-background-accent-product {
   background-color: #e8e8e8;
 }
+
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+    color:rgba(57,57,57,0.7);
+}
+
+.flatpickr-day.prevMonthDay.disabled,
+.flatpickr-day.nextMonthDay.disabled {
+    color:rgba(57,57,57,0.3);
+}
