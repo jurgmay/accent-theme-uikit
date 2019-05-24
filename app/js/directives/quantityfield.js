@@ -6,13 +6,13 @@ four51.app.directive('quantityfield', ['$451', 'ProductDisplayService', function
             required: '='
         },
         restrict: 'E',
-        template: '<div>'+
+        template: '<div class="uk-form-controls">'+
             '<inlineerror ng-show="lineitem.qtyError" title="{{lineitem.qtyError}}" />'+
             '<div ng-if="!lineitem.PriceSchedule.RestrictedQuantity">'+
-            '<input ng-disabled="lineitem.Variant.RecordCount > 0 && lineitem.ID" id="451qa_input_qty" placeholder="0" autocomplete="off" class="uk-input uk-form-small uk-form-width-xsmall" ng-change="qtyChanged(lineitem)" ng-if="!lineitem.PriceSchedule.RestrictedQuantity" type="text" ng-required="required" name="qtyInput" ng-model="lineitem.Quantity" ui-validate="\'validQuantityAddToOrder($value, lineitem)\'"/>'+
+            '<input class="uk-form-label" ng-disabled="lineitem.Variant.RecordCount > 0 && lineitem.ID" id="451qa_input_qty" placeholder="0" autocomplete="off" class="uk-input uk-form-small uk-form-width-xsmall" ng-change="qtyChanged(lineitem)" ng-if="!lineitem.PriceSchedule.RestrictedQuantity" type="text" ng-required="required" name="qtyInput" ng-model="lineitem.Quantity" ui-validate="\'validQuantityAddToOrder($value, lineitem)\'"/>'+
             '</div>'+
             '<div ng-if="lineitem.PriceSchedule.RestrictedQuantity">'+
-            '<select id="451qa_input_qty" class="uk-select uk-form-small uk-form-width-small" ng-change="qtyChanged(lineitem)" ng-if="lineitem.PriceSchedule.RestrictedQuantity" ng-required="required" ng-model="lineitem.Quantity" ng-options="pb.Quantity as getRestrictedQtyText(pb, lineitem.Product.QuantityMultiplier) for pb in lineitem.PriceSchedule.PriceBreaks" ui-validate="\'validQuantityAddToOrder($value, lineitem)\'"><option value=""></option></select>'+
+            '<select id="451qa_input_qty" class="uk-select uk-form-width-small" ng-change="qtyChanged(lineitem)" ng-if="lineitem.PriceSchedule.RestrictedQuantity" ng-required="required" ng-model="lineitem.Quantity" ng-options="pb.Quantity as getRestrictedQtyText(pb, lineitem.Product.QuantityMultiplier) for pb in lineitem.PriceSchedule.PriceBreaks" ui-validate="\'validQuantityAddToOrder($value, lineitem)\'"><option value=""></option></select>'+
             '</div>'+
             '</div>',
         link: function(scope){
