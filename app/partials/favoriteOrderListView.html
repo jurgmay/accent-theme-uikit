@@ -70,7 +70,7 @@
 				</div>
 
 				<div class="uk-text-center">
-					<div ng-show="settings.listCount > settings.pageSize">
+					<div ng-show="settings.listCount > 100">
 						<pagination page="settings.currentPage" max-size="100" rotate="false" boundary-links="true" total-items="settings.listCount"
 									items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
 					</div>
