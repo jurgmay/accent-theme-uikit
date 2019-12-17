@@ -11,25 +11,25 @@
 		<div class="uk-text-center">
 			<h1 class="uk-heading uk-text-uppercase">{{('Favorite' | r) + ' ' + ('Orders' | r) | xlat }}</h1>
 			<div class="uk-divider-small"></div>
-		</div>	
+		</div>
 		<!-- page-title end -->
 
 		<section>
-		
+
 			<loadingindicator ng-show="loading" />
-						
-			<div class="uk-text-center" ng-if="favoriteorders.length == 0">				
+
+			<div class="uk-text-center" ng-if="favoriteorders.length == 0">
 				<div>
 					<p>{{'You have no ' + ('Favorite' | rl) + ' ' + ('orders' | rl) + ' yet.' | xlat}}</p>
 				</div>
-				
+
 				<div>
 					<button type="button" class="uk-button uk-button-default" redirect="order">{{('View' | r) + ' ' + ('Orders' | r) | xlat}}</button>
 				</div>
 			</div>
-			
+
 			<div ng-if="favoriteorders.length > 0">
-	
+
 				<div class="panel-body view-form-icon" ng-if="favoriteorders.length > 0">
 					<form role="search" class="uk-form-stacked">
 						<div>
@@ -41,7 +41,7 @@
 							</div>
 						</div>
 					</form>
-					
+
 					<div class="table-responsive">
 						<table class="uk-table uk-table-striped">
 							<tr>
@@ -68,10 +68,10 @@
 						</table>
 					</div>
 				</div>
-				
+
 				<div class="uk-text-center">
 					<div ng-show="settings.listCount > settings.pageSize">
-						<pagination page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="settings.listCount"
+						<pagination page="settings.currentPage" max-size="100" rotate="false" boundary-links="true" total-items="settings.listCount"
 									items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
 					</div>
 					<button type="button" class="uk-button uk-button-danger uk-button-small" ng-click="deleteSelected($event)" ng-disabled="(favoriteorders | filter:{Selected:true}).length == 0">{{('Delete' | r) + ' ' + ('Selected' | r) | xlat}}</button>
@@ -80,4 +80,4 @@
 			</div>
 		</section>
 		</div> <!-- container -->
-</div> <!-- section -->
+</section> <!-- section -->
