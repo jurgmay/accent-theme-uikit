@@ -52,7 +52,12 @@
 								<th>{{'Order' | r}} {{'Type' | r}}</th>
 								<th ng-if="!(user.Permissions.contains('HidePricing'))"></th>
 							</tr>
+
+							<!--
 							<tr ng-repeat="order in favoriteorders | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
+							-->
+
+							<tr ng-repeat="order in favoriteorders">
 								<td><input type='checkbox' ng-model="order.Selected" /></td>
 								<td>{{order.FavoriteName}}</td>
 								<td><a ng-href="order/{{order.ID}}">{{order.ExternalID}}</a></td>
@@ -70,10 +75,12 @@
 				</div>
 
 				<div class="uk-text-center">
+					<!--
 					<div ng-show="settings.listCount > settings.pageSize">
 						<pagination page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="settings.listCount"
 									items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
 					</div>
+					-->
 					<button type="button" class="uk-button uk-button-danger uk-button-small" ng-click="deleteSelected($event)" ng-disabled="(favoriteorders | filter:{Selected:true}).length == 0">{{('Delete' | r) + ' ' + ('Selected' | r) | xlat}}</button>
 					<span class="" ng-show="error" ng-bind-html="error | r"></span>
 				</div>
