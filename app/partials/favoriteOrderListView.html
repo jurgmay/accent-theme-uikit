@@ -53,11 +53,7 @@
 								<th ng-if="!(user.Permissions.contains('HidePricing'))"></th>
 							</tr>
 
-							<!--
 							<tr ng-repeat="order in favoriteorders | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
-							-->
-
-							<tr ng-repeat="order in favoriteorders">
 								<td><input type='checkbox' ng-model="order.Selected" /></td>
 								<td>{{order.FavoriteName}}</td>
 								<td><a ng-href="order/{{order.ID}}">{{order.ExternalID}}</a></td>
