@@ -89,6 +89,10 @@
 							<p>{{couponError | r | xlat}}</p>
 						</div>
 
+						<div class="uk-alert-primary" uk-alert>
+							<p>ORDER TOTAL: <strong>{{currentOrder.Subtotal | culturecurrency}}</strong></p>
+						</div>
+						
 						<orderbuttons view="checkout" continue="true"></orderbuttons>
 
 					</div>
