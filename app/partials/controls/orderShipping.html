@@ -46,11 +46,10 @@
 						<div>
 							<div ng-show="!currentOrder.IsMultipleShip()" class="view-form-icon">
 								<fieldset class="uk-fieldset">
-									<div ng-show="user.ShipMethod != null" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
-										<label ng-class="{required: !currentOrder.IsMultipleShip() && user.ShipMethod != null}" ng-show="currentOrder.LineItems[0].ShipperName || !currentOrder.IsMultipleShip() && user.ShipMethod != null">{{('Shipping' | r) + ' Method' | xlat}}</label>
+									<div ng-show="user.ShipMethod != null && shippers" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
+										<label ng-class="{required: !currentOrder.IsMultipleShip() && user.ShipMethod != null}">{{('Shipping' | r) + ' Method' | xlat}}</label>
 										<select class="uk-select" ng-change="updateShipper()" name="shipMethod"
 									ng-model="currentOrder.LineItems[0].ShipperName"
-									ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
 									ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers"
 									ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null" ></select>
 									</div>
