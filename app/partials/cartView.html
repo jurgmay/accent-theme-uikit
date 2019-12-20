@@ -206,7 +206,7 @@
 									</div>
 
 									<div class="uk-width-1-1 uk-text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
-										<strong>{{currentOrder.Total | culturecurrency}}</strong>
+										<strong>{{currentOrder.Subtotal | culturecurrency}}</strong>
 
 										<button type="button" neworder ng-if="user.Permissions.contains('MultipleShoppingCart') && currentOrder" class="uk-button uk-button-default" ng-click="newOrderLoadingIndicator = true;startNewOrder()">
 											<loadingindicator  ng-show="newOrderLoadingIndicator" />
